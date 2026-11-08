@@ -1,0 +1,231 @@
+// Hand-curated particles dataset with explanations and 3 examples each.
+export const PARTICLES = [
+  {
+    id: "wa",
+    particle: "は",
+    romaji: "wa",
+    role: "Topic marker",
+    explanation: "Marks the topic of the sentence (what we are talking about). Pronounced 'wa' when used as a particle, not 'ha'.",
+    examples: [
+      { ja: "私は学生です。", romaji: "Watashi wa gakusei desu.", en: "I am a student." },
+      { ja: "今日はいい天気ですね。", romaji: "Kyou wa ii tenki desu ne.", en: "The weather is nice today, isn't it?" },
+      { ja: "これは何ですか。", romaji: "Kore wa nan desu ka.", en: "What is this?" }
+    ]
+  },
+  {
+    id: "ga",
+    particle: "が",
+    romaji: "ga",
+    role: "Subject marker / Identifier",
+    explanation: "Marks the grammatical subject doing the action, specifies who/what specifically, or marks the object of desires and abilities (like / want / can).",
+    examples: [
+      { ja: "猫が好きです。", romaji: "Neko ga suki desu.", en: "I like cats." },
+      { ja: "雨が降っています。", romaji: "Ame ga futte imasu.", en: "It is raining." },
+      { ja: "日本語が分かります。", romaji: "Nihongo ga wakarimasu.", en: "I understand Japanese." }
+    ]
+  },
+  {
+    id: "wo",
+    particle: "を",
+    romaji: "o",
+    role: "Direct object marker",
+    explanation: "Marks the direct object receiving the action of a transitive verb. Pronounced 'o'. Also marks a space passed through (walking in a park, crossing a street).",
+    examples: [
+      { ja: "水を飲みます。", romaji: "Mizu o nomimasu.", en: "I drink water." },
+      { ja: "本を読みました。", romaji: "Hon o yomimashita.", en: "I read a book." },
+      { ja: "公園を散歩します。", romaji: "Kouen o sanpo shimasu.", en: "I take a walk through the park." }
+    ]
+  },
+  {
+    id: "ni-dest",
+    particle: "に",
+    romaji: "ni",
+    role: "Destination / Target / Time",
+    explanation: "Indicates a destination (going to a place), a specific point in time (at 7:00), or the indirect recipient of an action (give to someone).",
+    examples: [
+      { ja: "日本に行きます。", romaji: "Nihon ni ikimasu.", en: "I am going to Japan." },
+      { ja: "七時に起きます。", romaji: "Shichi-ji ni okimasu.", en: "I wake up at seven o'clock." },
+      { ja: "友達にプレゼントをあげます。", romaji: "Tomodachi ni purezento o agemasu.", en: "I give a present to my friend." }
+    ]
+  },
+  {
+    id: "ni-exist",
+    particle: "に",
+    romaji: "ni",
+    role: "Location of existence",
+    explanation: "Marks where someone or something exists when used with います (animate beings) or あります (inanimate objects).",
+    examples: [
+      { ja: "部屋に猫がいます。", romaji: "Heya ni neko ga imasu.", en: "There is a cat in the room." },
+      { ja: "机の上に本があります。", romaji: "Tsukue no ue ni hon ga arimasu.", en: "There is a book on the desk." },
+      { ja: "東京に住んでいます。", romaji: "Toukyou ni sunde imasu.", en: "I live in Tokyo." }
+    ]
+  },
+  {
+    id: "de-loc",
+    particle: "で",
+    romaji: "de",
+    role: "Location of action",
+    explanation: "Marks where an active event or action takes place (eating at a restaurant, studying in the library).",
+    examples: [
+      { ja: "図書館で勉強します。", romaji: "Toshokan de benkyou shimasu.", en: "I study at the library." },
+      { ja: "家で映画を見ました。", romaji: "Ie de eiga o mimashita.", en: "I watched a movie at home." },
+      { ja: "レストランで食べましょう。", romaji: "Resutoran de tabemashou.", en: "Let's eat at a restaurant." }
+    ]
+  },
+  {
+    id: "de-means",
+    particle: "で",
+    romaji: "de",
+    role: "Means / Method / Tool",
+    explanation: "Marks the tool, language, or transportation used to do an action (by train, with chopsticks, in English).",
+    examples: [
+      { ja: "電車で会社へ行きます。", romaji: "Densha de kaisha e ikimasu.", en: "I go to the office by train." },
+      { ja: "箸でご飯を食べます。", romaji: "Hashi de gohan o tabemasu.", en: "I eat rice with chopsticks." },
+      { ja: "日本語で話してください。", romaji: "Nihongo de hanashite kudasai.", en: "Please speak in Japanese." }
+    ]
+  },
+  {
+    id: "to-and",
+    particle: "と",
+    romaji: "to",
+    role: "Exhaustive 'and' / Together with",
+    explanation: "Connects nouns exhaustively (A and B and nothing else in the list). Also means 'together with someone'.",
+    examples: [
+      { ja: "パンと牛乳を買いました。", romaji: "Pan to gyuunyuu o kaimashita.", en: "I bought bread and milk." },
+      { ja: "友達と映画を見ました。", romaji: "Tomodachi to eiga o mimashita.", en: "I watched a movie with my friend." },
+      { ja: "先生と話しました。", romaji: "Sensei to hanashimashita.", en: "I spoke with my teacher." }
+    ]
+  },
+  {
+    id: "mo",
+    particle: "も",
+    romaji: "mo",
+    role: "'Also' / 'Too' / 'Neither'",
+    explanation: "Replaces は, が, or を to mean 'also' or 'too'. In negative sentences, it means 'neither' or 'not... either'.",
+    examples: [
+      { ja: "私も行きます。", romaji: "Watashi mo ikimasu.", en: "I will go too." },
+      { ja: "これもお茶です。", romaji: "Kore mo ocha desu.", en: "This is also green tea." },
+      { ja: "何も分かりません。", romaji: "Nani mo wakarimasen.", en: "I don't understand anything." }
+    ]
+  },
+  {
+    id: "no",
+    particle: "の",
+    romaji: "no",
+    role: "Possessive / Modifier ('s / of)",
+    explanation: "Connects two nouns where the first modifies the second: possession (my book), origin (Japanese car), or category (English teacher).",
+    examples: [
+      { ja: "私の傘です。", romaji: "Watashi no kasa desu.", en: "It is my umbrella." },
+      { ja: "日本の車です。", romaji: "Nihon no kuruma desu.", en: "It is a Japanese car." },
+      { ja: "英語の先生に会いました。", romaji: "Eigo no sensei ni aimashita.", en: "I met my English teacher." }
+    ]
+  },
+  {
+    id: "he",
+    particle: "へ",
+    romaji: "e",
+    role: "Direction towards",
+    explanation: "Indicates the general direction of travel (heading towards). Pronounced 'e'. Focuses on the movement direction.",
+    examples: [
+      { ja: "京都へ行きます。", romaji: "Kyouto e ikimasu.", en: "I am heading to Kyoto." },
+      { ja: "家へ帰ります。", romaji: "Ie e kaerimasu.", en: "I am going back home." },
+      { ja: "未来へ進みましょう。", romaji: "Mirai e susumimashou.", en: "Let's move forward into the future." }
+    ]
+  },
+  {
+    id: "ka",
+    particle: "か",
+    romaji: "ka",
+    role: "Question marker / 'Or'",
+    explanation: "Placed at the end of a sentence to turn it into a question (like a verbal question mark). Between nouns, it means 'or'.",
+    examples: [
+      { ja: "お元気ですか。", romaji: "Ogenki desu ka.", en: "How are you?" },
+      { ja: "コーヒーか紅茶はいかがですか。", romaji: "Koohii ka koucha wa ikaga desu ka.", en: "Would you like coffee or tea?" },
+      { ja: "明日暇ですか。", romaji: "Ashita hima desu ka.", en: "Are you free tomorrow?" }
+    ]
+  },
+  {
+    id: "kara-start",
+    particle: "から",
+    romaji: "kara",
+    role: "From (time / place) / Because",
+    explanation: "Indicates a starting point in time or space ('from 9:00', 'from station'). At the end of a clause, it states the reason ('because...').",
+    examples: [
+      { ja: "学校から帰りました。", romaji: "Gakkou kara kaerimashita.", en: "I returned from school." },
+      { ja: "九時から始まります。", romaji: "Kuji kara hajimarimasu.", en: "It begins from 9 o'clock." },
+      { ja: "暑いですから、窓を開けてください。", romaji: "Atsui desu kara, mado o akete kudasai.", en: "Because it's hot, please open the window." }
+    ]
+  },
+  {
+    id: "made",
+    particle: "まで",
+    romaji: "made",
+    role: "Until / Up to",
+    explanation: "Indicates an ending point in time or distance ('until 5:00', 'as far as Tokyo'). Frequently paired with から.",
+    examples: [
+      { ja: "五時まで勉強しました。", romaji: "Goji made benkyou shimashita.", en: "I studied until 5 o'clock." },
+      { ja: "東京から大阪まで行きました。", romaji: "Toukyou kara Oosaka made ikimashita.", en: "I went from Tokyo to Osaka." },
+      { ja: "駅まで歩きましょう。", romaji: "Eki made arukimashou.", en: "Let's walk as far as the station." }
+    ]
+  },
+  {
+    id: "yori",
+    particle: "より",
+    romaji: "yori",
+    role: "Comparison ('more than')",
+    explanation: "Used to establish the benchmark of comparison: 'A wa B yori...' means 'A is more ... than B'.",
+    examples: [
+      { ja: "電車はバスより速いです。", romaji: "Densha wa basu yori hayai desu.", en: "Trains are faster than buses." },
+      { ja: "昨日より今日の方が寒いです。", romaji: "Kinou yori kyou no hou ga samui desu.", en: "Today is colder than yesterday." },
+      { ja: "言葉より行動が大切です。", romaji: "Kotoba yori koudou ga taisetsu desu.", en: "Actions are more important than words." }
+    ]
+  },
+  {
+    id: "dake",
+    particle: "だけ",
+    romaji: "dake",
+    role: "Only / Just",
+    explanation: "Expresses a limit or boundary: 'just this amount/person and no more'. Used with positive or neutral verbs.",
+    examples: [
+      { ja: "一つだけ買いました。", romaji: "Hitotsu dake kaimashita.", en: "I bought just one." },
+      { ja: "五分だけ待ってください。", romaji: "Gofun dake matte kudasai.", en: "Please wait for just five minutes." },
+      { ja: "あなただけを信じます。", romaji: "Anata dake o shinjimasu.", en: "I believe only you." }
+    ]
+  },
+  {
+    id: "shika",
+    particle: "しか",
+    romaji: "shika",
+    role: "Only / Nothing but (with negative)",
+    explanation: "Always paired with a negative verb (しか...ない) to emphasize scarcity: 'there is only/nothing but'.",
+    examples: [
+      { ja: "百円しかありません。", romaji: "Hyaku-en shika arimasen.", en: "I only have 100 yen (nothing more)." },
+      { ja: "一人しか来ませんでした。", romaji: "Hitori shika kimasen deshita.", en: "Only one person came." },
+      { ja: "水しか飲みません。", romaji: "Mizu shika nomimasen.", en: "I drink nothing but water." }
+    ]
+  },
+  {
+    id: "ne",
+    particle: "ね",
+    romaji: "ne",
+    role: "Agreement seeker ('isn't it?')",
+    explanation: "Sentence-ending particle seeking agreement or confirmation from the listener, softening the tone.",
+    examples: [
+      { ja: "美味しいですね。", romaji: "Oishii desu ne.", en: "It's delicious, isn't it?" },
+      { ja: "明日は休みですね。", romaji: "Ashita wa yasumi desu ne.", en: "Tomorrow is our day off, right?" },
+      { ja: "きれいな花ですね。", romaji: "Kirei na hana desu ne.", en: "What a pretty flower, isn't it?" }
+    ]
+  },
+  {
+    id: "yo",
+    particle: "よ",
+    romaji: "yo",
+    role: "Emphasis / New information ('you know')",
+    explanation: "Sentence-ending particle providing new information, an assertion, or friendly warning the listener may not know.",
+    examples: [
+      { ja: "その映画はとても面白いですよ。", romaji: "Sono eiga wa totemo omoshiroi desu yo.", en: "That movie is really interesting, you know!" },
+      { ja: "時間ですよ。", romaji: "Jikan desu yo.", en: "It's time!" },
+      { ja: "大丈夫ですよ。", romaji: "Daijoubu desu yo.", en: "Everything is going to be okay, trust me!" }
+    ]
+  }
+];

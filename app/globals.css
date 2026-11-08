@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+html {
+  -webkit-tap-highlight-color: transparent;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+@keyframes draw {
+  0% { stroke-dashoffset: 1; opacity: 0; }
+  1% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@keyframes pop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.stroke-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  animation-name: draw;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.stroke-label {
+  opacity: 0;
+  animation: pop 200ms ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stroke-draw { animation: none; stroke-dashoffset: 0; opacity: 1; }
+  .stroke-label { animation: none; opacity: 1; }
+}
