@@ -32,7 +32,6 @@ export default function KanaChart() {
     [settings.speechRate],
   );
 
-  // Speak on prev/next too, so tapping through the chart is a listening drill
   const go = useCallback(
     (delta: number) => {
       const next = flat[openIndex + delta];
@@ -41,22 +40,26 @@ export default function KanaChart() {
     [flat, openIndex, select],
   );
 
-  if (error) return <p className="p-4 text-rose-700">Couldn&apos;t load the kana. Please check your connection and reload.</p>;
-  if (!data) return <p className="p-4 text-slate-500">Loading…</p>;
+  if (error) return <p className="p-4 text-rose-700 dark:text-rose-400">Couldn&apos;t load the kana. Please check your connection and reload.</p>;
+  if (!data) return <p className="p-4 text-slate-500 dark:text-slate-400">Loading…</p>;
 
   const cols = columnsFor(tab);
   const colHeads = tab === "combo" ? ["ya", "yu", "yo"] : ["a", "i", "u", "e", "o"];
 
   return (
     <div>
-      <div role="tablist" aria-label="Script" className="mb-3 grid grid-cols-2 gap-2 rounded-2xl bg-slate-200 p-1">
+      <div role="tablist" aria-label="Script" className="mb-3 grid grid-cols-2 gap-2 rounded-2xl bg-slate-200 p-1 dark:bg-slate-800">
         {(["hiragana", "katakana"] as const).map((s) => (
           <button
             key={s}
             role="tab"
             aria-selected={script === s}
             onClick={() => setScript(s)}
-            className={`min-h-11 rounded-xl text-lg font-semibold ${script === s ? "bg-white text-rose-700 shadow" : "text-slate-600"}`}
+            className={`min-h-12 rounded-xl text-lg font-bold transition-all ${
+              script === s
+                ? "bg-white text-blue-600 shadow dark:bg-slate-900 dark:text-blue-400"
+                : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
+            }`}
           >
             <span lang="ja">{s === "hiragana" ? "ひらがな" : "カタカナ"}</span>
           </button>
@@ -70,7 +73,11 @@ export default function KanaChart() {
             role="tab"
             aria-selected={tab === t.id}
             onClick={() => setTab(t.id)}
-            className={`min-h-11 shrink-0 rounded-full px-4 text-sm font-semibold ${tab === t.id ? "bg-rose-600 text-white" : "bg-white text-slate-700 shadow-sm"}`}
+            className={`min-h-12 shrink-0 rounded-full px-5 text-sm font-semibold transition-all ${
+              tab === t.id
+                ? "bg-blue-600 text-white shadow-sm dark:bg-blue-500"
+                : "bg-white text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-50 dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-800 dark:hover:bg-slate-800"
+            }`}
           >
             {t.label}
           </button>
@@ -78,13 +85,13 @@ export default function KanaChart() {
       </div>
 
       {tab === "voiced" && (
-        <p className="mb-3 text-sm text-slate-600">Add two dots (dakuten ゛) or a circle (handakuten ゜) to change the sound.</p>
+        <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">Add two dots (dakuten ゛) or a circle (handakuten ゜) to change the sound.</p>
       )}
       {tab === "combo" && (
-        <p className="mb-3 text-sm text-slate-600">A small ゃ ゅ ょ blends into the kana before it: one beat, not two.</p>
+        <p className="mb-3 text-sm text-slate-600 dark:text-slate-400">A small ゃ ゅ ょ blends into the kana before it: one beat, not two.</p>
       )}
       {tab === "special" && (
-        <ul className="mb-3 list-disc space-y-1 pl-5 text-sm text-slate-600">
+        <ul className="mb-3 list-disc space-y-1 pl-5 text-sm text-slate-600 dark:text-slate-400">
           {data.longVowelNotes.map((n) => (
             <li key={n} lang="ja">{n}</li>
           ))}
@@ -93,7 +100,7 @@ export default function KanaChart() {
 
       {tab !== "special" && (
         <div
-          className="mb-1 grid gap-2 pl-6 text-center text-xs font-semibold uppercase text-slate-400"
+          className="mb-1 grid gap-2 pl-6 text-center text-xs font-semibold uppercase text-slate-400 dark:text-slate-500"
           style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
         >
           {colHeads.map((h) => (
@@ -108,18 +115,24 @@ export default function KanaChart() {
           const label = tab === "basic" ? ROW_LABELS[first?.row ?? ""] ?? first?.row : first?.row;
           return (
             <div key={ri} className="flex items-center gap-1">
-              <span className="w-5 shrink-0 text-center text-xs font-semibold text-slate-400">{tab === "special" ? "" : label}</span>
+              <span className="w-5 shrink-0 text-center text-xs font-semibold text-slate-400 dark:text-slate-500">
+                {tab === "special" ? "" : label}
+              </span>
               <div className="grid flex-1 gap-2" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
                 {row.map((item, ci) =>
                   item ? (
                     <button
                       key={item.id}
                       onClick={() => select(item)}
-                      className="flex aspect-square min-h-14 flex-col items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 active:bg-rose-50"
+                      className="flex aspect-square min-h-14 flex-col items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 active:bg-blue-50 active:scale-95 transition-all dark:bg-slate-900 dark:ring-slate-800 dark:active:bg-blue-950/40"
                       aria-label={`${item.kana} ${item.romaji}`}
                     >
-                      <span className="text-3xl leading-none text-slate-900" lang="ja">{item.kana}</span>
-                      {settings.showRomaji && <span className="mt-1 text-xs font-medium text-slate-500">{item.romaji}</span>}
+                      <span className="text-3xl leading-none text-slate-900 dark:text-white" lang="ja">
+                        {item.kana}
+                      </span>
+                      {settings.showRomaji && (
+                        <span className="mt-1 text-xs font-medium text-slate-500 dark:text-slate-400">{item.romaji}</span>
+                      )}
                     </button>
                   ) : (
                     <span key={ci} aria-hidden />
@@ -145,4 +158,3 @@ export default function KanaChart() {
     </div>
   );
 }
-

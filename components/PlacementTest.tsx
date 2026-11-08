@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { Target, CheckCircle2, X } from "lucide-react";
 import { loadDeck, type DeckCard } from "@/lib/decks";
 import { makeChoices, shuffle } from "@/lib/quiz";
 import { speak } from "@/lib/speech";
@@ -78,7 +79,6 @@ export default function PlacementTest({ onDone, onCancel }: Props) {
 
     setTimeout(() => {
       if (curr + 1 >= questions.length) {
-        // Calculate placement
         const s = {
           ...scores,
           [q.level]: {
@@ -86,7 +86,6 @@ export default function PlacementTest({ onDone, onCancel }: Props) {
             total: (scores[q.level]?.total ?? 0) + 1,
           },
         };
-        // Criteria
         const kanaPct = (s["Kana"]?.correct ?? 0) / (s["Kana"]?.total || 1);
         const n5Pct = (s["N5"]?.correct ?? 0) / (s["N5"]?.total || 1);
         const n4Pct = (s["N4"]?.correct ?? 0) / (s["N4"]?.total || 1);
@@ -119,8 +118,8 @@ export default function PlacementTest({ onDone, onCancel }: Props) {
     onDone(placedStage);
   };
 
-  if (loading) return <p className="p-4 text-slate-500">Preparing placement test questions…</p>;
-  if (!questions.length) return <p className="p-4 text-rose-600">Failed to load questions. Please try again.</p>;
+  if (loading) return <p className="p-4 text-slate-500 dark:text-slate-400">Preparing placement test questions…</p>;
+  if (!questions.length) return <p className="p-4 text-rose-600 dark:text-rose-400">Failed to load questions. Please try again.</p>;
 
   if (finished) {
     const stageNames: Record<string, string> = {
@@ -133,26 +132,30 @@ export default function PlacementTest({ onDone, onCancel }: Props) {
 
     return (
       <div className="pt-6 text-center">
-        <div className="text-6xl">🎯</div>
-        <h2 className="mt-3 text-2xl font-bold">Placement Complete!</h2>
-        <p className="mt-2 text-sm text-slate-600">Based on your tap responses, your recommended starting level is:</p>
-        <div className="mx-auto my-4 max-w-xs rounded-2xl bg-rose-50 p-4 ring-1 ring-rose-200">
-          <span className="text-2xl font-extrabold text-rose-700">{stageNames[placedStage] ?? placedStage}</span>
+        <div className="flex size-16 items-center justify-center mx-auto rounded-full bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
+          <CheckCircle2 className="size-8" />
         </div>
-        <p className="text-xs text-slate-500">All earlier lessons will be marked as cleared for you.</p>
+        <h2 className="mt-4 font-heading text-2xl font-bold text-slate-900 dark:text-white">Placement Complete!</h2>
+        <p className="mt-2 text-xs text-slate-600 dark:text-slate-400">Based on your tap responses, your recommended starting level is:</p>
+        <div className="mx-auto my-4 max-w-xs rounded-2xl bg-blue-50 p-4 border border-blue-200 dark:bg-blue-950/30 dark:border-blue-900/40">
+          <span className="font-heading text-xl font-extrabold text-blue-700 dark:text-blue-300">
+            {stageNames[placedStage] ?? placedStage}
+          </span>
+        </div>
+        <p className="text-xs text-slate-500 dark:text-slate-400">All earlier lessons will be marked as cleared for you.</p>
 
         <div className="mt-6 flex flex-col gap-2">
           <button
             type="button"
             onClick={applyPlacement}
-            className="min-h-12 w-full rounded-full bg-rose-600 px-6 font-semibold text-white active:bg-rose-700"
+            className="flex min-h-12 w-full items-center justify-center rounded-full bg-blue-600 px-6 font-semibold text-white shadow-sm active:bg-blue-700 dark:bg-blue-500"
           >
             Start at {stageNames[placedStage]}
           </button>
           <button
             type="button"
             onClick={onCancel}
-            className="min-h-11 w-full rounded-full bg-slate-100 font-medium text-slate-700"
+            className="min-h-12 w-full rounded-full bg-slate-100 font-semibold text-slate-700 active:bg-slate-200 dark:bg-slate-800 dark:text-slate-200"
           >
             Keep current progress
           </button>
@@ -165,21 +168,22 @@ export default function PlacementTest({ onDone, onCancel }: Props) {
 
   return (
     <div>
-      <div className="mb-3 flex items-center justify-between text-sm text-slate-500">
-        <button type="button" onClick={onCancel} className="min-h-11 px-1">
-          ✕ Cancel
+      <div className="mb-3 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+        <button type="button" onClick={onCancel} className="flex min-h-12 items-center gap-1 px-1">
+          <X className="size-4" />
+          <span>Cancel</span>
         </button>
-        <span>
+        <span className="font-semibold">
           Question {curr + 1} of {questions.length} ({q.level})
         </span>
       </div>
 
-      <div className="flex min-h-36 flex-col items-center justify-center rounded-3xl bg-white p-6 text-center shadow ring-1 ring-slate-200">
-        <span className="text-5xl font-medium" lang="ja">
+      <div className="flex min-h-36 flex-col items-center justify-center rounded-3xl bg-white p-6 text-center shadow ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
+        <span className="text-5xl font-medium text-slate-900 dark:text-white" lang="ja">
           {q.card.front}
         </span>
-        {q.card.reading && <span className="mt-1 text-sm text-slate-500">{q.card.reading}</span>}
-        <span className="mt-3 text-xs text-slate-400">What does this mean?</span>
+        {q.card.reading && <span className="mt-1 text-sm text-slate-500 dark:text-slate-400">{q.card.reading}</span>}
+        <span className="mt-3 text-xs text-slate-400 dark:text-slate-500">What does this mean?</span>
       </div>
 
       <div className="mt-4 grid grid-cols-2 gap-3">
@@ -188,11 +192,11 @@ export default function PlacementTest({ onDone, onCancel }: Props) {
           const isCorrect = opt.id === q.card.id;
           const style = picked
             ? isCorrect
-              ? "bg-emerald-100 ring-emerald-500 text-emerald-900"
+              ? "bg-emerald-100 ring-emerald-500 text-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-300"
               : isSelected
-              ? "bg-rose-100 ring-rose-500 text-rose-900"
-              : "bg-white opacity-40 ring-slate-200"
-            : "bg-white ring-slate-200 active:bg-rose-50";
+              ? "bg-rose-100 ring-rose-500 text-rose-900 dark:bg-rose-950/40 dark:text-rose-300"
+              : "bg-white opacity-40 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800"
+            : "bg-white ring-slate-200 active:bg-blue-50 active:scale-[0.98] dark:bg-slate-900 dark:ring-slate-800 dark:active:bg-slate-800";
 
           return (
             <button
@@ -200,7 +204,7 @@ export default function PlacementTest({ onDone, onCancel }: Props) {
               type="button"
               disabled={!!picked}
               onClick={() => handleAnswer(opt)}
-              className={`min-h-16 rounded-2xl p-3 text-sm font-semibold shadow-sm ring-1 transition-all ${style}`}
+              className={`min-h-16 rounded-2xl p-3 text-xs font-bold shadow-sm ring-1 transition-all ${style}`}
             >
               {opt.answer}
             </button>

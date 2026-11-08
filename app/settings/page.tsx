@@ -1,14 +1,31 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import {
+  Volume2,
+  Lock,
+  Download,
+  Upload,
+  CheckCircle2,
+  Moon,
+  Sun,
+  Shield,
+  Clock,
+  Sparkles,
+} from "lucide-react";
 import AccountPanel from "@/components/AccountPanel";
 import { exportBackup, importBackup, type Backup } from "@/lib/db";
 import { hasJapaneseVoice, onVoicesChanged, speak, ttsSupported } from "@/lib/speech";
 import { useSettings } from "@/lib/settings";
+import { useTheme } from "@/lib/theme";
+import { lockSessionNow, savePinHash } from "@/lib/auth";
 
 function Row({ label, value, children }: { label: string; value?: string; children: React.ReactNode }) {
   return (
-    <div className="py-2">
-      <label className="flex items-center justify-between font-medium">{label}<span className="text-slate-500">{value}</span></label>
+    <div className="py-2.5">
+      <label className="flex items-center justify-between text-sm font-semibold text-slate-800 dark:text-slate-200">
+        <span>{label}</span>
+        <span className="text-xs font-normal text-slate-500 dark:text-slate-400">{value}</span>
+      </label>
       {children}
     </div>
   );
@@ -16,8 +33,11 @@ function Row({ label, value, children }: { label: string; value?: string; childr
 
 export default function SettingsPage() {
   const [s, update] = useSettings();
+  const [theme, setTheme] = useTheme();
   const [voice, setVoice] = useState<"unknown" | "none" | "ok" | "unsupported">("unknown");
   const [msg, setMsg] = useState("");
+  const [pinInput, setPinInput] = useState("");
+  const [pinMsg, setPinMsg] = useState("");
   const file = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -33,65 +53,239 @@ export default function SettingsPage() {
     a.download = `nihongo-progress-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(a.href);
-    setMsg("Progress exported.");
+    setMsg("Progress backup successfully downloaded.");
   };
 
   const doImport = async (f?: File) => {
     if (!f) return;
     try {
       const n = await importBackup(JSON.parse(await f.text()) as Backup);
-      setMsg(`Imported ${n} records (newer data wins).`);
+      setMsg(`Imported ${n} records (latest updates merged).`);
     } catch (e) {
       setMsg(e instanceof Error ? e.message : "Import failed");
     }
   };
 
-  const card = "rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200";
-  return (
-    <div className="space-y-3">
-      <h1 className="text-2xl font-bold">Settings</h1>
+  const handleChangePin = async () => {
+    if (pinInput.length !== 6 || !/^\d{6}$/.test(pinInput)) {
+      setPinMsg("PIN must be exactly 6 digits.");
+      return;
+    }
+    await savePinHash(pinInput);
+    setPinInput("");
+    setPinMsg("New 6-digit PIN saved.");
+    setTimeout(() => setPinMsg(""), 3000);
+  };
 
+  const card = "rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800";
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h1 className="font-heading text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Settings
+        </h1>
+        <button
+          type="button"
+          onClick={lockSessionNow}
+          className="flex min-h-12 items-center gap-1.5 rounded-full bg-slate-100 px-4 text-xs font-bold text-slate-700 active:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:active:bg-slate-700"
+        >
+          <Lock className="size-3.5" />
+          <span>Lock App</span>
+        </button>
+      </div>
+
+      {/* Security & Access Control */}
+      <section className={card}>
+        <div className="flex items-center gap-1.5 mb-2 text-slate-900 dark:text-white">
+          <Shield className="size-4 text-blue-600 dark:text-blue-400" />
+          <h2 className="font-heading font-bold text-sm">Security &amp; PIN Lock</h2>
+        </div>
+
+        <Row label="Auto-lock timeout" value={`${(s as any).autoLockMinutes ?? 5} min`}>
+          <select
+            value={(s as any).autoLockMinutes ?? 5}
+            onChange={(e) => update({ autoLockMinutes: Number(e.target.value) } as any)}
+            className="mt-2 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3.5 text-sm font-medium text-slate-800 shadow-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+          >
+            <option value={0}>Immediate (when closing / backgrounding)</option>
+            <option value={1}>1 minute of inactivity</option>
+            <option value={5}>5 minutes of inactivity (Recommended)</option>
+            <option value={15}>15 minutes of inactivity</option>
+            <option value={-1}>Never auto-lock</option>
+          </select>
+        </Row>
+
+        <div className="mt-2 border-t border-slate-100 pt-3 dark:border-slate-800">
+          <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">Change 6-Digit PIN</label>
+          <div className="mt-1 flex gap-2">
+            <input
+              type="password"
+              inputMode="numeric"
+              maxLength={6}
+              placeholder="New 6-digit PIN"
+              value={pinInput}
+              onChange={(e) => setPinInput(e.target.value.replace(/\D/g, ""))}
+              className="min-h-12 flex-1 rounded-xl border border-slate-300 px-3.5 text-center font-mono text-lg tracking-widest shadow-sm dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+            />
+            <button
+              type="button"
+              disabled={pinInput.length !== 6}
+              onClick={handleChangePin}
+              className="min-h-12 rounded-xl bg-blue-600 px-5 text-xs font-bold text-white shadow-sm disabled:opacity-40 active:bg-blue-700 dark:bg-blue-500"
+            >
+              Update
+            </button>
+          </div>
+          {pinMsg && <p className="mt-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">{pinMsg}</p>}
+        </div>
+      </section>
+
+      {/* Theme */}
+      <section className={card}>
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">Theme</span>
+          <div className="flex rounded-xl bg-slate-100 p-1 dark:bg-slate-800">
+            {(["light", "dark", "system"] as const).map((m) => (
+              <button
+                key={m}
+                type="button"
+                onClick={() => setTheme(m)}
+                className={`flex min-h-10 items-center gap-1 rounded-lg px-3 text-xs font-bold capitalize transition-all ${
+                  theme === m
+                    ? "bg-white text-blue-600 shadow-sm dark:bg-slate-900 dark:text-blue-400"
+                    : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
+                }`}
+              >
+                {m === "light" ? <Sun className="size-3" /> : m === "dark" ? <Moon className="size-3" /> : <Sparkles className="size-3" />}
+                <span>{m}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Speech Voice Settings */}
       <section className={card}>
         <Row label="Speech speed" value={`${s.speechRate.toFixed(1)}×`}>
-          <input type="range" min={0.5} max={1.2} step={0.1} value={s.speechRate} onChange={(e) => update({ speechRate: Number(e.target.value) })} className="mt-2 h-8 w-full accent-rose-600" />
+          <input
+            type="range"
+            min={0.5}
+            max={1.2}
+            step={0.1}
+            value={s.speechRate}
+            onChange={(e) => update({ speechRate: Number(e.target.value) })}
+            className="mt-2 h-8 w-full accent-blue-600"
+          />
         </Row>
-        <button onClick={() => speak("こんにちは", s.speechRate)} disabled={voice === "unsupported"} className="min-h-11 rounded-full bg-rose-600 px-5 font-semibold text-white disabled:opacity-40">🔊 Test voice</button>
-        {voice === "none" && <p className="mt-2 text-sm text-amber-700">No Japanese voice found yet. On Android: Settings → System → Languages → Text-to-speech.</p>}
-        {voice === "unsupported" && <p className="mt-2 text-sm text-slate-500">This browser can&apos;t read text aloud.</p>}
+        <button
+          type="button"
+          onClick={() => speak("こんにちは、日本語の勉強を頑張りましょう", s.speechRate)}
+          disabled={voice === "unsupported"}
+          className="flex min-h-12 items-center gap-1.5 rounded-full bg-blue-600 px-5 text-sm font-semibold text-white shadow-sm active:bg-blue-700 disabled:opacity-40 dark:bg-blue-500"
+        >
+          <Volume2 className="size-4" />
+          <span>Test Speech Audio</span>
+        </button>
+        {voice === "none" && (
+          <p className="mt-2 text-xs text-amber-700 dark:text-amber-400">
+            No Japanese voice found yet. On Android: Settings → Languages → Text-to-speech.
+          </p>
+        )}
       </section>
 
+      {/* Review Goals */}
       <section className={card}>
         <Row label="New cards per day" value={String(s.newCardsPerDay)}>
-          <input type="range" min={0} max={50} step={1} value={s.newCardsPerDay} onChange={(e) => update({ newCardsPerDay: Number(e.target.value) })} className="mt-2 h-8 w-full accent-rose-600" />
+          <input
+            type="range"
+            min={0}
+            max={50}
+            step={1}
+            value={s.newCardsPerDay}
+            onChange={(e) => update({ newCardsPerDay: Number(e.target.value) })}
+            className="mt-2 h-8 w-full accent-blue-600"
+          />
         </Row>
-        <Row label="Daily goal (reviews)" value={String(s.dailyGoal)}>
-          <input type="range" min={5} max={200} step={5} value={s.dailyGoal} onChange={(e) => update({ dailyGoal: Number(e.target.value) })} className="mt-2 h-8 w-full accent-rose-600" />
+        <Row label="Daily review goal" value={`${s.dailyGoal} cards`}>
+          <input
+            type="range"
+            min={5}
+            max={200}
+            step={5}
+            value={s.dailyGoal}
+            onChange={(e) => update({ dailyGoal: Number(e.target.value) })}
+            className="mt-2 h-8 w-full accent-blue-600"
+          />
         </Row>
       </section>
 
+      {/* Toggles */}
       <section className={card}>
-        {([["showRomaji", "Show romaji"], ["showFurigana", "Show furigana"], ["autoSpeak", "Speak answers automatically"]] as const).map(([k, label]) => (
-          <label key={k} className="flex min-h-12 items-center justify-between font-medium">
-            {label}
-            <input type="checkbox" checked={s[k]} onChange={(e) => update({ [k]: e.target.checked })} className="size-6 accent-rose-600" />
+        {([
+          ["showRomaji", "Show romaji pronunciation"],
+          ["showFurigana", "Show furigana above kanji"],
+          ["autoSpeak", "Speak answers automatically in review"],
+        ] as const).map(([k, label]) => (
+          <label key={k} className="flex min-h-12 items-center justify-between text-sm font-semibold text-slate-800 dark:text-slate-200">
+            <span>{label}</span>
+            <input
+              type="checkbox"
+              checked={s[k]}
+              onChange={(e) => update({ [k]: e.target.checked })}
+              className="size-6 accent-blue-600 rounded"
+            />
           </label>
         ))}
       </section>
 
+      {/* Cloud Account Panel */}
       <AccountPanel />
 
+      {/* Backup and Restore */}
       <section className={card}>
-        <h2 className="font-semibold">Backup</h2>
-        <p className="text-sm text-slate-600">Save your progress to a file or restore it on another device.</p>
-        <div className="mt-2 flex gap-2">
-          <button onClick={() => void doExport()} className="min-h-11 rounded-full bg-slate-800 px-5 font-semibold text-white">Export</button>
-          <button onClick={() => file.current?.click()} className="min-h-11 rounded-full bg-slate-100 px-5 font-semibold">Import</button>
-          <input ref={file} type="file" accept="application/json" className="hidden" onChange={(e) => void doImport(e.target.files?.[0])} />
+        <h2 className="font-heading font-bold text-sm text-slate-900 dark:text-white">Backup &amp; Restore</h2>
+        <p className="text-xs text-slate-500 dark:text-slate-400">
+          Save your progress to a portable file or restore it on another device.
+        </p>
+        <div className="mt-3 flex gap-2">
+          <button
+            type="button"
+            onClick={() => void doExport()}
+            className="flex min-h-12 flex-1 items-center justify-center gap-1.5 rounded-xl bg-slate-900 text-xs font-bold text-white shadow-sm active:bg-slate-800 dark:bg-slate-100 dark:text-slate-900"
+          >
+            <Download className="size-4" />
+            <span>Export File</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => file.current?.click()}
+            className="flex min-h-12 flex-1 items-center justify-center gap-1.5 rounded-xl bg-slate-100 text-xs font-bold text-slate-700 shadow-sm active:bg-slate-200 dark:bg-slate-800 dark:text-slate-200"
+          >
+            <Upload className="size-4" />
+            <span>Import File</span>
+          </button>
+          <input
+            ref={file}
+            type="file"
+            accept="application/json"
+            className="hidden"
+            onChange={(e) => void doImport(e.target.files?.[0])}
+          />
         </div>
-        {msg && <p className="mt-2 text-sm text-emerald-700" role="status">{msg}</p>}
+        {msg && (
+          <div className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400" role="status">
+            <CheckCircle2 className="size-3.5" />
+            <span>{msg}</span>
+          </div>
+        )}
       </section>
 
-      <p className="pt-2 text-center text-xs text-slate-500"><a href="/credits" className="underline">Credits &amp; licenses</a></p>
+      <p className="pt-2 text-center text-xs text-slate-500 dark:text-slate-400">
+        <a href="/credits" className="underline hover:text-slate-700 dark:hover:text-slate-200">
+          Credits &amp; Open Licenses
+        </a>
+      </p>
     </div>
   );
 }

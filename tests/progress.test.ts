@@ -52,3 +52,4 @@ describe("progress & stats calculations", () => {
     expect(breakdown.percentage).toBe(35); // (1*1 + 1*0.4) / 4 = 1.4/4 = 35%
   });
 });
+

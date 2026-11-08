@@ -1,5 +1,6 @@
 "use client";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { ArrowLeft, Check, CheckCircle2, RotateCcw, Volume2 } from "lucide-react";
 import { dayKey, getAllCards, getDaily, onDbChange, recordReview } from "@/lib/db";
 import { DECKS, loadDeck, type DeckCard } from "@/lib/decks";
 import { buildQueue, GRADES, previewLabel, review, type Grade, type SrsCard } from "@/lib/sm2";
@@ -9,10 +10,10 @@ import { syncNow } from "@/lib/sync";
 import Furigana from "./Furigana";
 
 const GRADE_STYLE: Record<Grade, string> = {
-  again: "bg-rose-600 text-white",
-  hard: "bg-amber-500 text-white",
-  good: "bg-emerald-600 text-white",
-  easy: "bg-sky-600 text-white",
+  again: "bg-rose-600 text-white dark:bg-rose-500",
+  hard: "bg-amber-500 text-white dark:bg-amber-600",
+  good: "bg-blue-600 text-white dark:bg-blue-500",
+  easy: "bg-emerald-600 text-white dark:bg-emerald-500",
 };
 const GRADE_LABEL: Record<Grade, string> = { again: "Again", hard: "Hard", good: "Good", easy: "Easy" };
 
@@ -39,41 +40,50 @@ export default function ReviewHome() {
   }, [settings.newCardsPerDay]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (!active) void load();
     return onDbChange(() => !active && void load());
   }, [active, load]);
 
   if (active) return <Session deckId={active} onExit={() => setActive(null)} />;
-  if (!summaries) return <p className="text-slate-500">Loading…</p>;
+  if (!summaries) return <p className="text-slate-500 dark:text-slate-400">Loading study queues…</p>;
 
   return (
     <div>
-      <h1 className="mb-1 text-2xl font-bold">Review</h1>
-      <p className="mb-4 text-sm text-slate-600">New cards per day: {settings.newCardsPerDay} (change in Settings)</p>
-      <ul className="space-y-2">
+      <h1 className="font-heading text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+        Spaced Repetition Review
+      </h1>
+      <p className="mb-4 text-sm text-slate-600 dark:text-slate-400">
+        New cards per day: {settings.newCardsPerDay} (customizable in Settings)
+      </p>
+      <ul className="space-y-2.5">
         {summaries.map((s) => {
           const info = DECKS.find((d) => d.id === s.id)!;
           const todo = s.due + s.fresh;
           return (
             <li key={s.id}>
               <button
+                type="button"
                 onClick={() => setActive(s.id)}
                 disabled={todo === 0}
-                className="flex min-h-16 w-full items-center gap-3 rounded-2xl bg-white p-3 text-left shadow-sm ring-1 ring-slate-200 disabled:opacity-60"
+                className="flex min-h-16 w-full items-center gap-3 rounded-2xl bg-white p-3 text-left shadow-sm ring-1 ring-slate-200 transition-all active:scale-[0.99] disabled:opacity-60 dark:bg-slate-900 dark:ring-slate-800"
               >
-                <span className="flex size-12 items-center justify-center rounded-xl bg-rose-50 text-lg text-rose-700" lang="ja">{info.ja.slice(0, 2)}</span>
+                <span className="flex size-12 items-center justify-center rounded-xl bg-blue-50 text-base font-bold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300" lang="ja">
+                  {info.ja.slice(0, 2)}
+                </span>
                 <span className="flex-1">
-                  <span className="block font-semibold">{info.label}</span>
-                  <span className="block text-xs text-slate-500">{s.known}/{s.total} learned</span>
+                  <span className="font-heading block font-bold text-slate-900 dark:text-white">{info.label}</span>
+                  <span className="block text-xs text-slate-500 dark:text-slate-400">{s.known}/{s.total} learned</span>
                 </span>
                 {todo > 0 ? (
                   <span className="text-right text-xs">
-                    <span className="block font-semibold text-rose-600">{s.due} due</span>
-                    <span className="block text-sky-700">{s.fresh} new</span>
+                    <span className="block font-bold text-blue-600 dark:text-blue-400">{s.due} due</span>
+                    <span className="block text-slate-500 dark:text-slate-400">{s.fresh} new</span>
                   </span>
                 ) : (
-                  <span className="text-xs text-emerald-700">✓ done</span>
+                  <div className="flex items-center gap-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                    <Check className="size-3.5" />
+                    <span>Done</span>
+                  </div>
                 )}
               </button>
             </li>
@@ -106,8 +116,6 @@ function Session({ deckId, onExit }: { deckId: string; onExit: () => void }) {
       setReady(true);
     })();
     return () => { alive = false; };
-    // The queue is built once per session; settings changes apply next session.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deckId]);
 
   const currentId = queue[pos];
@@ -121,7 +129,6 @@ function Session({ deckId, onExit }: { deckId: string; onExit: () => void }) {
   const now = Date.now();
   const previews = useMemo(
     () => (currentId ? Object.fromEntries(GRADES.map((g) => [g, previewLabel(cards.get(currentId), currentId, g, now)])) : {}),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [currentId, cards, shown],
   );
 
@@ -133,7 +140,6 @@ function Session({ deckId, onExit }: { deckId: string; onExit: () => void }) {
     await recordReview(prev, next, g, t);
     setCards((m) => new Map(m).set(currentId, next));
     setStats((s) => ({ done: s.done + 1, correct: s.correct + (g === "again" ? 0 : 1), xp: s.xp + ({ again: 1, hard: 3, good: 5, easy: 6 }[g]) }));
-    // Failed cards come back at the end of this session
     if (g === "again") setQueue((q) => [...q, currentId]);
     setShown(false);
     setPos((p) => p + 1);
@@ -144,18 +150,30 @@ function Session({ deckId, onExit }: { deckId: string; onExit: () => void }) {
     if (finished && stats.done > 0) void syncNow();
   }, [finished, stats.done]);
 
-  if (!ready || !deck) return <p className="text-slate-500">Loading…</p>;
+  if (!ready || !deck) return <p className="text-slate-500 dark:text-slate-400">Loading cards…</p>;
 
   if (finished) {
     const acc = stats.done ? Math.round((stats.correct / stats.done) * 100) : 0;
     return (
       <div className="pt-8 text-center">
-        <div className="text-6xl">🎉</div>
-        <h1 className="mt-3 text-2xl font-bold">{stats.done ? "Session complete!" : "Nothing due right now"}</h1>
+        <div className="flex size-16 items-center justify-center mx-auto rounded-full bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
+          <CheckCircle2 className="size-8" />
+        </div>
+        <h1 className="mt-4 font-heading text-2xl font-bold text-slate-900 dark:text-white">
+          {stats.done ? "Session Complete!" : "Nothing due right now"}
+        </h1>
         {stats.done > 0 && (
-          <p className="mt-2 text-slate-600">{stats.done} reviews · {acc}% correct · +{stats.xp} XP</p>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+            {stats.done} reviews · {acc}% accuracy · +{stats.xp} XP
+          </p>
         )}
-        <button onClick={onExit} className="mt-6 min-h-12 rounded-full bg-rose-600 px-8 font-semibold text-white">Back to decks</button>
+        <button
+          type="button"
+          onClick={onExit}
+          className="mt-6 flex min-h-12 items-center justify-center mx-auto rounded-full bg-blue-600 px-8 font-semibold text-white shadow-sm active:bg-blue-700 dark:bg-blue-500"
+        >
+          Back to Decks
+        </button>
       </div>
     );
   }
@@ -163,28 +181,35 @@ function Session({ deckId, onExit }: { deckId: string; onExit: () => void }) {
   const isNew = !cards.has(currentId);
   return (
     <div className="flex min-h-[calc(100dvh-9rem)] flex-col">
-      <div className="mb-3 flex items-center justify-between text-sm text-slate-500">
-        <button onClick={onExit} className="min-h-11 px-2">← Exit</button>
-        <span>{Math.min(pos + 1, queue.length)} / {queue.length}</span>
-        <span className={isNew ? "font-semibold text-sky-700" : ""}>{isNew ? "New" : "Review"}</span>
+      <div className="mb-3 flex items-center justify-between text-sm text-slate-500 dark:text-slate-400">
+        <button type="button" onClick={onExit} className="flex min-h-12 items-center gap-1 px-1">
+          <ArrowLeft className="size-4" />
+          <span>Exit</span>
+        </button>
+        <span className="font-semibold">{Math.min(pos + 1, queue.length)} / {queue.length}</span>
+        <span className={isNew ? "font-bold text-blue-600 dark:text-blue-400" : ""}>{isNew ? "New" : "Review"}</span>
       </div>
-      <div className="h-1.5 overflow-hidden rounded-full bg-slate-200">
-        <div className="h-full bg-rose-500 transition-all" style={{ width: `${(pos / queue.length) * 100}%` }} />
+      <div className="h-1.5 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
+        <div className="h-full bg-blue-600 dark:bg-blue-500 transition-all" style={{ width: `${(pos / queue.length) * 100}%` }} />
       </div>
 
       <button
+        type="button"
         onClick={() => (shown ? speak(card!.speak, settings.speechRate) : reveal())}
-        className="mt-4 flex flex-1 flex-col items-center justify-center rounded-3xl bg-white p-6 text-center shadow ring-1 ring-slate-200"
+        className="mt-4 flex flex-1 flex-col items-center justify-center rounded-3xl bg-white p-6 text-center shadow ring-1 ring-slate-200 active:scale-[0.99] transition-all dark:bg-slate-900 dark:ring-slate-800"
         aria-label={shown ? "Hear it again" : "Show answer"}
       >
         <Furigana text={card!.front} reading={card!.reading} show={settings.showFurigana} big />
-        {!shown && <span className="mt-6 text-sm text-slate-400">Tap to reveal</span>}
+        {!shown && <span className="mt-6 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">Tap to reveal</span>}
         {shown && (
           <div className="mt-4 space-y-2">
-            {settings.showRomaji && card!.romaji && <p className="text-lg text-slate-500">{card!.romaji}</p>}
-            <p className="text-2xl font-semibold text-rose-700">{card!.answer}</p>
-            {card!.detail && <p className="whitespace-pre-line text-sm text-slate-600">{card!.detail}</p>}
-            <p className="text-xs text-slate-400">🔊 tap to hear again</p>
+            {settings.showRomaji && card!.romaji && <p className="font-heading text-lg text-slate-500 dark:text-slate-400">{card!.romaji}</p>}
+            <p className="font-heading text-2xl font-bold text-blue-600 dark:text-blue-400">{card!.answer}</p>
+            {card!.detail && <p className="whitespace-pre-line text-sm text-slate-600 dark:text-slate-300">{card!.detail}</p>}
+            <div className="flex items-center justify-center gap-1 text-xs text-slate-400 pt-2">
+              <Volume2 className="size-3.5" />
+              <span>Tap to hear audio</span>
+            </div>
           </div>
         )}
       </button>
@@ -192,13 +217,24 @@ function Session({ deckId, onExit }: { deckId: string; onExit: () => void }) {
       <div className="mt-4 grid grid-cols-4 gap-2">
         {shown
           ? GRADES.map((g) => (
-              <button key={g} onClick={() => void grade(g)} className={`min-h-16 rounded-2xl text-sm font-semibold ${GRADE_STYLE[g]}`}>
+              <button
+                key={g}
+                type="button"
+                onClick={() => void grade(g)}
+                className={`min-h-16 rounded-2xl text-xs font-bold transition-transform active:scale-95 ${GRADE_STYLE[g]}`}
+              >
                 {GRADE_LABEL[g]}
-                <span className="block text-xs font-normal opacity-80">{previews[g]}</span>
+                <span className="block text-[10px] font-normal opacity-80">{previews[g]}</span>
               </button>
             ))
           : (
-            <button onClick={reveal} className="col-span-4 min-h-16 rounded-2xl bg-slate-800 text-lg font-semibold text-white">Show answer</button>
+            <button
+              type="button"
+              onClick={reveal}
+              className="col-span-4 min-h-16 rounded-2xl bg-blue-600 font-heading text-base font-bold text-white shadow-sm active:bg-blue-700 dark:bg-blue-500"
+            >
+              Show Answer
+            </button>
           )}
       </div>
     </div>

@@ -9,7 +9,6 @@ const PAIRS = 5;
 
 export default function MatchQuiz({ pool, rate, onDone }: { pool: DeckCard[]; rate: number; onDone: (r: QuizResult) => void }) {
   const { cards, rightOrder } = useMemo(() => {
-    // distinct answers only, so each pair is unambiguous
     const seen = new Set<string>();
     const picked = shuffle(pool).filter((c) => !seen.has(c.answer) && !!seen.add(c.answer)).slice(0, PAIRS);
     return { cards: picked, rightOrder: shuffle(picked) };
@@ -36,27 +35,57 @@ export default function MatchQuiz({ pool, rate, onDone }: { pool: DeckCard[]; ra
   };
 
   return (
-    <div>
-      <p className="mb-3 text-center text-sm text-slate-500">Tap a card on the left, then its match on the right.</p>
+    <div className="space-y-3">
+      <p className="text-center text-sm font-medium text-slate-500 dark:text-slate-400">
+        Tap a Japanese card on the left, then its English match on the right.
+      </p>
       <div className="grid grid-cols-2 gap-3">
-        <div className="space-y-2">
-          {cards.map((c) => (
-            <button key={c.id} disabled={matched.has(c.id)} onClick={() => { setSel(c.id); speak(c.speak, rate); }}
-              className={`min-h-16 w-full rounded-2xl p-2 text-2xl shadow-sm ring-1 ${matched.has(c.id) ? "bg-emerald-100 opacity-60 ring-emerald-400" : sel === c.id ? "bg-rose-100 ring-rose-500" : "bg-white ring-slate-200"}`} lang="ja">
-              {c.front}
-            </button>
-          ))}
+        <div className="space-y-2.5">
+          {cards.map((c) => {
+            const isMatched = matched.has(c.id);
+            const isSelected = sel === c.id;
+            return (
+              <button
+                key={c.id}
+                disabled={isMatched}
+                onClick={() => { setSel(c.id); speak(c.speak, rate); }}
+                className={`flex min-h-16 w-full items-center justify-center rounded-2xl p-2.5 text-2xl font-medium shadow-sm ring-1 transition ${
+                  isMatched
+                    ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 opacity-60 ring-emerald-400"
+                    : isSelected
+                    ? "bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 ring-2 ring-blue-600 scale-[1.02]"
+                    : "bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 ring-slate-200 dark:ring-slate-700 hover:ring-blue-400"
+                }`}
+                lang="ja"
+              >
+                {c.front}
+              </button>
+            );
+          })}
         </div>
-        <div className="space-y-2">
-          {rightOrder.map((c) => (
-            <button key={c.id} disabled={matched.has(c.id)} onClick={() => pickRight(c)}
-              className={`min-h-16 w-full rounded-2xl p-2 text-base font-medium shadow-sm ring-1 ${matched.has(c.id) ? "bg-emerald-100 opacity-60 ring-emerald-400" : flash === c.id ? "bg-rose-200 ring-rose-500" : "bg-white ring-slate-200"}`}>
-              {c.answer}
-            </button>
-          ))}
+        <div className="space-y-2.5">
+          {rightOrder.map((c) => {
+            const isMatched = matched.has(c.id);
+            const isError = flash === c.id;
+            return (
+              <button
+                key={c.id}
+                disabled={isMatched}
+                onClick={() => pickRight(c)}
+                className={`flex min-h-16 w-full items-center justify-center rounded-2xl p-2.5 text-center text-sm font-medium shadow-sm ring-1 transition ${
+                  isMatched
+                    ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 opacity-60 ring-emerald-400"
+                    : isError
+                    ? "bg-rose-100 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 ring-rose-500 animate-shake"
+                    : "bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 ring-slate-200 dark:ring-slate-700 hover:ring-blue-400"
+                }`}
+              >
+                {c.answer}
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 }
-

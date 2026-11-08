@@ -16,6 +16,7 @@
     "@serwist/next": "^9.5.13",
     "@supabase/supabase-js": "^2.119.0",
     "idb": "^8.0.4",
+    "lucide-react": "^1.70.0",
     "next": "16.4.5",
     "react": "19.3.0",
     "react-dom": "19.3.0",

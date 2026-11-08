@@ -1,5 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { CheckCircle2, RotateCcw, Undo2, Check } from "lucide-react";
 
 const SIZE = 300;
 const PEN = 16;
@@ -32,9 +33,9 @@ export default function TraceCanvas({ char }: { char: string }) {
     g.font = `${SIZE * 0.78}px "Yu Gothic", "Hiragino Sans", "Noto Sans JP", sans-serif`;
     g.textAlign = "center";
     g.textBaseline = "middle";
-    g.fillStyle = "#e2e8f0";
+    g.fillStyle = "#cbd5e1";
     g.fillText(char, SIZE / 2, SIZE / 2 + SIZE * 0.04);
-    g.strokeStyle = "#e11d48";
+    g.strokeStyle = "#2563eb";
     g.lineWidth = PEN;
     g.lineCap = g.lineJoin = "round";
     for (const s of strokes.current) {
@@ -54,7 +55,7 @@ export default function TraceCanvas({ char }: { char: string }) {
 
   const evaluate = () => {
     const guide = glyphCanvas(char);
-    const wide = glyphCanvas(char, 36); // tolerance band around the glyph
+    const wide = glyphCanvas(char, 36);
     const u = document.createElement("canvas");
     u.width = u.height = SIZE;
     const g = u.getContext("2d", { willReadFrequently: true })!;
@@ -78,26 +79,55 @@ export default function TraceCanvas({ char }: { char: string }) {
   return (
     <div>
       <canvas
-        ref={ref} width={SIZE} height={SIZE}
-        className="mx-auto aspect-square w-full max-w-xs touch-none rounded-xl bg-white ring-1 ring-slate-200"
+        ref={ref}
+        width={SIZE}
+        height={SIZE}
+        className="mx-auto aspect-square w-full max-w-xs touch-none rounded-2xl bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 shadow-sm"
         aria-label={`Trace ${char} with your finger`}
         onPointerDown={(e) => { e.currentTarget.setPointerCapture(e.pointerId); drawing.current = true; strokes.current.push([pos(e)]); setScore(null); render(); }}
         onPointerMove={(e) => { if (!drawing.current) return; strokes.current.at(-1)!.push(pos(e)); render(); }}
         onPointerUp={() => { drawing.current = false; }}
         onPointerCancel={() => { drawing.current = false; }}
       />
-      <div className="mt-2 flex items-center justify-center gap-2">
-        <button onClick={() => { strokes.current = []; setScore(null); render(); }} className="min-h-11 rounded-full bg-slate-100 px-4 text-sm font-medium">Clear</button>
-        <button onClick={() => { strokes.current.pop(); setScore(null); render(); }} className="min-h-11 rounded-full bg-slate-100 px-4 text-sm font-medium">Undo</button>
-        <button onClick={evaluate} disabled={!strokes.current.length && !score} className="min-h-11 rounded-full bg-rose-600 px-4 text-sm font-semibold text-white">Check</button>
+      <div className="mt-3 flex items-center justify-center gap-2">
+        <button
+          onClick={() => { strokes.current = []; setScore(null); render(); }}
+          className="inline-flex min-h-11 items-center gap-1 rounded-full bg-slate-100 dark:bg-slate-800 px-3.5 text-sm font-medium text-slate-700 dark:text-slate-200 active:bg-slate-200 dark:active:bg-slate-700 transition"
+        >
+          <RotateCcw className="h-4 w-4" />
+          Clear
+        </button>
+        <button
+          onClick={() => { strokes.current.pop(); setScore(null); render(); }}
+          className="inline-flex min-h-11 items-center gap-1 rounded-full bg-slate-100 dark:bg-slate-800 px-3.5 text-sm font-medium text-slate-700 dark:text-slate-200 active:bg-slate-200 dark:active:bg-slate-700 transition"
+        >
+          <Undo2 className="h-4 w-4" />
+          Undo
+        </button>
+        <button
+          onClick={evaluate}
+          disabled={!strokes.current.length && !score}
+          className="inline-flex min-h-11 items-center gap-1 rounded-full bg-blue-600 dark:bg-blue-500 px-4 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:opacity-40 transition"
+        >
+          <Check className="h-4 w-4" />
+          Check
+        </button>
       </div>
       {score && (
-        <p className="mt-2 text-center text-sm" role="status">
-          {score.cover > 0.6 && score.stray < 0.35 ? "✅ Nice tracing!" : score.cover <= 0.6 ? "Cover more of the character" : "Try to stay closer to the outline"}
-          <span className="text-slate-500"> ({Math.round(score.cover * 100)}% covered)</span>
-        </p>
+        <div className="mt-3 flex items-center justify-center gap-1.5 text-center text-sm font-medium text-slate-700 dark:text-slate-300" role="status">
+          {score.cover > 0.6 && score.stray < 0.35 ? (
+            <>
+              <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+              <span>Great tracing!</span>
+            </>
+          ) : score.cover <= 0.6 ? (
+            <span>Cover more of the character outline</span>
+          ) : (
+            <span>Try to stay closer to the stroke outline</span>
+          )}
+          <span className="text-slate-500 dark:text-slate-400">({Math.round(score.cover * 100)}% coverage)</span>
+        </div>
       )}
     </div>
   );
 }
-

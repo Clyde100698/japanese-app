@@ -1,5 +1,19 @@
 "use client";
 import { useEffect, useState } from "react";
+import {
+  Flame,
+  Target,
+  BarChart3,
+  Award,
+  Sparkles,
+  Zap,
+  Castle,
+  Flower2,
+  BookOpen,
+  Trophy,
+  Gem,
+  Volume2,
+} from "lucide-react";
 import { getAllCards, getAllDaily, getAllLogs, getDaily, dayKey } from "@/lib/db";
 import { loadDeck, type DeckCard } from "@/lib/decks";
 import {
@@ -21,6 +35,17 @@ interface CategoryStat {
   label: string;
   stats: MasteryBreakdown;
 }
+
+const BADGE_ICONS: Record<string, React.ElementType> = {
+  "first-step": Sparkles,
+  "streak-3": Flame,
+  "streak-7": Zap,
+  "kana-50": Castle,
+  "kanji-25": Flower2,
+  "words-100": BookOpen,
+  "reviews-100": Trophy,
+  "xp-500": Gem,
+};
 
 export default function Dashboard() {
   const [settings] = useSettings();
@@ -52,7 +77,6 @@ export default function Dashboard() {
       setLevelInfo(computeLevel(xp));
       setTodayDone(todayStat?.reviews ?? 0);
 
-      // Load deck cards for category mastery & weak spot lookups
       const allDecksToLoad = [
         { id: "hiragana", label: "Hiragana" },
         { id: "katakana", label: "Katakana" },
@@ -90,7 +114,7 @@ export default function Dashboard() {
             });
           }
         } catch {
-          // deck data may still be loading or partial
+          // ignore
         }
       }
 
@@ -110,27 +134,29 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl font-bold">Progress Dashboard</h1>
+      <h1 className="font-heading text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+        Progress Dashboard
+      </h1>
 
-      {/* Top Header Card */}
-      <section className="rounded-3xl bg-gradient-to-br from-rose-600 to-rose-700 p-5 text-white shadow-lg">
+      {/* Top Header Card (Blue primary gradient) */}
+      <section className="rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 p-5 text-white shadow-lg dark:from-blue-700 dark:to-indigo-900">
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-xs uppercase tracking-wider text-rose-200">Level {levelInfo.level}</span>
-            <h2 className="text-3xl font-extrabold">{totalXp.toLocaleString()} XP</h2>
+            <span className="text-xs font-semibold uppercase tracking-wider text-blue-200">Level {levelInfo.level}</span>
+            <h2 className="font-heading text-3xl font-extrabold">{totalXp.toLocaleString()} XP</h2>
           </div>
-          <div className="flex items-center gap-2 rounded-2xl bg-white/20 px-3 py-2 text-center backdrop-blur">
-            <span className="text-2xl">🔥</span>
+          <div className="flex items-center gap-2 rounded-2xl bg-white/20 px-3.5 py-2 text-center backdrop-blur">
+            <Flame className="size-6 text-amber-300" />
             <div>
-              <span className="block text-lg font-bold leading-none">{streak.current}</span>
-              <span className="text-[10px] uppercase tracking-wide text-rose-100">day streak</span>
+              <span className="block font-heading text-lg font-bold leading-none">{streak.current}</span>
+              <span className="text-[10px] uppercase tracking-wide text-blue-100">day streak</span>
             </div>
           </div>
         </div>
 
         {/* Level progress */}
         <div className="mt-4">
-          <div className="flex justify-between text-xs text-rose-200">
+          <div className="flex justify-between text-xs text-blue-200">
             <span>Level {levelInfo.level}</span>
             <span>Level {levelInfo.level + 1} ({levelInfo.nextLevelXp} XP)</span>
           </div>
@@ -142,18 +168,21 @@ export default function Dashboard() {
         {/* Daily Goal */}
         <div className="mt-3 flex items-center justify-between rounded-xl bg-black/20 px-3 py-2 text-xs">
           <span>Today&apos;s goal: {todayDone} / {settings.dailyGoal} reviews</span>
-          <span className="font-semibold text-rose-200">{goalProgress}%</span>
+          <span className="font-semibold text-blue-200">{goalProgress}%</span>
         </div>
       </section>
 
       {/* Weak Spots Section */}
-      <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+      <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
         <div className="flex items-center justify-between">
-          <h2 className="font-bold text-slate-800">🎯 Weak Spots</h2>
-          <span className="text-xs text-slate-500">Tap to listen &amp; reinforce</span>
+          <div className="flex items-center gap-1.5">
+            <Target className="size-4 text-blue-600 dark:text-blue-400" />
+            <h2 className="font-heading font-bold text-slate-900 dark:text-white">Weak Spots</h2>
+          </div>
+          <span className="text-xs text-slate-500 dark:text-slate-400">Tap to listen</span>
         </div>
         {weakSpots.length === 0 ? (
-          <p className="mt-2 text-sm text-emerald-700">No weak spots detected! Keep up the good work.</p>
+          <p className="mt-2 text-sm text-emerald-600 dark:text-emerald-400">No weak spots detected! Keep up the good work.</p>
         ) : (
           <div className="mt-3 grid grid-cols-2 gap-2">
             {weakSpots.map((w) => (
@@ -161,15 +190,18 @@ export default function Dashboard() {
                 key={w.cardId}
                 type="button"
                 onClick={() => speak(w.speak, settings.speechRate)}
-                className="flex flex-col items-start rounded-xl border border-rose-100 bg-rose-50/50 p-2.5 text-left active:bg-rose-100"
+                className="flex min-h-12 flex-col items-start rounded-xl border border-blue-100 bg-blue-50/50 p-2.5 text-left active:bg-blue-100 dark:border-blue-900/40 dark:bg-blue-950/20 dark:active:bg-blue-900/40"
               >
                 <div className="flex w-full items-baseline justify-between">
-                  <span className="text-xl font-bold text-slate-900" lang="ja">
+                  <span className="text-xl font-bold text-slate-900 dark:text-white" lang="ja">
                     {w.front}
                   </span>
-                  <span className="text-[10px] font-semibold text-rose-600">{w.lapses} lapses</span>
+                  <div className="flex items-center gap-1 text-[10px] font-semibold text-blue-600 dark:text-blue-400">
+                    <Volume2 className="size-3" />
+                    <span>{w.lapses} lapses</span>
+                  </div>
                 </div>
-                <span className="line-clamp-1 text-xs text-slate-600">{w.answer}</span>
+                <span className="line-clamp-1 text-xs text-slate-600 dark:text-slate-300">{w.answer}</span>
               </button>
             ))}
           </div>
@@ -177,25 +209,28 @@ export default function Dashboard() {
       </section>
 
       {/* Mastery Per Level & Category */}
-      <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
-        <h2 className="mb-3 font-bold text-slate-800">📊 Mastery by Level</h2>
+      <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
+        <div className="flex items-center gap-1.5 mb-3">
+          <BarChart3 className="size-4 text-blue-600 dark:text-blue-400" />
+          <h2 className="font-heading font-bold text-slate-900 dark:text-white">Mastery by Level</h2>
+        </div>
         <div className="space-y-3">
           {categories.map((c) => (
             <div key={c.id}>
               <div className="flex justify-between text-xs">
-                <span className="font-semibold text-slate-700">{c.label}</span>
-                <span className="text-slate-500">
+                <span className="font-semibold text-slate-700 dark:text-slate-300">{c.label}</span>
+                <span className="text-slate-500 dark:text-slate-400">
                   {c.stats.mastered} mastered · {c.stats.learning} learning ({c.stats.percentage}%)
                 </span>
               </div>
-              <div className="mt-1 flex h-2.5 overflow-hidden rounded-full bg-slate-100">
+              <div className="mt-1 flex h-2.5 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                 <div
                   className="bg-emerald-500 transition-all"
                   style={{ width: `${(c.stats.mastered / Math.max(1, c.stats.total)) * 100}%` }}
                   title="Mastered"
                 />
                 <div
-                  className="bg-sky-400 transition-all"
+                  className="bg-blue-500 transition-all"
                   style={{ width: `${(c.stats.learning / Math.max(1, c.stats.total)) * 100}%` }}
                   title="Learning"
                 />
@@ -206,33 +241,43 @@ export default function Dashboard() {
       </section>
 
       {/* Badges & Achievements */}
-      <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
-        <h2 className="mb-3 font-bold text-slate-800">🏅 Badges &amp; Achievements</h2>
+      <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
+        <div className="flex items-center gap-1.5 mb-3">
+          <Award className="size-4 text-blue-600 dark:text-blue-400" />
+          <h2 className="font-heading font-bold text-slate-900 dark:text-white">Badges &amp; Achievements</h2>
+        </div>
         <div className="grid grid-cols-2 gap-2.5">
-          {badges.map((b) => (
-            <div
-              key={b.id}
-              className={`flex items-start gap-2.5 rounded-2xl p-3 border transition-all ${
-                b.unlocked
-                  ? "border-amber-200 bg-amber-50/50 shadow-sm"
-                  : "border-slate-200 bg-slate-50 opacity-60"
-              }`}
-            >
-              <span className="text-2xl">{b.icon}</span>
-              <div className="flex-1">
-                <h3 className="text-xs font-bold text-slate-900">{b.name}</h3>
-                <p className="text-[11px] leading-tight text-slate-600">{b.desc}</p>
-                {b.progress && !b.unlocked && (
-                  <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-slate-200">
-                    <div
-                      className="h-full bg-rose-500"
-                      style={{ width: `${(b.progress.current / b.progress.total) * 100}%` }}
-                    />
-                  </div>
-                )}
+          {badges.map((b) => {
+            const Icon = BADGE_ICONS[b.id] || Award;
+            return (
+              <div
+                key={b.id}
+                className={`flex items-start gap-2.5 rounded-2xl p-3 border transition-all ${
+                  b.unlocked
+                    ? "border-blue-200 bg-blue-50/50 shadow-sm dark:border-blue-800/40 dark:bg-blue-950/20"
+                    : "border-slate-200 bg-slate-50 opacity-60 dark:border-slate-800 dark:bg-slate-800/40"
+                }`}
+              >
+                <div className={`flex size-8 shrink-0 items-center justify-center rounded-xl ${
+                  b.unlocked ? "bg-blue-600 text-white dark:bg-blue-500" : "bg-slate-200 text-slate-500 dark:bg-slate-700"
+                }`}>
+                  <Icon className="size-4" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-heading text-xs font-bold text-slate-900 dark:text-white">{b.name}</h3>
+                  <p className="text-[11px] leading-tight text-slate-600 dark:text-slate-400">{b.desc}</p>
+                  {b.progress && !b.unlocked && (
+                    <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+                      <div
+                        className="h-full bg-blue-600 dark:bg-blue-400"
+                        style={{ width: `${(b.progress.current / b.progress.total) * 100}%` }}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
     </div>

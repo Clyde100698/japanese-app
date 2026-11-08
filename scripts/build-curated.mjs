@@ -18,3 +18,4 @@ console.log(`phrases.json: ${PHRASES.length} entries`);
 
 writeFileSync(join(outDir, "grammar.json"), JSON.stringify(GRAMMAR, null, 2));
 console.log(`grammar.json: ${GRAMMAR.length} patterns across N5-N1`);
+
