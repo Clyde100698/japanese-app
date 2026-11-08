@@ -37,15 +37,23 @@ export async function getStoredPinHash(): Promise<string | null> {
   const local = await getMeta<string>("app_pin_hash");
   if (local) return local;
 
-  // Check Supabase user settings
+  // Check Supabase user profiles and settings
   const sb = getSupabase();
   if (sb) {
     try {
       const { data: sessionData } = await sb.auth.getSession();
       const uid = sessionData.session?.user.id;
       if (uid) {
-        const { data } = await sb.from("settings").select("data").eq("user_id", uid).maybeSingle();
-        const remoteHash = data?.data?.pin_hash as string | undefined;
+        // 1. Check profile
+        const { data: profile } = await sb.from("profiles").select("pin_hash").eq("id", uid).maybeSingle();
+        if (profile?.pin_hash) {
+          await setMeta("app_pin_hash", profile.pin_hash);
+          return profile.pin_hash;
+        }
+
+        // 2. Check settings
+        const { data: settings } = await sb.from("settings").select("pin_hash, data").eq("user_id", uid).maybeSingle();
+        const remoteHash = (settings?.pin_hash || settings?.data?.pin_hash) as string | undefined;
         if (remoteHash) {
           await setMeta("app_pin_hash", remoteHash);
           return remoteHash;
@@ -70,19 +78,26 @@ export async function savePinHash(pin: string): Promise<void> {
       const { data: sessionData } = await sb.auth.getSession();
       const uid = sessionData.session?.user.id;
       if (uid) {
-        const { data: existing } = await sb.from("settings").select("data").eq("user_id", uid).maybeSingle();
-        const currentData = existing?.data || {};
-        await sb.from("settings").upsert(
-          {
-            user_id: uid,
-            data: { ...currentData, pin_hash: hash },
-            updated_at: new Date().toISOString(),
-          },
-          { onConflict: "user_id" },
-        );
+        // Try RPC first if available
+        const { error: rpcErr } = await sb.rpc("set_user_pin", { new_pin: pin });
+        if (rpcErr) {
+          // Fallback to table update
+          await sb.from("profiles").update({ pin_hash: hash, updated_at: new Date().toISOString() }).eq("id", uid);
+          const { data: existing } = await sb.from("settings").select("data").eq("user_id", uid).maybeSingle();
+          const currentData = existing?.data || {};
+          await sb.from("settings").upsert(
+            {
+              user_id: uid,
+              pin_hash: hash,
+              data: { ...currentData, pin_hash: hash },
+              updated_at: new Date().toISOString(),
+            },
+            { onConflict: "user_id" },
+          );
+        }
       }
     } catch {
-      // Will sync when online
+      // Offline - will sync or remain local
     }
   }
 }
