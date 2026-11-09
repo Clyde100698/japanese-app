@@ -2,10 +2,9 @@ import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { Inter, Poppins, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
-import BottomNav from "@/components/BottomNav";
 import SyncProvider from "@/components/SyncProvider";
 import PwaRegister from "@/components/PwaRegister";
-import HeaderControls from "@/components/HeaderControls";
+import LayoutShell from "@/components/LayoutShell";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,22 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-dvh bg-slate-50 text-slate-900 antialiased dark:bg-[#090d16] dark:text-slate-50">
         <SyncProvider />
         <PwaRegister />
-        <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 px-4 py-2.5 backdrop-blur dark:border-slate-800/80 dark:bg-slate-900/90">
-          <div className="mx-auto flex max-w-lg items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-xl bg-blue-600 text-sm font-black text-white shadow-sm dark:bg-blue-500">
-                あ
-              </span>
-              <span className="font-heading text-base font-extrabold tracking-tight text-slate-900 dark:text-white">
-                Nihongo<span className="text-blue-600 dark:text-blue-400">.app</span>
-              </span>
-            </Link>
-            <HeaderControls />
-          </div>
-        </header>
-
-        <main className="mx-auto max-w-lg px-4 pb-28 pt-4">{children}</main>
-        <BottomNav />
+        <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
   );

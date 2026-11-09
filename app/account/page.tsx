@@ -1,6 +1,7 @@
+import Link from "next/link";
 import AccountPanel from "@/components/AccountPanel";
 import Mascot from "@/components/mascot/Mascot";
-import { Sparkles } from "lucide-react";
+import { ArrowLeft, Sparkles } from "lucide-react";
 
 export const metadata = {
   title: "Account & Cloud Sync · Nihongo Quest",
@@ -10,6 +11,18 @@ export const metadata = {
 export default function AccountPage() {
   return (
     <div className="space-y-4 pb-12">
+      {/* Top Back Link */}
+      <div className="flex items-center justify-between pb-1">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-slate-700 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-50 hover:text-blue-600 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-700"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          <span>Back to Home</span>
+        </Link>
+        <span className="text-[11px] font-bold text-slate-400">Guest / Account</span>
+      </div>
+
       {/* Kawaii Mascot Intro Banner */}
       <div className="rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 p-5 text-white shadow-md">
         <div className="flex items-center justify-between gap-3">
