@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
-import { Mic, Moon, Sun, Settings, Lock, Sparkles } from "lucide-react";
+import { Mic, Moon, Sun, Settings, Sparkles, User } from "lucide-react";
 import { useTheme } from "@/lib/theme";
-import { lockSessionNow } from "@/lib/auth";
 
 export default function HeaderControls() {
   const [theme, setTheme] = useTheme();
@@ -14,6 +13,15 @@ export default function HeaderControls() {
   return (
     <div className="flex items-center gap-1">
       <Link
+        href="/account"
+        aria-label="Account & Sync"
+        title="Account & Sync"
+        className="flex size-9 items-center justify-center rounded-full text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 transition"
+      >
+        <User className="size-4" />
+      </Link>
+
+      <Link
         href="/design-preview"
         aria-label="Design Preview"
         title="Kawaii & Game Redesign Preview"
@@ -21,16 +29,6 @@ export default function HeaderControls() {
       >
         <Sparkles className="size-4 fill-amber-400" />
       </Link>
-
-      <button
-        type="button"
-        onClick={lockSessionNow}
-        aria-label="Lock app now"
-        title="Lock now"
-        className="flex size-9 items-center justify-center rounded-full text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-      >
-        <Lock className="size-4" />
-      </button>
 
       <button
         type="button"

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { hashPin, MAX_ATTEMPTS, COOLDOWN_SECONDS } from "../lib/auth";
+import { hashPin, MAX_ATTEMPTS, COOLDOWN_SECONDS, isAppLocked } from "../lib/auth";
 
 describe("auth PIN & lockout logic", () => {
   it("computes deterministic SHA-256 hash for 6-digit PINs", async () => {
@@ -22,5 +22,9 @@ describe("auth PIN & lockout logic", () => {
   it("has correct MAX_ATTEMPTS and COOLDOWN_SECONDS configuration", () => {
     expect(MAX_ATTEMPTS).toBe(5);
     expect(COOLDOWN_SECONDS).toBe(60);
+  });
+
+  it("ensures isAppLocked returns false so any user can enter freely without PIN lock", () => {
+    expect(isAppLocked()).toBe(false);
   });
 });

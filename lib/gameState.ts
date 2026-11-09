@@ -203,3 +203,4 @@ export function getMascotMood(hasStudiedToday: boolean, currentStreak = 0): Masc
   if (currentStreak >= 5) return "proud";
   return "happy";
 }
+

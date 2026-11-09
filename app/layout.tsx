@@ -6,7 +6,6 @@ import BottomNav from "@/components/BottomNav";
 import SyncProvider from "@/components/SyncProvider";
 import PwaRegister from "@/components/PwaRegister";
 import HeaderControls from "@/components/HeaderControls";
-import PinLockScreen from "@/components/PinLockScreen";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -50,7 +49,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-dvh bg-slate-50 text-slate-900 antialiased dark:bg-[#090d16] dark:text-slate-50">
         <SyncProvider />
         <PwaRegister />
-        <PinLockScreen />
         <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 px-4 py-2.5 backdrop-blur dark:border-slate-800/80 dark:bg-slate-900/90">
           <div className="mx-auto flex max-w-lg items-center justify-between">
             <Link href="/" className="flex items-center gap-2">

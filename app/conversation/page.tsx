@@ -16,6 +16,7 @@ import {
 import type { Scenario, ScenarioProgress, ConversationBadge } from "@/lib/scenarios";
 import { loadScenarios, getScenarioProgress, computeConversationBadges } from "@/lib/scenarios";
 import ConversationSession, { type SessionMode } from "@/components/ConversationSession";
+import Mascot from "@/components/mascot/Mascot";
 
 export default function ConversationPage() {
   const [scenarios, setScenarios] = useState<Scenario[]>([]);
@@ -117,24 +118,38 @@ export default function ConversationPage() {
         </p>
       </div>
 
-      {/* Progress & Badges Card */}
+      {/* Progress & Badges Card with Mascot */}
       <div className="rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 p-5 text-white shadow-md">
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-blue-100">
-              Scenario Mastery
+        <div className="flex items-center justify-between gap-3">
+          <div className="space-y-1">
+            <span className="text-xs font-semibold uppercase tracking-wider text-blue-100 flex items-center gap-1">
+              <Sparkles className="h-3.5 w-3.5 text-amber-300" />
+              Conversation Cafe
             </span>
-            <div className="text-2xl font-bold mt-0.5">
+            <div className="text-2xl font-black">
               {completedCount} / {totalCount} Completed
             </div>
+            <p className="text-xs text-blue-100 max-w-[200px]">
+              Tap or speak your replies in 41 branching real-world dialogues.
+            </p>
           </div>
-          <button
-            onClick={() => setShowBadges((v) => !v)}
-            className="flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur px-3.5 py-1.5 text-xs font-semibold hover:bg-white/30 transition"
-          >
-            <Award className="h-4 w-4" />
-            <span>{unlockedBadgesCount} / {badges.length} Badges</span>
-          </button>
+
+          <div className="shrink-0 flex flex-col items-center gap-2">
+            <Mascot
+              state="happy"
+              size={80}
+              speech={{ ja: "話そう！", en: "Let's chat!" }}
+              bubblePlacement="left"
+              interactive={true}
+            />
+            <button
+              onClick={() => setShowBadges((v) => !v)}
+              className="flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur px-3 py-1 text-[11px] font-bold hover:bg-white/30 transition"
+            >
+              <Award className="h-3.5 w-3.5" />
+              <span>{unlockedBadgesCount} / {badges.length} Badges</span>
+            </button>
+          </div>
         </div>
 
         {/* Progress Bar */}

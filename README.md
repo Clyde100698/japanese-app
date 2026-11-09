@@ -36,13 +36,11 @@ Built specifically for learners who cannot type or write Japanese on mobile devi
    - **Direct SRS Queueing**: One-tap button to add all key phrases from any scenario directly into your SM-2 spaced repetition review queue.
    - **Scenario Map & Badges**: Comprehensive progress map with completion checkmarks, level filters, and 8 conversation achievement badges.
 
-2. **Access Control & 6-Digit PIN Security**:
-   - Single pre-created user instance with public registrations disabled.
-   - 6-digit PIN keypad with dot indicators and shake animation on failure.
-   - 5-attempt limit with client cooldown timer (60s).
-   - Configurable auto-lock (Immediate, 1 min, 5 min, 15 min, Never) and instant "Lock now" button in the header.
-   - The PIN can be set directly in the Supabase Dashboard without exposing any hardcoded passcode.
-   - Secure SHA-256 client hashing and full offline verification when disconnected from the cloud.
+2. **Multi-User Registration & Cloud Sync (No PIN Lock)**:
+   - **Open Registration & Login**: Anyone can create an account with email and password or use magic link, or play in offline Guest mode.
+   - **Isolated User Progress**: Each user's study records, cards, daily stats, and review logs are strictly isolated via Supabase Row Level Security (`auth.uid() = user_id`).
+   - **Zero Friction**: The 6-digit PIN screen has been completely removed so learners can jump directly into studying without entering passcodes.
+   - **Seamless Offline-First**: Progress is stored immediately in IndexedDB on the device and syncs to Supabase whenever online.
 
 3. **SM-2 Spaced Repetition (SRS) Reviewer**:
    - Flashcard review engine utilizing the SuperMemo SM-2 algorithm.
@@ -125,38 +123,20 @@ Open [http://localhost:3000](http://localhost:3000) in your browser (mobile devi
 
 ---
 
-## ☁️ Supabase Access Control & PIN Configuration
+## ☁️ Supabase Multi-User Setup & Cloud Sync
 
-The app is **100% offline-first**: all progress writes directly to IndexedDB first and will sync to Supabase whenever online. The app continues working without interruptions even if Supabase is unreachable or paused.
+The app is **100% offline-first**: all progress writes directly to IndexedDB first and will sync to Supabase whenever online. Anyone can register their own account, or use the app as a guest, and each user gets their own separate progress.
 
 ### 1. Run the SQL Migrations
-In your Supabase project dashboard, open the **SQL Editor** and run both migrations:
+In your Supabase project dashboard, open the **SQL Editor** and run the migrations:
 1. `supabase/migrations/0001_init.sql` (Tables, SM-2 fields, RLS policies, and Last-Write-Wins triggers)
-2. `supabase/migrations/0002_pin_and_access.sql` (Single-user constraint, `pin_hash` trigger, and RPC functions)
+2. `supabase/migrations/0003_enable_multi_user_registration.sql` (Enables open multi-user registration, auto-creates profiles, and enforces RLS isolation)
 
-### 2. Restrict to One Pre-Created User
-1. In the Supabase Dashboard, go to **Authentication → Users** and click **Add user → Create user**.
-2. Enter your email and initial password.
-3. Next, go to **Authentication → Providers → Email** and toggle **OFF "Allow new users to sign up"**.
-4. Furthermore, the database trigger `check_single_user` from migration `0002_pin_and_access.sql` will reject any subsequent inserts into `auth.users` at the database level.
-
-### 3. Set Your 6-Digit PIN in Supabase Dashboard
-You can set your 6-digit PIN in either of the following two ways without hardcoding it:
-
-#### Method A: Supabase Table Editor
-1. In the Supabase dashboard, go to the **Table Editor** and select the `profiles` table.
-2. Double-click the `pin_hash` cell for your user row.
-3. Type any 6-digit number (for example: `123456`) and press Enter.
-4. The database trigger `profiles_hash_pin` automatically digests it to a secure SHA-256 hash!
-
-#### Method B: Supabase SQL Editor
-Run the helper RPC function in the SQL Editor:
-```sql
--- Call set_user_pin with your chosen 6 digits:
-select public.set_user_pin('123456');
-```
-
-When you open the app on your phone, the 6-digit PIN lock screen will prompt you for this passcode, cache the hash in local IndexedDB for airplane/subway use, and allow quick unlock.
+### 2. Configure Email Authentication in Supabase
+1. In the Supabase Dashboard, go to **Authentication → Providers → Email**.
+2. Make sure **"Enable Email provider"** is toggled **ON**.
+3. Set **"Confirm email"** to **OFF** if you want instant registration without waiting for email verification, or **ON** if you want users to verify their emails first.
+4. Anyone can now create their own account directly in the app at `/account` or from the user icon in the top header!
 
 ---
 

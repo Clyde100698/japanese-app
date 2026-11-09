@@ -87,27 +87,8 @@ export async function savePinHash(pin: string): Promise<void> {
   }
 }
 
-/** Check if the app is currently locked */
-export function isAppLocked(autoLockMinutes = 5): boolean {
-  if (typeof window === "undefined") return false;
-
-  const unlocked = sessionStorage.getItem(STORAGE_UNLOCKED) === "true";
-  if (!unlocked) return true;
-
-  if (autoLockMinutes === -1) return false; // Never auto-lock
-
-  const lastActiveStr = localStorage.getItem(STORAGE_LAST_ACTIVE);
-  if (!lastActiveStr) return true;
-
-  const lastActive = Number(lastActiveStr);
-  const now = Date.now();
-  const allowedInactivity = autoLockMinutes * 60 * 1000;
-
-  if (now - lastActive > allowedInactivity) {
-    sessionStorage.removeItem(STORAGE_UNLOCKED);
-    return true;
-  }
-
+/** Check if the app is currently locked (PIN requirement disabled) */
+export function isAppLocked(_autoLockMinutes = 5): boolean {
   return false;
 }
 

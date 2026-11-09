@@ -2,14 +2,12 @@
 import { useEffect, useRef, useState } from "react";
 import {
   Volume2,
-  Lock,
   Download,
   Upload,
   CheckCircle2,
   Moon,
   Sun,
   Shield,
-  Clock,
   Sparkles,
 } from "lucide-react";
 import AccountPanel from "@/components/AccountPanel";
@@ -17,7 +15,6 @@ import { exportBackup, importBackup, type Backup } from "@/lib/db";
 import { hasJapaneseVoice, onVoicesChanged, speak, ttsSupported } from "@/lib/speech";
 import { useSettings } from "@/lib/settings";
 import { useTheme } from "@/lib/theme";
-import { lockSessionNow, savePinHash } from "@/lib/auth";
 
 function Row({ label, value, children }: { label: string; value?: string; children: React.ReactNode }) {
   return (
@@ -36,8 +33,6 @@ export default function SettingsPage() {
   const [theme, setTheme] = useTheme();
   const [voice, setVoice] = useState<"unknown" | "none" | "ok" | "unsupported">("unknown");
   const [msg, setMsg] = useState("");
-  const [pinInput, setPinInput] = useState("");
-  const [pinMsg, setPinMsg] = useState("");
   const file = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -66,17 +61,6 @@ export default function SettingsPage() {
     }
   };
 
-  const handleChangePin = async () => {
-    if (pinInput.length !== 6 || !/^\d{6}$/.test(pinInput)) {
-      setPinMsg("PIN must be exactly 6 digits.");
-      return;
-    }
-    await savePinHash(pinInput);
-    setPinInput("");
-    setPinMsg("New 6-digit PIN saved.");
-    setTimeout(() => setPinMsg(""), 3000);
-  };
-
   const card = "rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800";
 
   return (
@@ -85,61 +69,7 @@ export default function SettingsPage() {
         <h1 className="font-heading text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Settings
         </h1>
-        <button
-          type="button"
-          onClick={lockSessionNow}
-          className="flex min-h-12 items-center gap-1.5 rounded-full bg-slate-100 px-4 text-xs font-bold text-slate-700 active:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:active:bg-slate-700"
-        >
-          <Lock className="size-3.5" />
-          <span>Lock App</span>
-        </button>
       </div>
-
-      {/* Security & Access Control */}
-      <section className={card}>
-        <div className="flex items-center gap-1.5 mb-2 text-slate-900 dark:text-white">
-          <Shield className="size-4 text-blue-600 dark:text-blue-400" />
-          <h2 className="font-heading font-bold text-sm">Security &amp; PIN Lock</h2>
-        </div>
-
-        <Row label="Auto-lock timeout" value={`${(s as any).autoLockMinutes ?? 5} min`}>
-          <select
-            value={(s as any).autoLockMinutes ?? 5}
-            onChange={(e) => update({ autoLockMinutes: Number(e.target.value) } as any)}
-            className="mt-2 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3.5 text-sm font-medium text-slate-800 shadow-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
-          >
-            <option value={0}>Immediate (when closing / backgrounding)</option>
-            <option value={1}>1 minute of inactivity</option>
-            <option value={5}>5 minutes of inactivity (Recommended)</option>
-            <option value={15}>15 minutes of inactivity</option>
-            <option value={-1}>Never auto-lock</option>
-          </select>
-        </Row>
-
-        <div className="mt-2 border-t border-slate-100 pt-3 dark:border-slate-800">
-          <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">Change 6-Digit PIN</label>
-          <div className="mt-1 flex gap-2">
-            <input
-              type="password"
-              inputMode="numeric"
-              maxLength={6}
-              placeholder="New 6-digit PIN"
-              value={pinInput}
-              onChange={(e) => setPinInput(e.target.value.replace(/\D/g, ""))}
-              className="min-h-12 flex-1 rounded-xl border border-slate-300 px-3.5 text-center font-mono text-lg tracking-widest shadow-sm dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-            />
-            <button
-              type="button"
-              disabled={pinInput.length !== 6}
-              onClick={handleChangePin}
-              className="min-h-12 rounded-xl bg-blue-600 px-5 text-xs font-bold text-white shadow-sm disabled:opacity-40 active:bg-blue-700 dark:bg-blue-500"
-            >
-              Update
-            </button>
-          </div>
-          {pinMsg && <p className="mt-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">{pinMsg}</p>}
-        </div>
-      </section>
 
       {/* Theme */}
       <section className={card}>
