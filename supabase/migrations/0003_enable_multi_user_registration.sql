@@ -63,3 +63,4 @@ create policy "daily_stats_own" on public.daily_stats
 drop policy if exists "settings_own" on public.settings;
 create policy "settings_own" on public.settings
   for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+

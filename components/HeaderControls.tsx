@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Mic, Moon, Sun, Settings, Sparkles, User } from "lucide-react";
+import { Mic, Moon, Sun, Settings, User } from "lucide-react";
 import { useTheme } from "@/lib/theme";
 
 export default function HeaderControls() {
@@ -19,15 +19,6 @@ export default function HeaderControls() {
         className="flex size-9 items-center justify-center rounded-full text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 transition"
       >
         <User className="size-4" />
-      </Link>
-
-      <Link
-        href="/design-preview"
-        aria-label="Design Preview"
-        title="Kawaii & Game Redesign Preview"
-        className="flex size-9 items-center justify-center rounded-full text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-950/40 transition"
-      >
-        <Sparkles className="size-4 fill-amber-400" />
       </Link>
 
       <button
