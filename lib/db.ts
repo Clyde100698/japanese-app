@@ -76,6 +76,18 @@ export async function getAllCards(): Promise<Map<string, SrsCard>> {
   return new Map(all.map(({ dirty: _d, ...c }) => [c.id, c]));
 }
 
+export async function getCard(id: string): Promise<SrsCard | undefined> {
+  const r = await (await db()).get("cards", id);
+  if (!r) return undefined;
+  const { dirty: _d, ...rest } = r;
+  return rest;
+}
+
+export async function setCard(card: SrsCard): Promise<void> {
+  await (await db()).put("cards", { ...card, dirty: 1 });
+  notify();
+}
+
 export async function getDaily(day: string): Promise<DailyStat | undefined> {
   const r = await (await db()).get("daily", day);
   if (!r) return undefined;

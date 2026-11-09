@@ -1,0 +1,3890 @@
+[
+  {
+    "id": "n5-ramen",
+    "title": "Ordering at a Ramen Shop",
+    "titleJa": "ラーメン屋での注文",
+    "level": "N5",
+    "category": "Dining",
+    "description": "You enter a cozy ramen shop in Tokyo. Buy your ticket from the machine or tell the chef what you want, specify noodles, and ask for water.",
+    "keyPhrases": [
+      {
+        "id": "phrase-ramen-1",
+        "front": "しょうゆラーメンをください",
+        "reading": "しょうゆらーめんをください",
+        "romaji": "shouyu raamen o kudasai",
+        "answer": "Soy sauce ramen, please.",
+        "notes": "The classic 〜をください ordering formula."
+      },
+      {
+        "id": "phrase-ramen-2",
+        "front": "お水をお願いします",
+        "reading": "おみずをおねがいします",
+        "romaji": "omizu o onegaishimasu",
+        "answer": "Water, please.",
+        "notes": "Polite request for water."
+      },
+      {
+        "id": "phrase-ramen-3",
+        "front": "ごちそうさまでした",
+        "reading": "ごちそうさまでした",
+        "romaji": "gochisousama deshita",
+        "answer": "Thank you for the meal.",
+        "notes": "Said after finishing a meal."
+      }
+    ],
+    "lines": [
+      {
+        "id": "r1",
+        "speaker": "other",
+        "speakerName": "Chef",
+        "speakerNameJa": "店主",
+        "ja": "いらっしゃい！何名様ですか？",
+        "reading": "いらっしゃい！なんめいさまですか？",
+        "romaji": "Irasshai! Nanmei-sama desu ka?",
+        "en": "Welcome! How many people in your party?",
+        "politeness": "polite"
+      },
+      {
+        "id": "r2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "一人です。",
+        "reading": "ひとりです。",
+        "romaji": "Hitori desu.",
+        "en": "Just one person.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-r2-1",
+            "ja": "一人です。",
+            "reading": "ひとりです。",
+            "romaji": "Hitori desu.",
+            "en": "One person.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Natural and polite counter for one person (ひとり).",
+            "reaction": {
+              "speaker": "Chef",
+              "speakerJa": "店主",
+              "ja": "カウンターへどうぞ！",
+              "reading": "かうんたーへどうぞ！",
+              "romaji": "Kauntaa e douzo!",
+              "en": "Right this way to the counter!"
+            }
+          },
+          {
+            "id": "opt-r2-2",
+            "ja": "一つです。",
+            "reading": "ひとつです。",
+            "romaji": "Hitotsu desu.",
+            "en": "One piece.",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "一つ (hitotsu) is for inanimate items, not people. Use ひとり (hitori) for one person."
+          },
+          {
+            "id": "opt-r2-3",
+            "ja": "一人！",
+            "reading": "ひとり！",
+            "romaji": "Hitori!",
+            "en": "One!",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "A bit too abrupt when talking to shop staff. Adding です softens it politely."
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "speaker": "other",
+        "speakerName": "Chef",
+        "speakerNameJa": "店主",
+        "ja": "ご注文はお決まりですか？",
+        "reading": "ごちゅうもんはおきまりですか？",
+        "romaji": "Gochuumon wa okimari desu ka?",
+        "en": "Have you decided on your order?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "r4",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "しょうゆラーメンを一つお願いします。",
+        "reading": "しょうゆらーめんをひとつおねがいします。",
+        "romaji": "Shouyu raamen o hitotsu onegaishimasu.",
+        "en": "One soy sauce ramen, please.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-r4-1",
+            "ja": "しょうゆラーメンを一つお願いします。",
+            "reading": "しょうゆらーめんをひとつおねがいします。",
+            "romaji": "Shouyu raamen o hitotsu onegaishimasu.",
+            "en": "One soy sauce ramen, please.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Perfect customer phrasing: [item] + を + [quantity] + お願いします.",
+            "reaction": {
+              "speaker": "Chef",
+              "speakerJa": "店主",
+              "ja": "はい！しょうゆラーメン一丁！麺の硬さはどうしますか？",
+              "reading": "はい！しょうゆらーめんいっちょう！めんのかたさはどうしますか？",
+              "romaji": "Hai! Shouyu raamen itchou! Men no katasa wa dou shimasu ka?",
+              "en": "Got it! One soy ramen! How would you like your noodles cooked?"
+            }
+          },
+          {
+            "id": "opt-r4-2",
+            "ja": "ラーメンを食べる！",
+            "reading": "らーめんをたべる！",
+            "romaji": "Raamen o taberu!",
+            "en": "I'll eat ramen!",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "Grammatically plain verb statement; too childish and blunt for an order."
+          }
+        ]
+      },
+      {
+        "id": "r5",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "普通でお願いします。",
+        "reading": "ふつうでおねがいします。",
+        "romaji": "Futsuu de onegaishimasu.",
+        "en": "Regular (normal hardness), please.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-r5-1",
+            "ja": "普通でお願いします。",
+            "reading": "ふつうでおねがいします。",
+            "romaji": "Futsuu de onegaishimasu.",
+            "en": "Regular, please.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "普通 (futsuu = regular/normal) is the standard reply when asked about noodle firmness or broth richness.",
+            "reaction": {
+              "speaker": "Chef",
+              "speakerJa": "店主",
+              "ja": "かしこまりました。少々お待ちください！",
+              "reading": "かしこまりました。しょうしょうおまちください！",
+              "romaji": "Kashikomarimashita. Shoushou omachi kudasai!",
+              "en": "Understood. Please wait a moment!"
+            }
+          },
+          {
+            "id": "opt-r5-2",
+            "ja": "硬い！",
+            "reading": "かたい！",
+            "romaji": "Katai!",
+            "en": "Hard!",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "If you want firm noodles, say '硬めでお願いします' (katame de onegaishimasu)."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5-konbini",
+    "title": "Convenience Store Checkout",
+    "titleJa": "コンビニのレジ会計",
+    "level": "N5",
+    "category": "Shopping",
+    "description": "At the convenience store (konbini) checkout counter, answer questions about plastic bags, heating up your bento, and payment method.",
+    "keyPhrases": [
+      {
+        "id": "phrase-konbini-1",
+        "front": "袋は大丈夫です",
+        "reading": "ふくろはだいじょうぶです",
+        "romaji": "fukuro wa daijoubu desu",
+        "answer": "I don't need a bag (no bag is fine).",
+        "notes": "Standard way to decline a plastic shopping bag."
+      },
+      {
+        "id": "phrase-konbini-2",
+        "front": "温めてください",
+        "reading": "あたたためてください",
+        "romaji": "atatamete kudasai",
+        "answer": "Please heat it up.",
+        "notes": "Asking the clerk to microwave your food."
+      },
+      {
+        "id": "phrase-konbini-3",
+        "front": "Suicaでお願いします",
+        "reading": "すいかでおねがいします",
+        "romaji": "Suica de onegaishimasu",
+        "answer": "By Suica, please.",
+        "notes": "Paying with an IC transit card."
+      }
+    ],
+    "lines": [
+      {
+        "id": "k1",
+        "speaker": "other",
+        "speakerName": "Clerk",
+        "speakerNameJa": "店員",
+        "ja": "いらっしゃいませ。レジ袋はご利用ですか？",
+        "reading": "いらっしゃいませ。れじぶくろはごりようですか？",
+        "romaji": "Irasshaimase. Rejibukuro wa goriyou desu ka?",
+        "en": "Welcome. Would you like a plastic shopping bag?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "k2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "いいえ、大丈夫です。",
+        "reading": "いいえ、だいじょうぶです。",
+        "romaji": "Iie, daijoubu desu.",
+        "en": "No, I'm fine without one.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-k2-1",
+            "ja": "いいえ、大丈夫です。",
+            "reading": "いいえ、だいじょうぶです。",
+            "romaji": "Iie, daijoubu desu.",
+            "en": "No, I'm fine without one.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Natural, polite way to decline a bag. '大丈夫です' means 'I'm good/no thank you.'",
+            "reaction": {
+              "speaker": "Clerk",
+              "speakerJa": "店員",
+              "ja": "かしこまりました。お弁当は温めますか？",
+              "reading": "かしこまりました。おべんとうはあたためますか？",
+              "romaji": "Kashikomarimashita. Obentou wa atatamemasu ka?",
+              "en": "Understood. Shall I heat up your bento?"
+            }
+          },
+          {
+            "id": "opt-k2-2",
+            "ja": "袋を要らない！",
+            "reading": "ふくろをいらない！",
+            "romaji": "Fukuro o iranai!",
+            "en": "Don't need bag!",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "Grammatically awkward and rude. Use 袋は大丈夫です or 袋は要りません."
+          }
+        ]
+      },
+      {
+        "id": "k3",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "はい、お願いします。",
+        "reading": "はい、おねがいします。",
+        "romaji": "Hai, onegaishimasu.",
+        "en": "Yes, please.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-k3-1",
+            "ja": "はい、お願いします。",
+            "reading": "はい、おねがいします。",
+            "romaji": "Hai, onegaishimasu.",
+            "en": "Yes, please.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Clean and polite acceptance of heating service.",
+            "reaction": {
+              "speaker": "Clerk",
+              "speakerJa": "店員",
+              "ja": "少々お待ちください。合計で750円になります。",
+              "reading": "しょうしょうおまちください。ごうけいでななひゃくごじゅうえんになります。",
+              "romaji": "Shoushou omachi kudasai. Goukei de nanahyaku gojuu-en ni narimasu.",
+              "en": "Just a moment please. The total comes to 750 yen."
+            }
+          },
+          {
+            "id": "opt-k3-2",
+            "ja": "熱くして！",
+            "reading": "あつくして！",
+            "romaji": "Atsuku shite!",
+            "en": "Make it hot!",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "Too demanding and casual. Say 温めてください or はい、お願いします."
+          }
+        ]
+      },
+      {
+        "id": "k4",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "Suicaで支払います。",
+        "reading": "すいかでしはらいます。",
+        "romaji": "Suica de shiharaimasu.",
+        "en": "I will pay with Suica.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-k4-1",
+            "ja": "Suicaでお願いします。",
+            "reading": "すいかでおねがいします。",
+            "romaji": "Suica de onegaishimasu.",
+            "en": "By Suica, please.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "[Payment method] + でお願いします is the most universal and polite way to state how you're paying.",
+            "reaction": {
+              "speaker": "Clerk",
+              "speakerJa": "店員",
+              "ja": "はい、端末にタッチしてください。ありがとうございました！",
+              "reading": "はい、たんまつにタッチしてください。ありがとうございました！",
+              "romaji": "Hai, tanmatsu ni tacchi shite kudasai. Arigatou gozaimashita!",
+              "en": "Please tap your card on the terminal. Thank you very much!"
+            }
+          },
+          {
+            "id": "opt-k4-2",
+            "ja": "お金はない。",
+            "reading": "おかねはない。",
+            "romaji": "Okane wa nai.",
+            "en": "I don't have money.",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "Saying you don't have money will stop the transaction! Specify your payment method."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5-directions",
+    "title": "Asking for Train Directions",
+    "titleJa": "駅で道を尋ねる",
+    "level": "N5",
+    "category": "Travel",
+    "description": "You are inside Shinjuku station trying to locate the Yamanote Line platform. Ask a station attendant for help.",
+    "keyPhrases": [
+      {
+        "id": "phrase-dir-1",
+        "front": "すみません、山手線はどこですか？",
+        "reading": "すみません、やまのてせんはどこですか？",
+        "romaji": "sumimasen, yamanotesen wa doko desu ka?",
+        "answer": "Excuse me, where is the Yamanote Line?",
+        "notes": "Basic question for finding places."
+      },
+      {
+        "id": "phrase-dir-2",
+        "front": "あちらです",
+        "reading": "あちらです",
+        "romaji": "achira desu",
+        "answer": "It is over that way.",
+        "notes": "Polite direction word for that direction over there."
+      },
+      {
+        "id": "phrase-dir-3",
+        "front": "どうもありがとうございます",
+        "reading": "どうもありがとうございます",
+        "romaji": "doumo arigatou gozaimasu",
+        "answer": "Thank you very much.",
+        "notes": "Warm, respectful thanks."
+      }
+    ],
+    "lines": [
+      {
+        "id": "d1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "すみません、山手線の乗り場はどこですか？",
+        "reading": "すみません、やまのてせんののりばはどこですか？",
+        "romaji": "Sumimasen, Yamanotesen no noriba wa doko desu ka?",
+        "en": "Excuse me, where is the Yamanote Line boarding platform?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-d1-1",
+            "ja": "すみません、山手線の乗り場はどこですか？",
+            "reading": "すみません、やまのてせんののりばはどこですか？",
+            "romaji": "Sumimasen, Yamanotesen no noriba wa doko desu ka?",
+            "en": "Excuse me, where is the Yamanote Line platform?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Starts with the essential attention-getter 'すみません' and asks location politely with 'どこですか'.",
+            "reaction": {
+              "speaker": "Attendant",
+              "speakerJa": "駅員",
+              "ja": "山手線ですね。この通路をまっすぐ行って、右側の階段を上がってください。",
+              "reading": "やまのてせんですね。このつうろをまっすぐいって、みぎがわのかいだんをあがってください。",
+              "romaji": "Yamanotesen desu ne. Kono tsuuro o massugu itte, migigawa no kaidan o agatte kudasai.",
+              "en": "Yamanote Line? Go straight down this corridor and go up the stairs on the right."
+            }
+          },
+          {
+            "id": "opt-d1-2",
+            "ja": "おい！電車はどこ？",
+            "reading": "おい！でんしゃはどこ？",
+            "romaji": "Oi! Densha wa doko?",
+            "en": "Hey! Where's the train?",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "Never use 'おい' (oi = hey) with strangers or staff. It sounds very rude and confrontational."
+          }
+        ]
+      },
+      {
+        "id": "d2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "右の階段ですね。何番線ですか？",
+        "reading": "みぎのかいだんですね。なんばんせんですか？",
+        "romaji": "Migi no kaidan desu ne. Nanbansen desu ka?",
+        "en": "The right stairs, got it. Which track/platform number is it?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-d2-1",
+            "ja": "右の階段ですね。何番線ですか？",
+            "reading": "みぎのかいだんですね。なんばんせんですか？",
+            "romaji": "Migi no kaidan desu ne. Nanbansen desu ka?",
+            "en": "The right stairs, got it. Which track number is it?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Confirms the direction politely and asks for the specific track number using 何番線 (nanbansen).",
+            "reaction": {
+              "speaker": "Attendant",
+              "speakerJa": "駅員",
+              "ja": "渋谷方面なら14番線、池袋方面なら15番線です。",
+              "reading": "しぶやほうめんならじゅうよんばんせん、いけぶくろほうめんならじゅうごばんせんです。",
+              "romaji": "Shibuya houmen nara juuyonbansen, Ikebukuro houmen nara juugobansen desu.",
+              "en": "If heading toward Shibuya it's track 14; toward Ikebukuro it's track 15."
+            }
+          },
+          {
+            "id": "opt-d2-2",
+            "ja": "番号を教えて。",
+            "reading": "ばんごうをおしえて。",
+            "romaji": "Bangou o oshiete.",
+            "en": "Tell me the number.",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "Too demanding and missing politeness markers. Use 何番線ですか (nanbansen desu ka)."
+          }
+        ]
+      },
+      {
+        "id": "d3",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "よく分かりました。ありがとうございます！",
+        "reading": "よくわかりました。ありがとうございます！",
+        "romaji": "Yoku wakarimashita. Arigatou gozaimasu!",
+        "en": "I understand well now. Thank you very much!",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-d3-1",
+            "ja": "よく分かりました。ありがとうございます！",
+            "reading": "よくわかりました。ありがとうございます！",
+            "romaji": "Yoku wakarimashita. Arigatou gozaimasu!",
+            "en": "I understand now. Thank you very much!",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Polite acknowledgement of understanding and gratitude.",
+            "reaction": {
+              "speaker": "Attendant",
+              "speakerJa": "駅員",
+              "ja": "いってらっしゃい！お気をつけて。",
+              "reading": "いってらっしゃい！おきをつけて。",
+              "romaji": "Itterasshai! Oki o tsukete.",
+              "en": "Have a safe trip! Take care."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5-hotel-checkin",
+    "title": "Hotel Front Desk Check-in",
+    "titleJa": "ホテルのチェックイン",
+    "level": "N5",
+    "category": "Travel",
+    "description": "Check into your hotel room in Kyoto, give your reservation name, and ask about breakfast hours.",
+    "keyPhrases": [
+      {
+        "id": "phrase-hotel-1",
+        "front": "チェックインをお願いします",
+        "reading": "ちぇっくいんをおねがいします",
+        "romaji": "chekkuin o onegaishimasu",
+        "answer": "Check-in, please.",
+        "notes": "The go-to phrase at a hotel front desk."
+      },
+      {
+        "id": "phrase-hotel-2",
+        "front": "予約したスミスです",
+        "reading": "よやくしたすみすです",
+        "romaji": "yoyaku shita Sumisu desu",
+        "answer": "I'm Smith, I have a reservation.",
+        "notes": "Stating your reservation name."
+      },
+      {
+        "id": "phrase-hotel-3",
+        "front": "朝食は何時からですか？",
+        "reading": "ちょうしょくはなんじからですか？",
+        "romaji": "choushoku wa nanji kara desu ka?",
+        "answer": "What time does breakfast start?",
+        "notes": "Asking about starting times."
+      }
+    ],
+    "lines": [
+      {
+        "id": "h1",
+        "speaker": "other",
+        "speakerName": "Front Desk",
+        "speakerNameJa": "フロント",
+        "ja": "いらっしゃいませ。チェックインでございますか？",
+        "reading": "いらっしゃいませ。ちぇっくいんでございますか？",
+        "romaji": "Irasshaimase. Chekkuin de gozaimasu ka?",
+        "en": "Welcome. Are you checking in?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "h2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "はい、チェックインをお願いします。予約した田中です。",
+        "reading": "はい、ちぇっくいんをおねがいします。よやくしたたなかです。",
+        "romaji": "Hai, chekkuin o onegaishimasu. Yoyaku shita Tanaka desu.",
+        "en": "Yes, check-in please. I'm Tanaka, I have a reservation.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-h2-1",
+            "ja": "はい、チェックインをお願いします。予約した田中です。",
+            "reading": "はい、ちぇっくいんをおねがいします。よやくしたたなかです。",
+            "romaji": "Hai, chekkuin o onegaishimasu. Yoyaku shita Tanaka desu.",
+            "en": "Yes, check-in please. I'm Tanaka, I have a reservation.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Gives clear affirmative, request, and your reservation name politely.",
+            "reaction": {
+              "speaker": "Front Desk",
+              "speakerJa": "フロント",
+              "ja": "田中様ですね。ご予約を確認いたしました。パスポートを拝見できますか？",
+              "reading": "たなかさまですね。ごよやくをかくにんいたしました。ぱすぽーとをはいけんできますか？",
+              "romaji": "Tanaka-sama desu ne. Goyoyaku o kakunin itashimashita. Pasupooto o haiken dekimasu ka?",
+              "en": "Mr./Ms. Tanaka, yes. I have confirmed your reservation. May I see your passport?"
+            }
+          },
+          {
+            "id": "opt-h2-2",
+            "ja": "部屋をくれ！",
+            "reading": "へやをくれ！",
+            "romaji": "Heya o kure!",
+            "en": "Give me the room!",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "Very abrasive imperative. Always use polite requests with service staff."
+          }
+        ]
+      },
+      {
+        "id": "h3",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "はい、どうぞ。朝食は何時からですか？",
+        "reading": "はい、どうぞ。ちょうしょくはなんじからですか？",
+        "romaji": "Hai, douzo. Choushoku wa nanji kara desu ka?",
+        "en": "Here you are. What time is breakfast?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-h3-1",
+            "ja": "はい、どうぞ。朝食は何時からですか？",
+            "reading": "はい、どうぞ。ちょうしょくはなんじからですか？",
+            "romaji": "Hai, douzo. Choushoku wa nanji kara desu ka?",
+            "en": "Here you go. What time is breakfast from?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "'はい、どうぞ' hands the passport over courteously; '何時からですか' asks the schedule smoothly.",
+            "reaction": {
+              "speaker": "Front Desk",
+              "speakerJa": "フロント",
+              "ja": "ありがとうございます。朝食は朝7時から9時半まで、2階のレストランでございます。こちらがルームキーです。",
+              "reading": "ありがとうございます。ちょうしょくはあさしちじからくじはんまで、にかいのれすとらんでございます。こちらがるーむきーです。",
+              "romaji": "Arigatou gozaimasu. Choushoku wa asa shichiji kara kujihan made, nikai no resutoran de gozaimasu. Kochira ga ruumukii desu.",
+              "en": "Thank you. Breakfast is from 7:00 AM to 9:30 AM at the 2nd-floor restaurant. Here is your room key."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5-cafe",
+    "title": "Ordering at a Café",
+    "titleJa": "カフェでの注文",
+    "level": "N5",
+    "category": "Dining",
+    "description": "Order an iced latte, specify whether it's for here or to go, and choose your cup size.",
+    "keyPhrases": [
+      {
+        "id": "phrase-cafe-1",
+        "front": "アイスラテのMサイズ",
+        "reading": "あいすらてのえむさいず",
+        "romaji": "aisu rate no emu saizu",
+        "answer": "Medium iced latte",
+        "notes": "Drink + size pairing."
+      },
+      {
+        "id": "phrase-cafe-2",
+        "front": "店内で飲みます",
+        "reading": "てんないでのみます",
+        "romaji": "tennai de nomimasu",
+        "answer": "I will drink it inside the shop.",
+        "notes": "Specifying 'for here'."
+      },
+      {
+        "id": "phrase-cafe-3",
+        "front": "持ち帰りでお願いします",
+        "reading": "もちかえりでおねがいします",
+        "romaji": "mochikaeri de onegaishimasu",
+        "answer": "To go (takeout), please.",
+        "notes": "Specifying takeout."
+      }
+    ],
+    "lines": [
+      {
+        "id": "c1",
+        "speaker": "other",
+        "speakerName": "Barista",
+        "speakerNameJa": "店員",
+        "ja": "こんにちは！店内でお召し上がりですか？",
+        "reading": "こんにちは！てんないでおめしあがりですか？",
+        "romaji": "Konnichiwa! Tennai de omeshagari desu ka?",
+        "en": "Hello! Will you be having that in the café?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "c2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "持ち帰りでお願いします。",
+        "reading": "もちかえりでおねがいします。",
+        "romaji": "Mochikaeri de onegaishimasu.",
+        "en": "To go, please.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-c2-1",
+            "ja": "持ち帰りでお願いします。",
+            "reading": "もちかえりでおねがいします。",
+            "romaji": "Mochikaeri de onegaishimasu.",
+            "en": "To go, please.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "持ち帰り (mochikaeri = takeout) is the standard term in Japanese cafes and fast-food shops.",
+            "reaction": {
+              "speaker": "Barista",
+              "speakerJa": "店員",
+              "ja": "テイクアウトですね。ご注文をどうぞ！",
+              "reading": "ていくあうとですね。ごちゅうもんをどうぞ！",
+              "romaji": "Teikuauto desu ne. Gochuumon o douzo!",
+              "en": "Takeout, certainly. What can I get for you?"
+            }
+          },
+          {
+            "id": "opt-c2-2",
+            "ja": "店内でお召し上がりです。",
+            "reading": "てんないでおめしあがりです。",
+            "romaji": "Tennai de omeshagari desu.",
+            "en": "I am having it inside (using honorific toward myself).",
+            "politeness": "keigo",
+            "isCorrect": false,
+            "explanation": "お召し上がり is an honorific verb reserved for others. For yourself, say 店内で飲みます (tennai de nomimasu) or ここで食べます."
+          }
+        ]
+      },
+      {
+        "id": "c3",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "アイスラテを一つ、Mサイズでください。",
+        "reading": "あいすらてをひとつ、えむさいずでください。",
+        "romaji": "Aisu rate o hitotsu, emu saizu de kudasai.",
+        "en": "One iced latte, in medium size please.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-c3-1",
+            "ja": "アイスラテを一つ、Mサイズでください。",
+            "reading": "あいすらてをひとつ、えむさいずでください。",
+            "romaji": "Aisu rate o hitotsu, emu saizu de kudasai.",
+            "en": "One iced latte, medium size please.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Clear, natural specification of beverage, quantity, and size.",
+            "reaction": {
+              "speaker": "Barista",
+              "speakerJa": "店員",
+              "ja": "アイスラテのMがおひとつですね。480円です。",
+              "reading": "あいすらてのえむがおひとつですね。よんひゃくはちじゅうえんです。",
+              "romaji": "Aisu rate no emu ga ohitotsu desu ne. Yonhyaku hachijuu-en desu.",
+              "en": "One medium iced latte. That will be 480 yen."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5-ticket",
+    "title": "Buying a Shinkansen Ticket",
+    "titleJa": "新幹線切符の購入",
+    "level": "N5",
+    "category": "Travel",
+    "description": "At the JR ticket counter (みどりの窓口), purchase a bullet train ticket from Tokyo to Kyoto for tomorrow morning.",
+    "keyPhrases": [
+      {
+        "id": "phrase-ticket-1",
+        "front": "京都までの切符",
+        "reading": "きょうとまでのきっぷ",
+        "romaji": "Kyouto made no kippu",
+        "answer": "A ticket to Kyoto",
+        "notes": "Destination + までの切符."
+      },
+      {
+        "id": "phrase-ticket-2",
+        "front": "指定席でお願いします",
+        "reading": "していせきでおねがいします",
+        "romaji": "shiteiseki de onegaishimasu",
+        "answer": "Reserved seat, please.",
+        "notes": "Designating reserved seating."
+      },
+      {
+        "id": "phrase-ticket-3",
+        "front": "窓側の席はありますか？",
+        "reading": "まどがわのせきはありますか？",
+        "romaji": "madogawa no seki wa arimasu ka?",
+        "answer": "Is there a window seat available?",
+        "notes": "Window seat preference."
+      }
+    ],
+    "lines": [
+      {
+        "id": "tk1",
+        "speaker": "other",
+        "speakerName": "JR Agent",
+        "speakerNameJa": "駅員",
+        "ja": "いらっしゃいませ。どちらまでですか？",
+        "reading": "いらっしゃいませ。どちらまでですか？",
+        "romaji": "Irasshaimase. Dochira made desu ka?",
+        "en": "Welcome. Where are you traveling to?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "tk2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "明日の京都まで一枚お願いします。",
+        "reading": "あしたのきょうとまでいちまいおねがいします。",
+        "romaji": "Ashita no Kyouto made ichimai onegaishimasu.",
+        "en": "One ticket to Kyoto for tomorrow, please.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-tk2-1",
+            "ja": "明日の京都まで一枚お願いします。",
+            "reading": "あしたのきょうとまでいちまいおねがいします。",
+            "romaji": "Ashita no Kyouto made ichimai onegaishimasu.",
+            "en": "One ticket to Kyoto for tomorrow, please.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "一枚 (ichimai) is the correct flat-object counter for paper tickets.",
+            "reaction": {
+              "speaker": "JR Agent",
+              "speakerJa": "駅員",
+              "ja": "明日の京都ですね。指定席と自由席、どちらになさいますか？",
+              "reading": "あしたのきょうとですね。していせきとじゆうせき、どちらになさいますか？",
+              "romaji": "Ashita no Kyouto desu ne. Shiteiseki to jiyuuseki, dochira ni nasaimasu ka?",
+              "en": "Kyoto tomorrow. Would you prefer a reserved seat or unreserved seat?"
+            }
+          },
+          {
+            "id": "opt-tk2-2",
+            "ja": "京都を一つ！",
+            "reading": "きょうとをひとつ！",
+            "romaji": "Kyouto o hitotsu!",
+            "en": "One Kyoto!",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "Tickets take the flat counter 〜枚 (mai), not 〜つ (tsu), and state the destination with まで."
+          }
+        ]
+      },
+      {
+        "id": "tk3",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "指定席でお願いします。窓側の席は空いていますか？",
+        "reading": "していせきでおねがいします。まどがわのせきはあいていますか？",
+        "romaji": "Shiteiseki de onegaishimasu. Madogawa no seki wa aiteimasu ka?",
+        "en": "Reserved seat, please. Is a window seat open?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-tk3-1",
+            "ja": "指定席でお願いします。窓側の席は空いていますか？",
+            "reading": "していせきでおねがいします。まどがわのせきはあいていますか？",
+            "romaji": "Shiteiseki de onegaishimasu. Madogawa no seki wa aiteimasu ka?",
+            "en": "Reserved seat, please. Is a window seat open?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Specifies 指定席 and asks for 窓側 (madogawa = window side) seat.",
+            "reaction": {
+              "speaker": "JR Agent",
+              "speakerJa": "駅員",
+              "ja": "午前9時発ののぞみ号で、窓側のお席がお取りできます。",
+              "reading": "ごぜんくじはつののぞみごうで、まどがわのおせきがおとりできます。",
+              "romaji": "Gozen kuji hatsu no Nozomi-gou de, madogawa no oseki ga otori dekimasu.",
+              "en": "On the 9:00 AM Nozomi departure, we can reserve a window seat for you."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5-restroom",
+    "title": "Asking for the Restroom",
+    "titleJa": "トイレの場所を尋ねる",
+    "level": "N5",
+    "category": "Daily Life",
+    "description": "In a shopping mall or restaurant, ask where the restroom is located.",
+    "keyPhrases": [
+      {
+        "id": "phrase-restroom-1",
+        "front": "お手洗いはどこですか？",
+        "reading": "おてあらいはどこですか？",
+        "romaji": "otearai wa doko desu ka?",
+        "answer": "Where is the restroom?",
+        "notes": "Politer word for toilet/bathroom."
+      },
+      {
+        "id": "phrase-restroom-2",
+        "front": "突き当たりを右です",
+        "reading": "つきあたりをみぎです",
+        "romaji": "tsukiatari o migi desu",
+        "answer": "Turn right at the end of the hallway.",
+        "notes": "突き当たり = dead end / end of corridor."
+      }
+    ],
+    "lines": [
+      {
+        "id": "w1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "すみません、お手洗いはどちらですか？",
+        "reading": "すみません、おてあらいはどちらですか？",
+        "romaji": "Sumimasen, otearai wa dochira desu ka?",
+        "en": "Excuse me, which way is the restroom?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-w1-1",
+            "ja": "すみません、お手洗いはどちらですか？",
+            "reading": "すみません、おてあらいはどちらですか？",
+            "romaji": "Sumimasen, otearai wa dochira desu ka?",
+            "en": "Excuse me, which way is the restroom?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "'お手洗い' (otearai) and 'どちら' (dochira) are both polite, pleasant phrasing for asking for the restroom.",
+            "reaction": {
+              "speaker": "Staff",
+              "speakerJa": "店員",
+              "ja": "お手洗いはこの通路の突き当たりを左に曲がったところにございます。",
+              "reading": "おてあらいはこのつうろのつきあたりをひだりにまがったところにございます。",
+              "romaji": "Otearai wa kono tsuuro no tsukiatari o hidari ni magatta tokoro ni gozaimasu.",
+              "en": "The restroom is at the end of this hallway, around the corner to the left."
+            }
+          },
+          {
+            "id": "opt-w1-2",
+            "ja": "便所はどこ？",
+            "reading": "べんじょはどこ？",
+            "romaji": "Benjo wa doko?",
+            "en": "Where's the crapper?",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "便所 (benjo) is considered coarse and unrefined. Always use お手洗い (otearai) or トイレ (toire)."
+          }
+        ]
+      },
+      {
+        "id": "w2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "突き当たりを左ですね。ありがとうございます。",
+        "reading": "つきあたりをひだりですね。ありがとうございます。",
+        "romaji": "Tsukiatari o hidari desu ne. Arigatou gozaimasu.",
+        "en": "End of the hallway and to the left. Thank you.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-w2-1",
+            "ja": "突き当たりを左ですね。ありがとうございます。",
+            "reading": "つきあたりをひだりですね。ありがとうございます。",
+            "romaji": "Tsukiatari o hidari desu ne. Arigatou gozaimasu.",
+            "en": "End of the hallway and to the left. Thank you.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Repeating the direction confirms you heard correctly before saying thank you.",
+            "reaction": {
+              "speaker": "Staff",
+              "speakerJa": "店員",
+              "ja": "どういたしまして。",
+              "reading": "どういたしまして。",
+              "romaji": "Dou itashimashite.",
+              "en": "You are very welcome."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5-self-intro",
+    "title": "Basic Self-Introduction",
+    "titleJa": "はじめての自己紹介",
+    "level": "N5",
+    "category": "Social",
+    "description": "Introduce yourself to a new Japanese study group or language exchange partner.",
+    "keyPhrases": [
+      {
+        "id": "phrase-intro-1",
+        "front": "はじめまして",
+        "reading": "はじめまして",
+        "romaji": "hajimemashite",
+        "answer": "Nice to meet you (for the first time).",
+        "notes": "The greeting when meeting someone new."
+      },
+      {
+        "id": "phrase-intro-2",
+        "front": "どうぞよろしくお願いします",
+        "reading": "どうぞよろしくおねがいします",
+        "romaji": "douzo yoroshiku onegaishimasu",
+        "answer": "Please treat me favorably / Nice to work with you.",
+        "notes": "Essential closing for self-introductions."
+      }
+    ],
+    "lines": [
+      {
+        "id": "si1",
+        "speaker": "other",
+        "speakerName": "Ken",
+        "speakerNameJa": "健",
+        "ja": "はじめまして！健と申します。日本語の勉強会へようこそ！",
+        "reading": "はじめまして！けんともうします。にほんごのべんきょうかいへようこそ！",
+        "romaji": "Hajimemashite! Ken to moushimasu. Nihongo no benkyoukai e youkoso!",
+        "en": "Nice to meet you! My name is Ken. Welcome to the Japanese study group!",
+        "politeness": "polite"
+      },
+      {
+        "id": "si2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "はじめまして、マイクです。アメリカから来ました。",
+        "reading": "はじめまして、まいくです。あめりかからきました。",
+        "romaji": "Hajimemashite, Maiku desu. Amerika kara kimashita.",
+        "en": "Nice to meet you, I'm Mike. I came from America.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-si2-1",
+            "ja": "はじめまして、マイクです。アメリカから来ました。",
+            "reading": "はじめまして、まいくです。あめりかからきました。",
+            "romaji": "Hajimemashite, Maiku desu. Amerika kara kimashita.",
+            "en": "Nice to meet you, I'm Mike. I came from America.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Standard N5 introduction formula: はじめまして + name です + country から来ました.",
+            "reaction": {
+              "speaker": "Ken",
+              "speakerJa": "健",
+              "ja": "マイクさん、よろしくお願いします！日本へは旅行ですか？",
+              "reading": "まいくさん、よろしくおねがいします！にほんへはりょこうですか？",
+              "romaji": "Maiku-san, yoroshiku onegaishimasu! Nihon e wa ryokou desu ka?",
+              "en": "Nice to meet you Mike! Are you traveling in Japan?"
+            }
+          },
+          {
+            "id": "opt-si2-2",
+            "ja": "俺はマイクだぜ！",
+            "reading": "おれはまいくだぜ！",
+            "romaji": "Ore wa Maiku daze!",
+            "en": "I'm Mike, yo!",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "Too slangy and aggressive for a friendly first meeting. Use 私 (watashi) or just state your name + です."
+          }
+        ]
+      },
+      {
+        "id": "si3",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "はい、旅行です。どうぞよろしくお願いします。",
+        "reading": "はい、りょこうです。どうぞよろしくおねがいします。",
+        "romaji": "Hai, ryokou desu. Douzo yoroshiku onegaishimasu.",
+        "en": "Yes, I am traveling. Nice to meet you and please treat me well.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-si3-1",
+            "ja": "はい、旅行です。どうぞよろしくお願いします。",
+            "reading": "はい、りょこうです。どうぞよろしくおねがいします。",
+            "romaji": "Hai, ryokou desu. Douzo yoroshiku onegaishimasu.",
+            "en": "Yes, I'm traveling. Pleasure to meet you.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Ends the self-introduction with the quintessential Japanese courteous phrase.",
+            "reaction": {
+              "speaker": "Ken",
+              "speakerJa": "健",
+              "ja": "こちらこそ、よろしくお願いします！楽しんでいってくださいね。",
+              "reading": "こちらこそ、よろしくおねがいします！たのしんでいってくださいね。",
+              "romaji": "Kochira koso, yoroshiku onegaishimasu! Tanoshinde itte kudasai ne.",
+              "en": "Likewise, pleasure to meet you! Please enjoy your stay."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5-wifi",
+    "title": "Asking for Wi-Fi",
+    "titleJa": "Wi-Fiのパスワードを尋ねる",
+    "level": "N5",
+    "category": "Services",
+    "description": "Ask a café staff member if they have free Wi-Fi and what the password is.",
+    "keyPhrases": [
+      {
+        "id": "phrase-wifi-1",
+        "front": "Wi-Fiはありますか？",
+        "reading": "わいふぁいはありますか？",
+        "romaji": "waifai wa arimasu ka?",
+        "answer": "Is there Wi-Fi?",
+        "notes": "Asking if an item exists or is available."
+      },
+      {
+        "id": "phrase-wifi-2",
+        "front": "パスワードを教えてください",
+        "reading": "ぱすわーどをおしえてください",
+        "romaji": "pasuwaado o oshiete kudasai",
+        "answer": "Please tell me the password.",
+        "notes": "Polite request for information."
+      }
+    ],
+    "lines": [
+      {
+        "id": "wf1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "すみません、ここはWi-Fiがありますか？",
+        "reading": "すみません、ここはわいふぁいがありますか？",
+        "romaji": "Sumimasen, koko wa waifai ga arimasu ka?",
+        "en": "Excuse me, is there Wi-Fi here?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-wf1-1",
+            "ja": "すみません、ここはWi-Fiがありますか？",
+            "reading": "すみません、ここはわいふぁいがありますか？",
+            "romaji": "Sumimasen, koko wa waifai ga arimasu ka?",
+            "en": "Excuse me, is there Wi-Fi here?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Simple and polite question using 〜がありますか.",
+            "reaction": {
+              "speaker": "Staff",
+              "speakerJa": "店員",
+              "ja": "はい、無料のWi-Fiがございます。",
+              "reading": "はい、むりょうのわいふぁいがございます。",
+              "romaji": "Hai, muryou no waifai ga gozaimasu.",
+              "en": "Yes, we have free Wi-Fi."
+            }
+          }
+        ]
+      },
+      {
+        "id": "wf2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "パスワードを教えていただけますか？",
+        "reading": "ぱすわーどをおしえていただけますか？",
+        "romaji": "Pasuwaado o oshiete itadakemasu ka?",
+        "en": "Could you tell me the password?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-wf2-1",
+            "ja": "パスワードを教えていただけますか？",
+            "reading": "ぱすわーどをおしえていただけますか？",
+            "romaji": "Pasuwaado o oshiete itadakemasu ka?",
+            "en": "Could you please tell me the password?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "〜ていただけますか is a very polite and natural way to ask someone to do something for you.",
+            "reaction": {
+              "speaker": "Staff",
+              "speakerJa": "店員",
+              "ja": "レシートの一番下に書いてありますので、ご確認ください。",
+              "reading": "れしーとのいちばんしたにかいてありますので、ごかくにんください。",
+              "romaji": "Reshiito no ichiban shita ni kaite arimasu no de, gokakunin kudasai.",
+              "en": "It is printed at the very bottom of your receipt, please check there."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5-souvenir",
+    "title": "Buying a Souvenir",
+    "titleJa": "お土産屋での買い物",
+    "level": "N5",
+    "category": "Shopping",
+    "description": "Shop for traditional sweets in Asakusa, ask how much it costs, and ask for gift wrapping.",
+    "keyPhrases": [
+      {
+        "id": "phrase-souvenir-1",
+        "front": "これはいくらですか？",
+        "reading": "これはいくらですか？",
+        "romaji": "kore wa ikura desu ka?",
+        "answer": "How much is this?",
+        "notes": "Classic price inquiry."
+      },
+      {
+        "id": "phrase-souvenir-2",
+        "front": "プレゼント用に包んでください",
+        "reading": "ぷれぜんとようにつつんでください",
+        "romaji": "purezento-you ni tsutsunde kudasai",
+        "answer": "Please wrap it as a gift.",
+        "notes": "Asking for gift wrapping."
+      }
+    ],
+    "lines": [
+      {
+        "id": "sv1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "すみません、このお菓子はいくらですか？",
+        "reading": "すみません、このおかしはいくらですか？",
+        "romaji": "Sumimasen, kono okashi wa ikura desu ka?",
+        "en": "Excuse me, how much are these sweets?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-sv1-1",
+            "ja": "すみません、このお菓子はいくらですか？",
+            "reading": "すみません、このおかしはいくらですか？",
+            "romaji": "Sumimasen, kono okashi wa ikura desu ka?",
+            "en": "Excuse me, how much are these sweets?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Polite inquiry using kono [noun] wa ikura desu ka.",
+            "reaction": {
+              "speaker": "Clerk",
+              "speakerJa": "店員",
+              "ja": "そちらは1箱1,200円でございます。",
+              "reading": "そちらはひとはこせんにひゃくえんでございます。",
+              "romaji": "Sochira wa hitohako sen nihyaku-en de gozaimasu.",
+              "en": "That box is 1,200 yen per box."
+            }
+          }
+        ]
+      },
+      {
+        "id": "sv2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "これを二つください。プレゼント用に包んでいただけますか？",
+        "reading": "これをふたつください。ぷれぜんとようにつつんでいただけますか？",
+        "romaji": "Kore o futatsu kudasai. Purezento-you ni tsutsunde itadakemasu ka?",
+        "en": "Two of these please. Could you wrap them as a gift?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-sv2-1",
+            "ja": "これを二つください。プレゼント用に包んでいただけますか？",
+            "reading": "これをふたつください。ぷれぜんとようにつつんでいただけますか？",
+            "romaji": "Kore o futatsu kudasai. Purezento-you ni tsutsunde itadakemasu ka?",
+            "en": "Two of these please. Could you wrap them as a gift?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "二つ (futatsu) is two items; プレゼント用に包む means to wrap as a gift.",
+            "reaction": {
+              "speaker": "Clerk",
+              "speakerJa": "店員",
+              "ja": "かしこまりました！リボンをお付けしますね。",
+              "reading": "かしこまりました！りぼんをおつけしますね。",
+              "romaji": "Kashikomarimashita! Ribon o otsuke shimasu ne.",
+              "en": "Certainly! I will add a ribbon for you."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n4-clinic",
+    "title": "Visiting a Clinic",
+    "titleJa": "病院での問診",
+    "level": "N4",
+    "category": "Health",
+    "description": "You have caught a cold. Describe your symptoms (fever, sore throat, headache) to the doctor and ask about medication.",
+    "keyPhrases": [
+      {
+        "id": "phrase-clinic-1",
+        "front": "熱があって、頭が痛いです",
+        "reading": "ねつがあって、あたまがいたいです",
+        "romaji": "netsu ga atte, atama ga itai desu",
+        "answer": "I have a fever and my head hurts.",
+        "notes": "Describing multiple symptoms using 〜て form."
+      },
+      {
+        "id": "phrase-clinic-2",
+        "front": "一昨日から喉が痛みます",
+        "reading": "おとといからのどがいたみます",
+        "romaji": "ototoi kara nodo ga itamimasu",
+        "answer": "My throat has hurt since the day before yesterday.",
+        "notes": "Specifying when symptoms started."
+      },
+      {
+        "id": "phrase-clinic-3",
+        "front": "食後に飲んでください",
+        "reading": "しょくごにのんでください",
+        "romaji": "shokugo ni nonde kudasai",
+        "answer": "Please take it after meals.",
+        "notes": "Crucial medical instruction."
+      }
+    ],
+    "lines": [
+      {
+        "id": "cl1",
+        "speaker": "other",
+        "speakerName": "Doctor",
+        "speakerNameJa": "医師",
+        "ja": "今日はどうされましたか？どこか具合が悪いですか？",
+        "reading": "きょうはどうされましたか？どこかぐあいがわるいですか？",
+        "romaji": "Kyou wa dou saremashita ka? Doko ka guai ga warui desu ka?",
+        "en": "What brings you in today? Where are you not feeling well?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "cl2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "昨日から熱があって、喉がとても痛いんです。",
+        "reading": "きのうからねつがあって、のどがとてもいたいんです。",
+        "romaji": "Kinou kara netsu ga atte, nodo ga totemo itai n desu.",
+        "en": "Since yesterday I have a fever, and my throat really hurts.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-cl2-1",
+            "ja": "昨日から熱があって、喉がとても痛いんです。",
+            "reading": "きのうからねつがあって、のどがとてもいたいんです。",
+            "romaji": "Kinou kara netsu ga atte, nodo ga totemo itai n desu.",
+            "en": "Since yesterday I have a fever, and my throat really hurts.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Using 〜んです explains background circumstances naturally when talking to a doctor.",
+            "reaction": {
+              "speaker": "Doctor",
+              "speakerJa": "医師",
+              "ja": "そうですか。咳や鼻水は出ますか？アレルギーはありますか？",
+              "reading": "そうですか。せきやはなみずはでますか？あれるぎーはありますか？",
+              "romaji": "Sou desu ka. Seki ya hanamizu wa demasu ka? Arerugii wa arimasu ka?",
+              "en": "I see. Do you have a cough or runny nose? Any allergies?"
+            }
+          },
+          {
+            "id": "opt-cl2-2",
+            "ja": "病気だ！助けて！",
+            "reading": "びょうきだ！たすけて！",
+            "romaji": "Byouki da! Tasukete!",
+            "en": "I'm sick! Help me!",
+            "politeness": "casual",
+            "isCorrect": false,
+            "explanation": "Overdramatic and plain-form. The doctor needs specific symptoms like 熱 (fever) or 喉 (throat)."
+          }
+        ]
+      },
+      {
+        "id": "cl3",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "少し咳が出ます。薬のアレルギーはありません。",
+        "reading": "すこしせきがでます。くすりのあれるぎーはありません。",
+        "romaji": "Sukoshi seki ga demasu. Kusuri no arerugii wa arimasen.",
+        "en": "I have a mild cough. I have no drug allergies.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-cl3-1",
+            "ja": "少し咳が出ます。薬のアレルギーはありません。",
+            "reading": "すこしせきがでます。くすりのあれるぎーはありません。",
+            "romaji": "Sukoshi seki ga demasu. Kusuri no arerugii wa arimasen.",
+            "en": "I have a slight cough. I don't have allergies to medicine.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Answers both medical questions accurately and clearly.",
+            "reaction": {
+              "speaker": "Doctor",
+              "speakerJa": "医師",
+              "ja": "分かりました。風邪の薬を3日分出しておきますね。1日3回、食後に飲んでください。",
+              "reading": "わかりました。かぜのくすりをみっかぶんだしておきますね。いちにちさんかい、しょくごにのんでください。",
+              "romaji": "Wakarimashita. Kaze no kusuri o mikkabun dashite okimasu ne. Ichinichi sankai, shokugo ni nonde kudasai.",
+              "en": "Understood. I will prescribe 3 days of cold medication. Please take it 3 times a day after meals."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n4-return",
+    "title": "Exchanging an Item at a Store",
+    "titleJa": "商品の交換・返品",
+    "level": "N4",
+    "category": "Shopping",
+    "description": "You bought a sweater yesterday, but the size doesn't fit. Request an exchange with your receipt.",
+    "keyPhrases": [
+      {
+        "id": "phrase-return-1",
+        "front": "サイズを交換していただけますか？",
+        "reading": "さいずをこうかんしていただけますか？",
+        "romaji": "saizu o koukan shite itadakemasu ka?",
+        "answer": "Could you exchange the size for me?",
+        "notes": "Polite request for exchange."
+      },
+      {
+        "id": "phrase-return-2",
+        "front": "レシートをお持ちですか？",
+        "reading": "れしーとをおもちですか？",
+        "romaji": "reshiito o omochi desu ka?",
+        "answer": "Do you have your receipt?",
+        "notes": "Store policy check."
+      }
+    ],
+    "lines": [
+      {
+        "id": "rt1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "すみません、昨日ここで買ったセーターのサイズを交換したいのですが。",
+        "reading": "すみません、きのうここでかったせーたーのさいずをこうかんしたいのですが。",
+        "romaji": "Sumimasen, kinou koko de katta seetaa no saizu o koukan shitai no desu ga.",
+        "en": "Excuse me, I bought this sweater here yesterday and I would like to exchange the size.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-rt1-1",
+            "ja": "すみません、昨日ここで買ったセーターのサイズを交換したいのですが。",
+            "reading": "すみません、きのうここでかったせーたーのさいずをこうかんしたいのですが。",
+            "romaji": "Sumimasen, kinou koko de katta seetaa no saizu o koukan shitai no desu ga.",
+            "en": "Excuse me, I would like to exchange the size of the sweater I bought here yesterday.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Ending with 〜のですが softens the request naturally when explaining your situation.",
+            "reaction": {
+              "speaker": "Clerk",
+              "speakerJa": "店員",
+              "ja": "かしこまりました。レシートとタグはお持ちでしょうか？",
+              "reading": "かしこまりました。れしーととたぐはおもちでしょうか？",
+              "romaji": "Kashikomarimashita. Reshiito to tagu wa omochi deshou ka?",
+              "en": "Certainly. Do you have the receipt and tag with you?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "rt2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "はい、こちらです。MサイズからLサイズに変えられますか？",
+        "reading": "はい、こちらです。えむさいずからえるさいずにかえられますか？",
+        "romaji": "Hai, kochira desu. Emu saizu kara eru saizu ni kaeraremasu ka?",
+        "en": "Yes, here they are. Can I change from size M to size L?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-rt2-1",
+            "ja": "はい、こちらです。MサイズからLサイズに変えられますか？",
+            "reading": "はい、こちらです。えむさいずからえるさいずにかえられますか？",
+            "romaji": "Hai, kochira desu. Emu saizu kara eru saizu ni kaeraremasu ka?",
+            "en": "Yes, here they are. Can I change from size M to size L?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Uses potential verb 変えられる (kaerareru) to ask if an exchange is possible.",
+            "reaction": {
+              "speaker": "Clerk",
+              "speakerJa": "店員",
+              "ja": "確認いたしますね。はい、Lサイズの在庫がございますので、交換いたします！",
+              "reading": "かくにんいたしますね。はい、えるさいずのざいこがございますので、こうかんいたします！",
+              "romaji": "Kakunin itashimasu ne. Hai, eru saizu no zaiko ga gozaimasu no de, koukan itashimasu!",
+              "en": "Let me check. Yes, we have size L in stock, so I will exchange it for you!"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n4-neighbor",
+    "title": "Asking a Neighbor About Trash Sorting",
+    "titleJa": "近所の人にごみ出しのルールを聞く",
+    "level": "N4",
+    "category": "Daily Life",
+    "description": "You recently moved into an apartment in Japan. Ask your neighbor which day burnable trash is collected.",
+    "keyPhrases": [
+      {
+        "id": "phrase-trash-1",
+        "front": "燃えるごみの日はいつですか？",
+        "reading": "もえるごみのひはいつですか？",
+        "romaji": "moeru gomi no hi wa itsu desu ka?",
+        "answer": "When is the burnable trash day?",
+        "notes": "Essential neighborhood vocabulary."
+      },
+      {
+        "id": "phrase-trash-2",
+        "front": "火曜日と金曜日の朝です",
+        "reading": "かようびときんようびのあさです",
+        "romaji": "kayoubi to kinyoubi no asa desu",
+        "answer": "It is Tuesday and Friday mornings.",
+        "notes": "Days of the week collection schedule."
+      }
+    ],
+    "lines": [
+      {
+        "id": "nb1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "すみません、隣に引っ越してきた者ですが、ごみの捨て方を教えていただけますか？",
+        "reading": "すみません、となりにひっこしてきたものですが、ごみのすてかたをおしえていただけますか？",
+        "romaji": "Sumimasen, tonari ni hikkoshite kita mono desu ga, gomi no sutekata o oshiete itadakemasu ka?",
+        "en": "Excuse me, I just moved in next door. Could you teach me how trash disposal works here?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-nb1-1",
+            "ja": "すみません、隣に引っ越してきた者ですが、ごみの捨て方を教えていただけますか？",
+            "reading": "すみません、となりにひっこしてきたものですが、ごみのすてかたをおしえていただけますか？",
+            "romaji": "Sumimasen, tonari ni hikkoshite kita mono desu ga, gomi no sutekata o oshiete itadakemasu ka?",
+            "en": "Excuse me, I just moved in next door. Could you teach me how to dispose of trash?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Introduces yourself modestly (引っ越してきた者) and asks politely using 〜方 (way of doing).",
+            "reaction": {
+              "speaker": "Neighbor",
+              "speakerJa": "隣人",
+              "ja": "ああ、いらっしゃい！燃えるごみは火曜日と金曜日の朝8時までに出すんですよ。",
+              "reading": "ああ、いらっしゃい！もえるごみはかようびときんようびのあさはちじまでにだすんですよ。",
+              "romaji": "Aa, irasshai! Moeru gomi wa kayoubi to kinyoubi no asa hachiji made ni dasu n desu yo.",
+              "en": "Ah, welcome! Burnable trash goes out by 8:00 AM on Tuesdays and Fridays."
+            }
+          }
+        ]
+      },
+      {
+        "id": "nb2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "火曜日と金曜日ですね。ペットボトルはどうすればいいですか？",
+        "reading": "かようびときんようびですね。ぺっとぼとるはどうすればいいですか？",
+        "romaji": "Kayoubi to kinyoubi desu ne. Pettobotoru wa dou sureba ii desu ka?",
+        "en": "Tuesday and Friday, got it. What should I do with plastic bottles?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-nb2-1",
+            "ja": "火曜日と金曜日ですね。ペットボトルはどうすればいいですか？",
+            "reading": "かようびときんようびですね。ぺっとぼとるはどうすればいいですか？",
+            "romaji": "Kayoubi to kinyoubi desu ne. Pettobotoru wa dou sureba ii desu ka?",
+            "en": "Tuesday and Friday, got it. What should I do with plastic PET bottles?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "〜どうすればいいですか is the ideal N4 pattern for asking what action should be taken.",
+            "reaction": {
+              "speaker": "Neighbor",
+              "speakerJa": "隣人",
+              "ja": "ラベルとキャップを外して、水曜日に洗って出してくださいね。",
+              "reading": "らべるときゃっぷをはずして、すいようびにあらってだしてくださいね。",
+              "romaji": "Raberu to kyappu o hazushite, suiyoubi ni aratte dashite kudasai ne.",
+              "en": "Remove the label and cap, rinse them, and put them out on Wednesdays."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n4-invite",
+    "title": "Inviting a Friend to Dinner",
+    "titleJa": "友達をご飯に誘う",
+    "level": "N4",
+    "category": "Social",
+    "description": "Invite a classmate or colleague to go get sushi together this Friday evening.",
+    "keyPhrases": [
+      {
+        "id": "phrase-invite-1",
+        "front": "今週の金曜日、空いていますか？",
+        "reading": "こんしゅうのきんようび、あいていますか？",
+        "romaji": "konshuu no kinyoubi, aiteimasu ka?",
+        "answer": "Are you free this Friday?",
+        "notes": "Checking someone's schedule politely."
+      },
+      {
+        "id": "phrase-invite-2",
+        "front": "一緒にお寿司を食べに行きませんか？",
+        "reading": "いっしょにおすしをたべにいきませんか？",
+        "romaji": "issho ni osushi o tabe ni ikimasen ka?",
+        "answer": "Would you like to go eat sushi together?",
+        "notes": "〜に行きませんか invitation pattern."
+      }
+    ],
+    "lines": [
+      {
+        "id": "iv1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "佐藤さん、今週の金曜日の夜は時間がありますか？",
+        "reading": "さとうさん、こんしゅうのきんようびのよるはじかんがありますか？",
+        "romaji": "Satou-san, konshuu no kinyoubi no yoru wa jikan ga arimasu ka?",
+        "en": "Sato-san, do you have time this Friday evening?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-iv1-1",
+            "ja": "佐藤さん、今週の金曜日の夜は時間がありますか？",
+            "reading": "さとうさん、こんしゅうのきんようびのよるはじかんがありますか？",
+            "romaji": "Satou-san, konshuu no kinyoubi no yoru wa jikan ga arimasu ka?",
+            "en": "Sato-san, do you have time this Friday night?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Checking schedule first before springing an invitation is considerate Japanese etiquette.",
+            "reaction": {
+              "speaker": "Sato",
+              "speakerJa": "佐藤",
+              "ja": "金曜日の夜ですか？ええ、特に予定はありませんよ。何かありますか？",
+              "reading": "きんようびのよるですか？ええ、とくによていはありませんよ。なにかありますか？",
+              "romaji": "Kinyoubi no yoru desu ka? Ee, toku ni yotei wa arimasen yo. Nanika arimasu ka?",
+              "en": "Friday night? Yes, I don't have any particular plans. What's up?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "iv2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "駅前に新しい回転寿司ができたので、一緒に行きませんか？",
+        "reading": "えきまえにあたらしいかいてんずしができたので、いっしょにいきませんか？",
+        "romaji": "Ekimae ni atarashii kaitenzushi ga dekita no de, issho ni ikimasen ka?",
+        "en": "A new conveyor belt sushi opened in front of the station, would you like to go together?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-iv2-1",
+            "ja": "駅前に新しい回転寿司ができたので、一緒に行きませんか？",
+            "reading": "えきまえにあたらしいかいてんずしができたので、いっしょにいきませんか？",
+            "romaji": "Ekimae ni atarashii kaitenzushi ga dekita no de, issho ni ikimasen ka?",
+            "en": "Since a new conveyor sushi opened in front of the station, won't you go with me?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Gives a compelling reason with 〜ので, followed by the classic invitation 〜ませんか.",
+            "reaction": {
+              "speaker": "Sato",
+              "speakerJa": "佐藤",
+              "ja": "いいですね！お寿司大好きです。ぜひ行きましょう！7時でどうですか？",
+              "reading": "いいですね！おすしだいすきです。ぜひいきましょう！しちじでどうですか？",
+              "romaji": "Ii desu ne! Osushi daisuki desu. Zehi ikimashou! Shichiji de dou desu ka?",
+              "en": "Sounds great! I love sushi. Let's definitely go! How about 7:00 PM?"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n4-koban",
+    "title": "Reporting Lost Property at a Police Box",
+    "titleJa": "交番で落とし物の届出",
+    "level": "N4",
+    "category": "Services",
+    "description": "You forgot your wallet on the train or at a bench. File a lost item report at the neighborhood kōban.",
+    "keyPhrases": [
+      {
+        "id": "phrase-koban-1",
+        "front": "財布を落としてしまいました",
+        "reading": "さいふをおとしてしまいました",
+        "romaji": "saifu o otoshite shimaimashita",
+        "answer": "I accidentally dropped/lost my wallet.",
+        "notes": "〜てしまう expressing regretful mishap."
+      },
+      {
+        "id": "phrase-koban-2",
+        "front": "中にクレジットカードが入っています",
+        "reading": "なかにつれじっとかーどがはいっています",
+        "romaji": "naka ni kurejitto kaado ga haitteimasu",
+        "answer": "Inside there is a credit card.",
+        "notes": "Describing state with 〜が入っています."
+      }
+    ],
+    "lines": [
+      {
+        "id": "kb1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "すみません、財布を落としてしまったのですが、届いていませんか？",
+        "reading": "すみません、さいふをおとしてしまったのですが、とどいていませんか？",
+        "romaji": "Sumimasen, saifu o otoshite shimatta no desu ga, todoiteimasen ka?",
+        "en": "Excuse me, I lost my wallet, has it been turned in here?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-kb1-1",
+            "ja": "すみません、財布を落としてしまったのですが、届いていませんか？",
+            "reading": "すみません、さいふをおとしてしまったのですが、とどいていませんか？",
+            "romaji": "Sumimasen, saifu o otoshite shimatta no desu ga, todoiteimasen ka?",
+            "en": "Excuse me, I've lost my wallet, has one been handed in?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Natural N4 phrasing: 落としてしまった (regrettable accident) + 届いていませんか (has it reached you).",
+            "reaction": {
+              "speaker": "Police Officer",
+              "speakerJa": "警察官",
+              "ja": "財布ですね。いつ頃、どこでなくしましたか？どんな色や形ですか？",
+              "reading": "さいふですね。いつごろ、どこでなくしましたか？どんないろやかたちですか？",
+              "romaji": "Saifu desu ne. Itsu goro, doko de nakushimashita ka? Donna iro ya katachi desu ka?",
+              "en": "A wallet. Around when and where did you lose it? What color and shape is it?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "kb2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "1時間ほど前に駅のベンチでなくしました。黒い革の二つ折り財布です。",
+        "reading": "いちじかんほどまえにえきのべんちでなくしました。くろいかわのふたつおりさいふです。",
+        "romaji": "Ichijikan hodo mae ni eki no benchi de nakushimashita. Kuroi kawa no futatsuori saifu desu.",
+        "en": "About an hour ago at the station bench. It's a black leather bi-fold wallet.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-kb2-1",
+            "ja": "1時間ほど前に駅のベンチでなくしました。黒い革の二つ折り財布です。",
+            "reading": "いちじかんほどまえにえきのべんちでなくしました。くろいかわのふたつおりさいふです。",
+            "romaji": "Ichijikan hodo mae ni eki no benchi de nakushimashita. Kuroi kawa no futatsuori saifu desu.",
+            "en": "About an hour ago at a station bench. It's a black leather bi-fold wallet.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Gives time (〜ほど前に), location, color (黒い), material (革), and style (二つ折り).",
+            "reaction": {
+              "speaker": "Police Officer",
+              "speakerJa": "警察官",
+              "ja": "確認しますね…あ、先ほど駅員さんから届けられた財布と一致します！身分証明書を見せていただけますか？",
+              "reading": "かくにんしますね…あ、さきほどえきいんさんからとどけられたさいふといっちします！みぶんしょうめいしょをみせていただけますか？",
+              "romaji": "Kakunin shimasu ne... A, sakihodo ekiin-san kara todokerareta saifu to itchi shimasu! Mibun shoumeisho o misete itadakemasu ka?",
+              "en": "Let me check... Ah, it matches a wallet brought in by station staff just a moment ago! May I see your ID?"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n4-clothing",
+    "title": "Trying on Clothes at a Boutique",
+    "titleJa": "服屋での試着とサイズ相談",
+    "level": "N4",
+    "category": "Shopping",
+    "description": "Try on a jacket in the fitting room and ask if they have another color or size.",
+    "keyPhrases": [
+      {
+        "id": "phrase-cloth-1",
+        "front": "試着してもいいですか？",
+        "reading": "しちゃくしてもいいですか？",
+        "romaji": "shichaku shite mo ii desu ka?",
+        "answer": "May I try this on?",
+        "notes": "〜てもいいですか asking permission."
+      },
+      {
+        "id": "phrase-cloth-2",
+        "front": "別の色はありますか？",
+        "reading": "べつのいろはありますか？",
+        "romaji": "betsu no iro wa arimasu ka?",
+        "answer": "Do you have another color?",
+        "notes": "Asking for variations."
+      }
+    ],
+    "lines": [
+      {
+        "id": "ct1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "すみません、このジャケットを試着してもいいですか？",
+        "reading": "すみません、このじゃけっとをしちゃくしてもいいですか？",
+        "romaji": "Sumimasen, kono jaketto o shichaku shite mo ii desu ka?",
+        "en": "Excuse me, may I try on this jacket?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-ct1-1",
+            "ja": "すみません、このジャケットを試着してもいいですか？",
+            "reading": "すみません、このじゃけっとをしちゃくしてもいいですか？",
+            "romaji": "Sumimasen, kono jaketto o shichaku shite mo ii desu ka?",
+            "en": "Excuse me, may I try on this jacket?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "試着 (shichaku = trying on clothes) + 〜てもいいですか (may I).",
+            "reaction": {
+              "speaker": "Clerk",
+              "speakerJa": "店員",
+              "ja": "もちろんです！試着室はあちらになります。ご案内いたします。",
+              "reading": "もちろんです！しちゃくしつはあちらになります。ごあんないいたします。",
+              "romaji": "Mochiron desu! Shichakushitsu wa achira ni narimasu. Goannai itashimasu.",
+              "en": "Of course! The fitting rooms are over that way. Allow me to guide you."
+            }
+          }
+        ]
+      },
+      {
+        "id": "ct2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "少し小さいようです。もう一つ大きいサイズはありますか？",
+        "reading": "すこしちいさいようです。もうひとつおおきいさいずはありますか？",
+        "romaji": "Sukoshi chiisai you desu. Mou hitotsu ookii saizu wa arimasu ka?",
+        "en": "It seems a bit small. Do you have one size larger?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-ct2-1",
+            "ja": "少し小さいようです。もう一つ大きいサイズはありますか？",
+            "reading": "すこしちいさいようです。もうひとつおおきいさいずはありますか？",
+            "romaji": "Sukoshi chiisai you desu. Mou hitotsu ookii saizu wa arimasu ka?",
+            "en": "It appears a bit small. Do you have one size larger?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "〜ようです expresses modest observation; もう一つ大きい asks for one size larger.",
+            "reaction": {
+              "speaker": "Clerk",
+              "speakerJa": "店員",
+              "ja": "かしこまりました。ワンサイズ上のLサイズをお持ちいたしますね。",
+              "reading": "かしこまりました。わんさいずうえのえるさいずをおもちいたしますね。",
+              "romaji": "Kashikomarimashita. Wansaizu ue no eru saizu o omochi itashimasu ne.",
+              "en": "Certainly. I will bring you one size up (L)."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n4-takeout-phone",
+    "title": "Ordering Takeout on the Phone",
+    "titleJa": "電話でのテイクアウト注文",
+    "level": "N4",
+    "category": "Dining",
+    "description": "Call a local pizza or bento shop, place your takeout order, and agree on a pickup time.",
+    "keyPhrases": [
+      {
+        "id": "phrase-phone-1",
+        "front": "持ち帰りの予約をしたいのですが",
+        "reading": "もちかえりのよやくをしたいのですが",
+        "romaji": "mochikaeri no yoyaku o shitai no desu ga",
+        "answer": "I would like to place a takeout order...",
+        "notes": "Opening telephone request."
+      },
+      {
+        "id": "phrase-phone-2",
+        "front": "何時頃に取りに来られますか？",
+        "reading": "なんじごろにとりにこられますか？",
+        "romaji": "nanji goro ni tori ni koraremasu ka?",
+        "answer": "Around what time can you come pick it up?",
+        "notes": "Pickup coordination."
+      }
+    ],
+    "lines": [
+      {
+        "id": "tp1",
+        "speaker": "other",
+        "speakerName": "Pizzeria Staff",
+        "speakerNameJa": "店員",
+        "ja": "お電話ありがとうございます！ピッツァ・ローマでございます。",
+        "reading": "おでんわありがとうございます！ぴっつぁ・ろーまでございます。",
+        "romaji": "Odenwa arigatou gozaimasu! Pittsa Rooma de gozaimasu.",
+        "en": "Thank you for calling! This is Pizza Roma.",
+        "politeness": "keigo"
+      },
+      {
+        "id": "tp2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "もしもし、テイクアウトの注文をお願いしたいのですが。",
+        "reading": "もしもし、ていくあうとのちゅうもんをおねがいしたいのですが。",
+        "romaji": "Moshimoshi, teikuauto no chuumon o onegai shitai no desu ga.",
+        "en": "Hello, I would like to place an order for takeout.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-tp2-1",
+            "ja": "もしもし、テイクアウトの注文をお願いしたいのですが。",
+            "reading": "もしもし、ていくあうとのちゅうもんをおねがいしたいのですが。",
+            "romaji": "Moshimoshi, teikuauto no chuumon o onegai shitai no desu ga.",
+            "en": "Hello, I would like to make a takeout order.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "もしもし opens phone calls; 〜をお願いしたいのですが states the goal politely.",
+            "reaction": {
+              "speaker": "Pizzeria Staff",
+              "speakerJa": "店員",
+              "ja": "ご注文ありがとうございます！ご注文の品をお伺いいたします。",
+              "reading": "ごちゅうもんありがとうございます！ごちゅうもんのしなをおうかがいいたします。",
+              "romaji": "Gochuumon arigatou gozaimasu! Gochuumon no shina o oukagai itashimasu.",
+              "en": "Thank you! May I take your order items?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tp3",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "マルゲリータピザを1枚お願いします。30分後に取りに行きます。",
+        "reading": "まるげりーたぴざをいちまいおねがいします。さんじっぷんごにとりにいきます。",
+        "romaji": "Marugeriita piza o ichimai onegaishimasu. Sanjippun go ni tori ni ikimasu.",
+        "en": "One Margherita pizza, please. I will come pick it up in 30 minutes.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-tp3-1",
+            "ja": "マルゲリータピザを1枚お願いします。30分後に取りに行きます。",
+            "reading": "まるげりーたぴざをいちまいおねがいします。さんじっぷんごにとりにいきます。",
+            "romaji": "Marugeriita piza o ichimai onegaishimasu. Sanjippun go ni tori ni ikimasu.",
+            "en": "One Margherita pizza please. I'll pick it up in 30 minutes.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "取りに行く (go to pick up) + 〜分後 (in X minutes).",
+            "reaction": {
+              "speaker": "Pizzeria Staff",
+              "speakerJa": "店員",
+              "ja": "かしこまりました。30分後に焼き立てをご用意してお待ちしております！お名前とお電話番号をどうぞ。",
+              "reading": "かしこまりました。さんじっぷんごにやきたてをごよういしておまちしております！おなまえとおでんわばんごうをどうぞ。",
+              "romaji": "Kashikomarimashita. Sanjippun go ni yakitate o goyoui shite omachi shite orimasu! Onamae to odenwa bangou o douzo.",
+              "en": "Understood. We will have it freshly baked for you in 30 minutes! May I have your name and phone number?"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n4-haircut",
+    "title": "Getting a Haircut at a Salon",
+    "titleJa": "美容室でのオーダー",
+    "level": "N4",
+    "category": "Services",
+    "description": "Explain how short you want your hair cut and whether you want your bangs trimmed.",
+    "keyPhrases": [
+      {
+        "id": "phrase-hair-1",
+        "front": "全体的に少し短くしてください",
+        "reading": "ぜんたいてきにすこしみじかくしてください",
+        "romaji": "zentaiteki ni sukoshi mijikaku shite kudasai",
+        "answer": "Please make it a bit shorter all over.",
+        "notes": "Specifying overall haircut length."
+      },
+      {
+        "id": "phrase-hair-2",
+        "front": "前髪は眉毛くらいで",
+        "reading": "まえがみはまゆげくらいで",
+        "romaji": "maegami wa mayuge kurai de",
+        "answer": "Bangs around eyebrow level.",
+        "notes": "Reference points on face for styling."
+      }
+    ],
+    "lines": [
+      {
+        "id": "hc1",
+        "speaker": "other",
+        "speakerName": "Stylist",
+        "speakerNameJa": "美容師",
+        "ja": "こんにちは！今日はどのような髪型になさいますか？",
+        "reading": "こんにちは！きょうはどのようなかみがたになさいますか？",
+        "romaji": "Konnichiwa! Kyou wa dono you na kamigata ni nasaimasu ka?",
+        "en": "Hello! What kind of hairstyle would you like today?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "hc2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "全体的に3センチくらい切って、すいて軽くしてください。",
+        "reading": "ぜんたいてきにさんせんちくらいきって、すいてかるくしてください。",
+        "romaji": "Zentaiteki ni san-senchi kurai kitte, suite karuku shite kudasai.",
+        "en": "Cut about 3 centimeters all over, and thin it out to make it lighter.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-hc2-1",
+            "ja": "全体的に3センチくらい切って、すいて軽くしてください。",
+            "reading": "ぜんたいてきにさんせんちくらいきって、すいてかるくしてください。",
+            "romaji": "Zentaiteki ni san-senchi kurai kitte, suite karuku shite kudasai.",
+            "en": "Cut about 3 cm all over, and thin it out to lighten it.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "すく (suku = to thin hair) and 軽くする (make lighter) are authentic Japanese salon requests.",
+            "reaction": {
+              "speaker": "Stylist",
+              "speakerJa": "美容師",
+              "ja": "分かりました！前髪の長さはどうしましょうか？",
+              "reading": "わかりました！まえがみのながさはどうしましょうか？",
+              "romaji": "Wakarimashita! Maegami no nagasa wa dou shimashou ka?",
+              "en": "Got it! How about the length of your bangs?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "hc3",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "前髪は目にかからないくらいでお願いします。",
+        "reading": "まえがみはめにかからないくらいでおねがいします。",
+        "romaji": "Maegami wa me ni kakaranai kurai de onegaishimasu.",
+        "en": "Just above the eyes so they don't cover my eyes, please.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-hc3-1",
+            "ja": "前髪は目にかからないくらいでお願いします。",
+            "reading": "まえがみはめにかからないくらいでおねがいします。",
+            "romaji": "Maegami wa me ni kakaranai kurai de onegaishimasu.",
+            "en": "Not covering my eyes, please.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Negative potential form かからない specifies boundary cleanly.",
+            "reaction": {
+              "speaker": "Stylist",
+              "speakerJa": "美容師",
+              "ja": "かしこまりました。ではシャンプー台へどうぞ！",
+              "reading": "かしこまりました。ではしゃんぷーだいへどうぞ！",
+              "romaji": "Kashikomarimashita. Dewa shanpuu-dai e douzo!",
+              "en": "Understood. Then right this way to the shampoo basin!"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n4-apology-late",
+    "title": "Apologizing for Being Late",
+    "titleJa": "待ち合わせに遅刻する連絡",
+    "level": "N4",
+    "category": "Workplace",
+    "description": "The train was delayed due to an accident. Call or text your colleague to apologize and give your estimated arrival time.",
+    "keyPhrases": [
+      {
+        "id": "phrase-late-1",
+        "front": "電車が遅れていて、遅れそうです",
+        "reading": "でんしゃがおくれていて、おくれそうです",
+        "romaji": "densha ga okurete ite, okuresou desu",
+        "answer": "The train is delayed, so I'm likely to be late.",
+        "notes": "〜そうです expressing likelihood."
+      },
+      {
+        "id": "phrase-late-2",
+        "front": "申し訳ありません",
+        "reading": "もうしわけありません",
+        "romaji": "moushiwake arimasen",
+        "answer": "I am deeply sorry / there is no excuse.",
+        "notes": "Formal apology."
+      }
+    ],
+    "lines": [
+      {
+        "id": "al1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "もしもし山田さん、大変申し訳ありません。電車が事故で止まってしまいました。",
+        "reading": "もしもしやまださん、たいへんもうしわけありません。でんしゃがじこでとまってしまいました。",
+        "romaji": "Moshimoshi Yamada-san, taihen moushiwake arimasen. Densha ga jiko de tomatte shimaimashita.",
+        "en": "Hello Yamada-san, I am very sorry. The train has stopped due to an accident.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-al1-1",
+            "ja": "もしもし山田さん、大変申し訳ありません。電車が事故で止まってしまいました。",
+            "reading": "もしもしやまださん、たいへんもうしわけありません。でんしゃがじこでとまってしまいました。",
+            "romaji": "Moshimoshi Yamada-san, taihen moushiwake arimasen. Densha ga jiko de tomatte shimaimashita.",
+            "en": "Hello Yamada-san, I'm very sorry. My train stopped due to an accident.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "States apology upfront (大変申し訳ありません) and explains the uncontrollable cause.",
+            "reaction": {
+              "speaker": "Yamada",
+              "speakerJa": "山田",
+              "ja": "そうなんですね、大丈夫ですよ！どれくらい遅れそうですか？",
+              "reading": "そうなんですね、だいじょうぶですよ！どれくらいおくれそうですか？",
+              "romaji": "Sou nan desu ne, daijoubu desu yo! Dore kurai okuresou desu ka?",
+              "en": "Is that so, don't worry! About how late do you think you will be?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "al2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "15分ほど遅れそうです。急いで向かいます。",
+        "reading": "じゅうごふんほどおくれそうです。いそいでむかいます。",
+        "romaji": "Juugofun hodo okuresou desu. Isoide mukaimasu.",
+        "en": "I look to be about 15 minutes late. I will head over as quickly as I can.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-al2-1",
+            "ja": "15分ほど遅れそうです。急いで向かいます。",
+            "reading": "じゅうごふんほどおくれそうです。いそいでむかいます。",
+            "romaji": "Juugofun hodo okuresou desu. Isoide mukaimasu.",
+            "en": "I'll be about 15 minutes late. I will hurry over.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "〜そうです shows estimate; 急いで向かいます shows diligence and respect for the other person's time.",
+            "reaction": {
+              "speaker": "Yamada",
+              "speakerJa": "山田",
+              "ja": "焦らなくていいですからね。気をつけて来てください。",
+              "reading": "あせらなくていいですからね。きをつけてきてください。",
+              "romaji": "Aseranakute ii desu kara ne. Ki o tsukete kite kudasai.",
+              "en": "No need to rush. Please come safely."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n4-repeat-slow",
+    "title": "Asking Someone to Speak Slower",
+    "titleJa": "ゆっくり話してもらうお願い",
+    "level": "N4",
+    "category": "Daily Life",
+    "description": "When Japanese is spoken too fast, ask politely to slow down and clarify a word.",
+    "keyPhrases": [
+      {
+        "id": "phrase-slow-1",
+        "front": "もう少しゆっくり話していただけますか？",
+        "reading": "もうすこしゆっくりはなしていただけますか？",
+        "romaji": "mou sukoshi yukkuri hanashite itadakemasu ka?",
+        "answer": "Could you speak a little slower?",
+        "notes": "Essential learner survival request."
+      },
+      {
+        "id": "phrase-slow-2",
+        "front": "それはどういう意味ですか？",
+        "reading": "それはどういういみですか？",
+        "romaji": "sore wa dou iu imi desu ka?",
+        "answer": "What does that mean?",
+        "notes": "Asking for meaning/definition."
+      }
+    ],
+    "lines": [
+      {
+        "id": "rs1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "すみません、日本語を勉強中なので、もう少しゆっくり話していただけますか？",
+        "reading": "すみません、にほんごをべんきょうちゅうなので、もうすこしゆっくりはなしていただけますか？",
+        "romaji": "Sumimasen, nihongo o benkyouchuu na no de, mou sukoshi yukkuri hanashite itadakemasu ka?",
+        "en": "Excuse me, I am currently studying Japanese, so could you speak a little more slowly?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-rs1-1",
+            "ja": "すみません、日本語を勉強中なので、もう少しゆっくり話していただけますか？",
+            "reading": "すみません、にほんごをべんきょうちゅうなので、もうすこしゆっくりはなしていただけますか？",
+            "romaji": "Sumimasen, nihongo o benkyouchuu na no de, mou sukoshi yukkuri hanashite itadakemasu ka?",
+            "en": "Excuse me, since I am learning Japanese, could you speak a bit slower?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Explains you are studying (勉強中なので) so the speaker gladly adjusts their pacing.",
+            "reaction": {
+              "speaker": "Native Speaker",
+              "speakerJa": "日本人",
+              "ja": "あ、ごめんなさい！早口でしたね。これで分かりますか？",
+              "reading": "あ、ごめんなさい！はやくちでしたね。これでわかりますか？",
+              "romaji": "A, gomen nasai! Hayakuchi deshita ne. Kore de wakarimasu ka?",
+              "en": "Oh, I'm sorry! I was speaking fast. Is this pacing better?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "rs2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "はい、よく分かります。ありがとうございます！",
+        "reading": "はい、よくわかります。ありがとうございます！",
+        "romaji": "Hai, yoku wakarimasu. Arigatou gozaimasu!",
+        "en": "Yes, I understand well now. Thank you!",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-rs2-1",
+            "ja": "はい、よく分かります。ありがとうございます！",
+            "reading": "はい、よくわかります。ありがとうございます！",
+            "romaji": "Hai, yoku wakarimasu. Arigatou gozaimasu!",
+            "en": "Yes, I understand well. Thank you!",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Expresses cheerful appreciation.",
+            "reaction": {
+              "speaker": "Native Speaker",
+              "speakerJa": "日本人",
+              "ja": "分からない言葉があったら、いつでも何でも聞いてくださいね！",
+              "reading": "わからないことばがあったら、いつでもなんでもきいてくださいね！",
+              "romaji": "Wakaranai kotoba ga attara, itsudemo nandemo kiite kudasai ne!",
+              "en": "If there's any word you don't know, ask me anything anytime!"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3-apartment",
+    "title": "Apartment Rental Inquiry",
+    "titleJa": "不動産屋での部屋探し",
+    "level": "N3",
+    "category": "Services",
+    "description": "Visit a real estate agency in Tokyo. Specify your rent budget, distance from station, and layout preferences.",
+    "keyPhrases": [
+      {
+        "id": "phrase-apt-1",
+        "front": "家賃は管理費込みで8万円以内",
+        "reading": "やちんはかんりひこみではちまんえんいない",
+        "romaji": "yachin wa kanrihi-komi de hachiman-en inai",
+        "answer": "Rent within 80,000 yen including management fees.",
+        "notes": "Budget specification."
+      },
+      {
+        "id": "phrase-apt-2",
+        "front": "駅から徒歩10分以内が希望です",
+        "reading": "えきからとほじゅっぷんいないがきぼうです",
+        "romaji": "eki kara toho juppun inai ga kibou desu",
+        "answer": "Prefer within a 10-minute walk from the station.",
+        "notes": "Commute constraints."
+      },
+      {
+        "id": "phrase-apt-3",
+        "front": "内見は可能ですか？",
+        "reading": "ないけんはかのうですか？",
+        "romaji": "naiken wa kanou desu ka?",
+        "answer": "Is a room viewing possible?",
+        "notes": "Viewing an apartment in person."
+      }
+    ],
+    "lines": [
+      {
+        "id": "ap1",
+        "speaker": "other",
+        "speakerName": "Agent",
+        "speakerNameJa": "不動産業者",
+        "ja": "いらっしゃいませ！本日のお部屋探しのご希望条件をお伺いできますか？",
+        "reading": "いらっしゃいませ！ほんじつのおへやさがしのごきぼうじょうけんをおうかがいできますか？",
+        "romaji": "Irasshaimase! Honjitsu no oheyasagashi no gokibou jouken o oukagai dekimasu ka?",
+        "en": "Welcome! May I hear your desired conditions for an apartment search today?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "ap2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "家賃は管理費込みで8万円以内、駅から徒歩10分以内の1Kを探しています。",
+        "reading": "やちんはかんりひこみではちまんえんいない、えきからとほじゅっぷんいないのわんけーをさがしています。",
+        "romaji": "Yachin wa kanrihi-komi de hachiman-en inai, eki kara toho juppun inai no wan-kee o sagashiteimasu.",
+        "en": "I'm looking for a 1K within 80,000 yen including management fee, within 10 minutes walk from the station.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-ap2-1",
+            "ja": "家賃は管理費込みで8万円以内、駅から徒歩10分以内の1Kを探しています。",
+            "reading": "やちんはかんりひこみではちまんえんいない、えきからとほじゅっぷんいないのわんけーをさがしています。",
+            "romaji": "Yachin wa kanrihi-komi de hachiman-en inai, eki kara toho juppun inai no wan-kee o sagashiteimasu.",
+            "en": "Looking for a 1K under 80k yen with management fee included, within 10 min walk.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Natural N3 housing vocabulary: 管理費込み (fee included), 徒歩〜分以内 (within X min walk), 1K layout.",
+            "reaction": {
+              "speaker": "Agent",
+              "speakerJa": "不動産業者",
+              "ja": "かしこまりました。2階以上やオートロックなどの設備面はいかがですか？",
+              "reading": "かしこまりました。にかいいじょうやおーとろっくなどのせつびめんはいかがですか？",
+              "romaji": "Kashikomarimashita. Nikai ijou ya ootorokku nado no setsubimen wa ikaga desu ka?",
+              "en": "Understood. How about facilities like 2nd floor or above, and auto-locking entrance?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ap3",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "防犯のために2階以上で、できればバストイレ別が良いです。今日内見できますか？",
+        "reading": "ぼうはんのためににかいいじょうで、できればばすといれべつがよいです。きょうないけんできますか？",
+        "romaji": "Bouhan no tame ni nikai ijou de, dekireba basu toire betsu ga yoi desu. Kyou naiken dekimasu ka?",
+        "en": "For safety, 2nd floor or higher, and separate bath and toilet if possible. Can I view it today?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-ap3-1",
+            "ja": "防犯のために2階以上で、できればバストイレ別が良いです。今日内見できますか？",
+            "reading": "ぼうはんのためににかいいじょうで、できればばすといれべつがよいです。きょうないけんできますか？",
+            "romaji": "Bouhan no tame ni nikai ijou de, dekireba basu toire betsu ga yoi desu. Kyou naiken dekimasu ka?",
+            "en": "2nd floor for security, separate bath/toilet if possible. Can we do a viewing today?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "バストイレ別 (separate bath and toilet) and 内見 (apartment viewing) are standard real estate terms.",
+            "reaction": {
+              "speaker": "Agent",
+              "speakerJa": "不動産業者",
+              "ja": "ちょうど良い物件が2件ございます！今からすぐ車でご案内できますよ。",
+              "reading": "ちょうどよいぶっけんがにけんございます！いまからすぐくるまでごあんないできますよ。",
+              "romaji": "Choudo yoi bukken ga niken gozaimasu! Ima kara sugu kuruma de goannai dekimasu yo.",
+              "en": "We have two matching properties! I can take you by car to see them right away."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3-bank",
+    "title": "Opening a Bank Account",
+    "titleJa": "銀行口座の開設",
+    "level": "N3",
+    "category": "Services",
+    "description": "Open an ordinary savings account (普通預金口座) at a Japanese bank and register your inkan/signature.",
+    "keyPhrases": [
+      {
+        "id": "phrase-bank-1",
+        "front": "普通預金口座を開設したいのですが",
+        "reading": "ふつうよきんこうざをかいせつしたいのですが",
+        "romaji": "futsuu yokin kouza o kaisetsu shitai no desu ga",
+        "answer": "I would like to open a standard savings account.",
+        "notes": "Official banking terms."
+      },
+      {
+        "id": "phrase-bank-2",
+        "front": "在留カードと印鑑はお持ちですか？",
+        "reading": "ざいりゅうかーどといんかんはおもちですか？",
+        "romaji": "zairyuu kaado to inkan wa omochi desu ka?",
+        "answer": "Do you have your Residence Card and seal?",
+        "notes": "Documentation verification."
+      }
+    ],
+    "lines": [
+      {
+        "id": "bk1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "口座の開設をお願いしたいのですが、どのような手続きが必要ですか？",
+        "reading": "こうざのかいせつをおねがいしたいのですが、どのようなてつづきがひつようですか？",
+        "romaji": "Kouza no kaisetsu o onegai shitai no desu ga, dono you na tetsuzuki ga hitsuyou desu ka?",
+        "en": "I would like to open an account; what kind of procedure is required?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-bk1-1",
+            "ja": "口座の開設をお願いしたいのですが、どのような手続きが必要ですか？",
+            "reading": "こうざのかいせつをおねがいしたいのですが、どのようなてつづきがひつようですか？",
+            "romaji": "Kouza no kaisetsu o onegai shitai no desu ga, dono you na tetsuzuki ga hitsuyou desu ka?",
+            "en": "I'd like to open an account; what procedures are needed?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Clear, formal query about administrative procedures (手続き).",
+            "reaction": {
+              "speaker": "Bank Clerk",
+              "speakerJa": "銀行員",
+              "ja": "ご来店ありがとうございます。ご本人様確認書類とご印鑑、またはサインのご登録が必要となります。",
+              "reading": "ごらいてんありがとうございます。ごほんにんさまかくにんしょるいとごいんかん、またはさいんのごとうろくがひつようとなります。",
+              "romaji": "Goraiten arigatou gozaimasu. Gohonnin-sama kakunin shorui to go-inkan, mata wa sain no gotouroku ga hitsuyou to narimasu.",
+              "en": "Thank you for coming. Identity verification documents and your seal or signature registration will be required."
+            }
+          }
+        ]
+      },
+      {
+        "id": "bk2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "在留カードとパスポートを持ってきました。キャッシュカードはいつ届きますか？",
+        "reading": "ざいりゅうかーどとぱすぽーとをもってきました。きゃっしゅかーどはいつとどきますか？",
+        "romaji": "Zairyuu kaado to pasupooto o motte kimashita. Kyasshu kaado wa itsu todokimasu ka?",
+        "en": "I brought my residence card and passport. When will the cash card arrive?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-bk2-1",
+            "ja": "在留カードとパスポートを持ってきました。キャッシュカードはいつ届きますか？",
+            "reading": "ざいりゅうかーどとぱすぽーとをもってきました。きゃっしゅかーどはいつとどきますか？",
+            "romaji": "Zairyuu kaado to pasupooto o motte kimashita. Kyasshu kaado wa itsu todokimasu ka?",
+            "en": "I brought my residence card and passport. When will the ATM card arrive?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Identifies documents brought and asks delivery timeframe for the キャッシュカード (cash card).",
+            "reaction": {
+              "speaker": "Bank Clerk",
+              "speakerJa": "銀行員",
+              "ja": "ありがとうございます。カードは約1週間から10日ほどでご自宅へ書留で郵送されます。",
+              "reading": "ありがとうございます。かーどは約いっしゅうかんからとおかほどでごじたくへかきとめでゆうそうされます。",
+              "romaji": "Arigatou gozaimasu. Kaado wa yaku isshuukan kara tooka hodo de gojitaku e kakitome de yuusou saremasu.",
+              "en": "Thank you. Your card will be sent to your home by registered mail in about a week to 10 days."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3-coworker-weekend",
+    "title": "Casual Chat with a Coworker",
+    "titleJa": "同僚との週末の雑談",
+    "level": "N3",
+    "category": "Social",
+    "description": "Chat with a coworker by the coffee machine on Monday morning about what you did over the weekend.",
+    "keyPhrases": [
+      {
+        "id": "phrase-wknd-1",
+        "front": "週末はどう過ごされましたか？",
+        "reading": "しゅうまつはどうすごされましたか？",
+        "romaji": "shuumatsu wa dou sugosaremashita ka?",
+        "answer": "How did you spend your weekend?",
+        "notes": "Friendly office conversation starter."
+      },
+      {
+        "id": "phrase-wknd-2",
+        "front": "いい気分転換になりました",
+        "reading": "いいきぶんてんかんになりました",
+        "romaji": "ii kibun tenkan ni narimashita",
+        "answer": "It was a nice change of pace / refreshing.",
+        "notes": "Common Japanese idiom for relaxing."
+      }
+    ],
+    "lines": [
+      {
+        "id": "cw1",
+        "speaker": "other",
+        "speakerName": "Tanaka",
+        "speakerNameJa": "田中",
+        "ja": "おはようございます！週末は天気が良かったですね。何かどこかへ出かけましたか？",
+        "reading": "おはようございます！しゅうまつはてんきがよかったですね。なにかどこかへでかけましたか？",
+        "romaji": "Ohayou gozaimasu! Shuumatsu wa tenki ga yokatta desu ne. Nanika dokoka e dekakemashita ka?",
+        "en": "Good morning! The weather was great this weekend. Did you head out anywhere?",
+        "politeness": "polite"
+      },
+      {
+        "id": "cw2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "鎌倉へ行ってきました。大仏を見て海沿いを散歩して、いい気分転換になりましたよ。",
+        "reading": "かまくらへいってきました。だいぶつをみてうみぞいをさんぽして、いいきぶんてんかんになりましたよ。",
+        "romaji": "Kamakura e itte kimashita. Daibutsu o mite umizoi o sanpo shite, ii kibun tenkan ni narimashita yo.",
+        "en": "I went to Kamakura. I saw the Great Buddha and strolled along the coast; it was a wonderful refresher.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-cw2-1",
+            "ja": "鎌倉へ行ってきました。大仏を見て海沿いを散歩して、いい気分転換になりましたよ。",
+            "reading": "かまくらへいってきました。だいぶつをみてうみぞいをさんぽして、いいきぶんてんかんになりましたよ。",
+            "romaji": "Kamakura e itte kimashita. Daibutsu o mite umizoi o sanpo shite, ii kibun tenkan ni narimashita yo.",
+            "en": "I went to Kamakura, saw the Buddha, walked the coast—great refresher!",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Natural chaining of activities with 〜て and idiomatic 気分転換 (change of pace).",
+            "reaction": {
+              "speaker": "Tanaka",
+              "speakerJa": "田中",
+              "ja": "鎌倉いいですね！江ノ電にも乗りましたか？あそこのしらす丼、すごく美味しいですよね。",
+              "reading": "かまくらいいですね！えのでんにものりましたか？あそこのしらすどん、すごくおいしいですよね。",
+              "romaji": "Kamakura ii desu ne! Enoden ni mo norimashita ka? Asoko no shirasudon, sugoku oishii desu yo ne.",
+              "en": "Kamakura is lovely! Did you ride the Enoden train too? The whitebait rice bowls there are so good, right?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cw3",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "はい、しらす丼を食べました！すごく新鮮で感動しました。田中さんは何をしていましたか？",
+        "reading": "はい、しらすどんをたべました！すごくしんせんでかんどうしました。たなかさんはなにをしていましたか？",
+        "romaji": "Hai, shirasudon o tabemashita! Sugoku shinsen de kandou shimashita. Tanaka-san wa nani o shiteimashita ka?",
+        "en": "Yes, I had the shirasu bowl! It was so fresh, I was impressed. What did you do, Tanaka-san?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-cw3-1",
+            "ja": "はい、しらす丼を食べました！すごく新鮮で感動しました。田中さんは何をしていましたか？",
+            "reading": "はい、しらすどんをたべました！すごくしんせんでかんどうしました。たなかさんはなにをしていましたか？",
+            "romaji": "Hai, shirasudon o tabemashita! Sugoku shinsen de kandou shimashita. Tanaka-san wa nani o shiteimashita ka?",
+            "en": "Yes, ate the shirasu bowl! Deliciously fresh. What did you do, Tanaka-san?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Shares the culinary reaction and politely returns the question to your conversational partner.",
+            "reaction": {
+              "speaker": "Tanaka",
+              "speakerJa": "田中",
+              "ja": "私は家でたまったドラマを一気見していました（笑）。また今週も頑張りましょう！",
+              "reading": "わたしはいえでたまったどらまをいっきみしていました（わら）。またこんしゅうもがんばりましょう！",
+              "romaji": "Watashi wa ie de tamatta dorama o ikkimi shiteimashita (wara). Mata konshuu mo gambarimashou!",
+              "en": "I was at home binge-watching dramas (laughs). Let's do our best again this week!"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3-travel-advice",
+    "title": "Asking for Travel Recommendations",
+    "titleJa": "旅行のおすすめを聞く",
+    "level": "N3",
+    "category": "Travel",
+    "description": "You're planning your first trip to Hokkaido in winter. Ask a travel agent or local friend for advice on sights and clothes.",
+    "keyPhrases": [
+      {
+        "id": "phrase-rec-1",
+        "front": "おすすめの観光スポットはありますか？",
+        "reading": "おすすめのかんこうすぽっとはありますか？",
+        "romaji": "osusume no kankou supotto wa arimasu ka?",
+        "answer": "Are there any recommended sightseeing spots?",
+        "notes": "Asking for travel advice."
+      },
+      {
+        "id": "phrase-rec-2",
+        "front": "防寒対策をしっかりしてください",
+        "reading": "ぼうかんたいさくをしっかりしてください",
+        "romaji": "boukan taisaku o shikkari shite kudasai",
+        "answer": "Please make sure to dress very warmly for the cold.",
+        "notes": "Winter travel essential phrase."
+      }
+    ],
+    "lines": [
+      {
+        "id": "ta1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "来月初めて北海道へ行くんですが、どこか外せない見どころはありますか？",
+        "reading": "らいげつはじめてほっかいどうへいくんですが、どこかはづせないみどころはありますか？",
+        "romaji": "Raigetsu hajimete Hokkaidou e iku n desu ga, dokoka hazusenai midokoro wa arimasu ka?",
+        "en": "I'm going to Hokkaido for the first time next month; are there any must-see sights I shouldn't miss?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-ta1-1",
+            "ja": "来月初めて北海道へ行くんですが、どこか外せない見どころはありますか？",
+            "reading": "らいげつはじめてほっかいどうへいくんですが、どこかはづせないみどころはありますか？",
+            "romaji": "Raigetsu hajimete Hokkaidou e iku n desu ga, dokoka hazusenai midokoro wa arimasu ka?",
+            "en": "Going to Hokkaido for first time next month; any can't-miss highlights?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "外せない見どころ (hazusenai midokoro = highlights that cannot be missed) is natural N3 phrasing.",
+            "reaction": {
+              "speaker": "Advisor",
+              "speakerJa": "案内人",
+              "ja": "冬の北海道なら、小樽の雪あかりの路や、函館の夜景が本当に素晴らしいですよ！",
+              "reading": "ふゆのほっかいどうなら、おたるのゆきあかりのみちや、はこだてのやけいがほんとうにすばらしいですよ！",
+              "romaji": "Fuyu no Hokkaidou nara, Otaru no yukiakari no michi ya, Hakodate no yakei ga hontou ni subarashii desu yo!",
+              "en": "For winter Hokkaido, Otaru's snow light path and Hakodate's night view are truly magnificent!"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ta2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "函館の夜景、ぜひ見たいです！服装はどんなものを用意すればいいでしょうか？",
+        "reading": "はこだてのやけい、ぜひみたいです！ふくそうはどんなものをよういすればいいでしょうか？",
+        "romaji": "Hakodate no yakei, zehi mitai desu! Fukusou wa donna mono o youi sureba ii deshou ka?",
+        "en": "I definitely want to see Hakodate's night view! What clothing should I prepare?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-ta2-1",
+            "ja": "函館の夜景、ぜひ見たいです！服装はどんなものを用意すればいいでしょうか？",
+            "reading": "はこだてのやけい、ぜひみたいです！ふくそうはどんなものをよういすればいいでしょうか？",
+            "romaji": "Hakodate no yakei, zehi mitai desu! Fukusou wa donna mono o youi sureba ii deshou ka?",
+            "en": "Definitely want to see Hakodate! What kind of clothing should I prepare?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "〜用意すればいいでしょうか asks for pragmatic preparation advice smoothly.",
+            "reaction": {
+              "speaker": "Advisor",
+              "speakerJa": "案内人",
+              "ja": "滑り止め付きの靴と、風を通さない厚手のダウンジャケットは必須です。手袋や耳あても忘れないでくださいね。",
+              "reading": "すべりどめつきのくつと、かぜをとおさないあつでのだうんじゃけっとはひっすです。てぶくろやみみあてもわすれないでくださいね。",
+              "romaji": "Suberidome-tsuki no kutsu to, kaze o toosanai atsude no daun jaketto wa hissu desu. Tebukuro ya mamiate mo wasurenaide kudasai ne.",
+              "en": "Anti-slip shoes and a windproof thick down jacket are essential. Don't forget gloves and earmuffs either."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3-omiyage",
+    "title": "Bringing Souvenirs to the Office",
+    "titleJa": "職場へのお土産配り",
+    "level": "N3",
+    "category": "Workplace",
+    "description": "Hand out omiyage (souvenirs) from your vacation to your team with proper office etiquette.",
+    "keyPhrases": [
+      {
+        "id": "phrase-omi-1",
+        "front": "お休みをいただきありがとうございました",
+        "reading": "おやすみをいただきありがとうございました",
+        "romaji": "oyasumi o itadaki arigatou gozaimashita",
+        "answer": "Thank you for letting me take time off.",
+        "notes": "Crucial Japanese workplace gratitude after vacation."
+      },
+      {
+        "id": "phrase-omi-2",
+        "front": "皆さんで召し上がってください",
+        "reading": "みなさんでめしあがってください",
+        "romaji": "minasan de meshiagatte kudasai",
+        "answer": "Please enjoy eating this, everyone.",
+        "notes": "Polite invitation to share sweets."
+      }
+    ],
+    "lines": [
+      {
+        "id": "om1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "課長、先週はお休みをいただきありがとうございました。京都のお土産を買ってきたので、皆さんで召し上がってください。",
+        "reading": "かちょう、せんしゅうはおやすみをいただきありがとうございました。きょうとのおみやげをかってきたので、みなさんでめしあがってください。",
+        "romaji": "Kachou, senshuu wa oyasumi o itadaki arigatou gozaimashita. Kyouto no omiyage o katte kita no de, minasan de meshiagatte kudasai.",
+        "en": "Manager, thank you for allowing me to take time off last week. I bought souvenirs from Kyoto, please enjoy them everyone.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-om1-1",
+            "ja": "課長、先週はお休みをいただきありがとうございました。京都のお土産を買ってきたので、皆さんで召し上がってください。",
+            "reading": "かちょう、せんしゅうはおやすみをいただきありがとうございました。きょうとのおみやげをかってきたので、みなさんでめしあがってください。",
+            "romaji": "Kachou, senshuu wa oyasumi o itadaki arigatou gozaimashita. Kyouto no omiyage o katte kita no de, minasan de meshiagatte kudasai.",
+            "en": "Manager, thanks for the time off last week. Bought Kyoto treats, please enjoy them!",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "Flawless workplace etiquette: thanks team for covering during your absence and uses polite 召し上がってください for others.",
+            "reaction": {
+              "speaker": "Section Chief",
+              "speakerJa": "課長",
+              "ja": "わざわざお気遣いありがとうございます！リフレッシュできましたか？",
+              "reading": "わざわざおきづかいありがとうございます！りふれっしゅできましたか？",
+              "romaji": "Wazawaza okidzukai arigatou gozaimasu! Rifuresshu dekimashita ka?",
+              "en": "Thank you for the thoughtful gesture! Were you able to refresh?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "om2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "はい、おかげさまでゆっくり休めました。今日からまたしっかり頑張ります！",
+        "reading": "はい、おかげさまでゆっくりやすめました。きょうからまたしっかりがんばります！",
+        "romaji": "Hai, okagesama de yukkuri yasumemashita. Kyou kara mata shikkari gambarimasu!",
+        "en": "Yes, thanks to your support I was able to rest well. I will work hard again starting today!",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-om2-1",
+            "ja": "はい、おかげさまでゆっくり休めました。今日からまたしっかり頑張ります！",
+            "reading": "はい、おかげさまでゆっくりやすめました。きょうからまたしっかりがんばります！",
+            "romaji": "Hai, okagesama de yukkuri yasumemashita. Kyou kara mata shikkari gambarimasu!",
+            "en": "Yes, rested well thanks to you. Ready to give my best from today!",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "おかげさまで (thanks to you / fortunately) is the humble Japanese reaction to caring inquiries.",
+            "reaction": {
+              "speaker": "Section Chief",
+              "speakerJa": "課長",
+              "ja": "頼もしいですね！では今日の午後、定例ミーティングでお話ししましょう。",
+              "reading": "たのもしいですね！ではきょうのごご、ていれいみーてぃんぐでおはなししましょう。",
+              "romaji": "Tanomoshii desu ne! Dewa kyou no gogo, teirei miitingu de ohanashi shimashou.",
+              "en": "How reassuring! Let's talk in our regular team meeting this afternoon."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3-train-delay-cert",
+    "title": "Getting a Train Delay Certificate",
+    "titleJa": "駅で遅延証明書をもらう",
+    "level": "N3",
+    "category": "Services",
+    "description": "Your commuter train was delayed by 20 minutes due to signal trouble. Request a delay certificate for work.",
+    "keyPhrases": [
+      {
+        "id": "phrase-delay-1",
+        "front": "遅延証明書をいただけますか？",
+        "reading": "ちえんしょうめいしょをいただけますか？",
+        "romaji": "chien shoumeisho o itadakemasu ka?",
+        "answer": "Could I have a train delay certificate?",
+        "notes": "Essential proof for Japanese employers/schools."
+      },
+      {
+        "id": "phrase-delay-2",
+        "front": "信号トラブルによる遅れ",
+        "reading": "しんごうとらぶるによるおくれ",
+        "romaji": "shingou toraburu ni yoru okure",
+        "answer": "Delay due to signal trouble.",
+        "notes": "Explaining the cause."
+      }
+    ],
+    "lines": [
+      {
+        "id": "td1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "すみません、会社に提出したいので、遅延証明書を1枚いただけますか？",
+        "reading": "すみません、かいしゃにていしゅつしたいので、ちえんしょうめいしょをいちまいいただけますか？",
+        "romaji": "Sumimasen, kaisha ni teishutsu shitai no de, chien shoumeisho o ichimai itadakemasu ka?",
+        "en": "Excuse me, I need to submit it to my company; could I have a delay certificate?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-td1-1",
+            "ja": "すみません、会社に提出したいので、遅延証明書を1枚いただけますか？",
+            "reading": "すみません、かいしゃにていしゅつしたいので、ちえんしょうめいしょをいちまいいただけますか？",
+            "romaji": "Sumimasen, kaisha ni teishutsu shitai no de, chien shoumeisho o ichimai itadakemasu ka?",
+            "en": "Excuse me, could I get a delay certificate to submit to my company?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "遅延証明書 (delay slip) + 〜をいただけますか (could I receive).",
+            "reaction": {
+              "speaker": "Station Staff",
+              "speakerJa": "駅員",
+              "ja": "大変ご迷惑をおかけいたしました。20分遅延の証明書になります。どうぞ。",
+              "reading": "たいへんごめいわくをおかけいたしました。にじゅっぷんちえんのしょうめいしょになります。どうぞ。",
+              "romaji": "Taihen gomeiwaku o okake itashimashita. Nijuppun chien no shoumeisho ni narimasu. Douzo.",
+              "en": "We apologize deeply for the inconvenience. Here is the 20-minute delay certificate."
+            }
+          }
+        ]
+      },
+      {
+        "id": "td2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "ありがとうございます。ウェブサイトでも発行できますか？",
+        "reading": "ありがとうございます。うぇぶさいとでもはっこうできますか？",
+        "romaji": "Arigatou gozaimasu. Webusaito demo hakkou dekimasu ka?",
+        "en": "Thank you. Can this also be issued on your website?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-td2-1",
+            "ja": "ありがとうございます。ウェブサイトでも発行できますか？",
+            "reading": "ありがとうございます。うぇぶさいとでもはっこうできますか？",
+            "romaji": "Arigatou gozaimasu. Webusaito demo hakkou dekimasu ka?",
+            "en": "Thank you. Can this be issued online on the website too?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "発行する (hakkou suru = to issue) is standard administrative vocabulary.",
+            "reaction": {
+              "speaker": "Station Staff",
+              "speakerJa": "駅員",
+              "ja": "はい、ホームページからも過去7日分の証明書が印刷いただけますよ。",
+              "reading": "はい、ほーむぺーじからもかこななにちぶんのしょうめいしょがいんさついただけますよ。",
+              "romaji": "Hai, hoomupeeji kara mo kako nananichibun no shoumeisho ga insatsu itadakemasu yo.",
+              "en": "Yes, certificates for the past 7 days can also be printed directly from our homepage."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3-task-progress",
+    "title": "Reporting Project Progress to Your Manager",
+    "titleJa": "上司への進捗報告",
+    "level": "N3",
+    "category": "Workplace",
+    "description": "Give a crisp status update on your assigned report and identify when you expect to complete it.",
+    "keyPhrases": [
+      {
+        "id": "phrase-prog-1",
+        "front": "資料の進捗状況を報告いたします",
+        "reading": "しりょうのしんちょくじょうきょうをほうこくいたします",
+        "romaji": "shiryou no shinchoku joukyou o houkoku itashimasu",
+        "answer": "I will report the progress status of the materials.",
+        "notes": "Formal business reporting."
+      },
+      {
+        "id": "phrase-prog-2",
+        "front": "予定通り本日の夕方までに完了します",
+        "reading": "よていどおりほんじつのゆうがたまでにかんりょうします",
+        "romaji": "yoteidoori honjitsu no yuugata made ni kanryou shimasu",
+        "answer": "It will be completed by this evening as scheduled.",
+        "notes": "Deadline commitment."
+      }
+    ],
+    "lines": [
+      {
+        "id": "pr1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "部長、ただいまお時間よろしいでしょうか？企画書の進捗についてご報告があります。",
+        "reading": "ぶちょう、ただいまおじかんよろしいでしょうか？きかくしょのしんちょくについてごほうこくがあります。",
+        "romaji": "Buchou, tadaima ojikan yoroshii deshou ka? Kikakusho no shinchoku ni tsuite gohoukoku ga arimasu.",
+        "en": "Director, do you have a moment right now? I have a progress report regarding the proposal.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-pr1-1",
+            "ja": "部長、ただいまお時間よろしいでしょうか？企画書の進捗についてご報告があります。",
+            "reading": "ぶちょう、ただいまおじかんよろしいでしょうか？きかくしょのしんちょくについてごほうこくがあります。",
+            "romaji": "Buchou, tadaima ojikan yoroshii deshou ka? Kikakusho no shinchoku ni tsuite gohoukoku ga arimasu.",
+            "en": "Director, is now a good moment? I have an update on the proposal progress.",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "Checking availability politely with お時間よろしいでしょうか before reporting is fundamental business manners.",
+            "reaction": {
+              "speaker": "Director",
+              "speakerJa": "部長",
+              "ja": "ええ、いいですよ。今どこまで進んでいますか？",
+              "reading": "ええ、いいですよ。いまどこまですすんでいますか？",
+              "romaji": "Ee, ii desu yo. Ima doko made susundeimasu ka?",
+              "en": "Yes, go ahead. How far along is it now?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "pr2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "ドラフトは8割方完成しておりまして、本日17時までに確認用データをお送りできます。",
+        "reading": "どらふとははちわりがたかんせいしておりまして、ほんじつじゅうしちじまでにかくにんようでーたをおおくりできます。",
+        "romaji": "Dorafuto wa hachiwarigata kansei shite orimashite, honjitsu juushichiji made ni kakunin-you deeta o o-okuri dekimasu.",
+        "en": "The draft is about 80% complete, and I can send you the review copy by 5:00 PM today.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-pr2-1",
+            "ja": "ドラフトは8割方完成しておりまして、本日17時までに確認用データをお送りできます。",
+            "reading": "どらふとははちわりがたかんせいしておりまして、ほんじつじゅうしちじまでにかくにんようでーたをおおくりできます。",
+            "romaji": "Dorafuto wa hachiwarigata kansei shite orimashite, honjitsu juushichiji made ni kakunin-you deeta o o-okuri dekimasu.",
+            "en": "Draft is around 80% done, will deliver review version by 17:00 today.",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "8割方 (about 80%) + modest form おりまして + お送りできます.",
+            "reaction": {
+              "speaker": "Director",
+              "speakerJa": "部長",
+              "ja": "順調ですね！楽しみにしています。届いたら目を通しておきますよ。",
+              "reading": "じゅんちょうですね！たのしみにしています。とどいたらめをとおしておきますよ。",
+              "romaji": "Junchou desu ne! Tanoshimi ni shiteimasu. Todoitara me o tooshite okimasu yo.",
+              "en": "Smooth progress! Looking forward to it. I will look over it once it arrives."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3-izakaya-kanpai",
+    "title": "Izakaya Toast and Splitting the Bill",
+    "titleJa": "居酒屋での乾杯と割り勘",
+    "level": "N3",
+    "category": "Dining",
+    "description": "Join your coworkers at an izakaya after work. Propose a toast (kanpai) and coordinate splitting the bill (割り勘).",
+    "keyPhrases": [
+      {
+        "id": "phrase-iza-1",
+        "front": "今週もお疲れ様でした、乾杯！",
+        "reading": "こんしゅうもおつかれさまでした、かんぱい！",
+        "romaji": "konshuu mo otsukaresama deshita, kanpai!",
+        "answer": "Great work this week everyone, cheers!",
+        "notes": "Standard after-work toast."
+      },
+      {
+        "id": "phrase-iza-2",
+        "front": "お会計は別々でお願いします",
+        "reading": "おかいけいはべつべつでおねがいします",
+        "romaji": "okaikei wa betsubetsu de onegaishimasu",
+        "answer": "Separate checks, please.",
+        "notes": "Paying separately."
+      },
+      {
+        "id": "phrase-iza-3",
+        "front": "割り勘にしましょう",
+        "reading": "わりかんにしましょう",
+        "romaji": "warikan ni shimashou",
+        "answer": "Let's split the bill evenly.",
+        "notes": "Splitting evenly among friends."
+      }
+    ],
+    "lines": [
+      {
+        "id": "iz1",
+        "speaker": "other",
+        "speakerName": "Suzuki",
+        "speakerNameJa": "鈴木",
+        "ja": "飲み物が揃いましたね！では、音頭をお願いできますか？",
+        "reading": "のみものがそろいましたね！では、おんどをおねがいできますか？",
+        "romaji": "Nomimono ga soroimashita ne! Dewa, ondo o onegai dekimasu ka?",
+        "en": "Everyone's drinks have arrived! Would you do the honors of leading the toast?",
+        "politeness": "polite"
+      },
+      {
+        "id": "iz2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "では皆さん、今週もお疲れ様でした！乾杯！",
+        "reading": "ではみなさん、こんしゅうもおつかれさまでした！かんぱい！",
+        "romaji": "Dewa minasan, konshuu mo otsukaresama deshita! Kanpai!",
+        "en": "Then everyone, wonderful work this week! Cheers!",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-iz2-1",
+            "ja": "では皆さん、今週もお疲れ様でした！乾杯！",
+            "reading": "ではみなさん、こんしゅうもおつかれさまでした！かんぱい！",
+            "romaji": "Dewa minasan, konshuu mo otsukaresama deshita! Kanpai!",
+            "en": "Everyone, great effort this week! Cheers!",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "Warm and encouraging toast acknowledging everyone's hard work (お疲れ様でした).",
+            "reaction": {
+              "speaker": "Everyone",
+              "speakerJa": "全員",
+              "ja": "乾杯ー！！",
+              "reading": "かんぱーい！！",
+              "romaji": "Kanpaaaai!!",
+              "en": "Cheers!!"
+            }
+          }
+        ]
+      },
+      {
+        "id": "iz3",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "ごちそうさまでした。今日は割り勘にしましょうか。一人いくらですか？",
+        "reading": "ごちそうさまでした。きょうはわりかんにしましょうか。ひとりいくらですか？",
+        "romaji": "Gochisousama deshita. Kyou wa warikan ni shimashou ka. Hitori ikura desu ka?",
+        "en": "Thank you for the meal. Shall we split the bill evenly today? How much per person?",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-iz3-1",
+            "ja": "ごちそうさまでした。今日は割り勘にしましょうか。一人いくらですか？",
+            "reading": "ごちそうさまでした。きょうはわりかんにしましょうか。ひとりいくらですか？",
+            "romaji": "Gochisousama deshita. Kyou wa warikan ni shimashou ka. Hitori ikura desu ka?",
+            "en": "Thanks for the meal. Shall we split it evenly? How much each?",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "割り勘 (warikan) means splitting an izakaya check equally.",
+            "reaction": {
+              "speaker": "Suzuki",
+              "speakerJa": "鈴木",
+              "ja": "全部で12,000円だから、4人でちょうど3,000円ずつですね！",
+              "reading": "ぜんぶでいちまんにせんえんだから、よにんでちょうどさんぜんえんずつですね！",
+              "romaji": "Zenbu de ichiman nisen-en dakara, yonin de choudo sanzen-en zutsu desu ne!",
+              "en": "Total is 12,000 yen, so for 4 people that's exactly 3,000 yen each!"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n2-interview",
+    "title": "Job Interview: Strengths & Motivation",
+    "titleJa": "採用面接：志望動機と自己PR",
+    "level": "N2",
+    "category": "Workplace",
+    "description": "In a formal Japanese job interview, explain your career background, reason for applying (志望動機), and how your skills contribute.",
+    "keyPhrases": [
+      {
+        "id": "phrase-int-1",
+        "front": "これまでの経験を活かし、貢献したいと考えております",
+        "reading": "これまでのけいけんをいかし、こうけんしたいとかんがえております",
+        "romaji": "koremade no keiken o ikashi, kouken shitai to kangaete orimasu",
+        "answer": "I wish to contribute by utilizing my past experience.",
+        "notes": "Formal business interview phrasing."
+      },
+      {
+        "id": "phrase-int-2",
+        "front": "御社の事業理念に深く共感いたしました",
+        "reading": "おんしゃのじぎょうりねんにふかくきょうかんいたしました",
+        "romaji": "onsha no jigyou rinen ni fukaku kyoukan itashimashita",
+        "answer": "I deeply resonated with your company's business philosophy.",
+        "notes": "Respectful company reference (御社)."
+      }
+    ],
+    "lines": [
+      {
+        "id": "int1",
+        "speaker": "other",
+        "speakerName": "Interviewer",
+        "speakerNameJa": "面接官",
+        "ja": "それでは、弊社の求人にご応募いただいた志望動機をお聞かせいただけますか？",
+        "reading": "それでは、へいしゃのきゅうじんにごおうぼいただいたしぼうどうきをおきかせいただけますか？",
+        "romaji": "Soredewa, heisha no kyuujin ni go-oubo itadaita shibou douki o okikase itadakemasu ka?",
+        "en": "Now then, could you tell us your reasons for applying to our company?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "int2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "御社の国際的な事業展開と技術革新に深く惹かれ、これまで培ったITスキルを活かして貢献したいと考え、志望いたしました。",
+        "reading": "おんしゃのこくさいてきなじぎょうてんかいとぎじゅつかくしんにふかくひかれ、これまでつちかったあいてぃーすきるをいかしてこうけんしたいとかんがえ、しぼういたしました。",
+        "romaji": "Onsha no kokusaiteki na jigyou tenkai to gijutsu kakushin ni fukaku hikare, koremade tsuchikatta aitii sukiru o ikashite kouken shitai to kangae, shibou itashimashita.",
+        "en": "I was deeply drawn to your company's global expansion and technological innovation, and applied wishing to contribute through the IT skills I have cultivated.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-int2-1",
+            "ja": "御社の国際的な事業展開と技術革新に深く惹かれ、これまで培ったITスキルを活かして貢献したいと考え、志望いたしました。",
+            "reading": "おんしゃのこくさいてきなじぎょうてんかいとぎじゅつかくしんにふかくひかれ、これまでつちかったあいてぃーすきるをいかしてこうけんしたいとかんがえ、しぼういたしました。",
+            "romaji": "Onsha no kokusaiteki na jigyou tenkai to gijutsu kakushin ni fukaku hikare, koremade tsuchikatta aitii sukiru o ikashite kouken shitai to kangae, shibou itashimashita.",
+            "en": "Deeply drawn to your company's innovation; eager to contribute cultivated IT skills.",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "Exemplary N2 interview keigo: uses 御社 (onsha) for applicant, 培った (cultivated), and 貢献したいと考え (wishing to contribute).",
+            "reaction": {
+              "speaker": "Interviewer",
+              "speakerJa": "面接官",
+              "ja": "ありがとうございます。前職で直面した最も大きな困難と、それをどのように乗り越えたかも教えてください。",
+              "reading": "ありがとうございます。ぜんしょくでちょくめんしたもっともおおきなこんなんと、それをどのようにのりこえたかもおしえてください。",
+              "romaji": "Arigatou gozaimasu. Zenshoku de chokumen shita mottomo ookina konnan to, sore o dono you ni norikoeta ka mo oshiete kudasai.",
+              "en": "Thank you. Please also tell us about the biggest obstacle you faced in your previous position and how you overcame it."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n2-deadline-negotiation",
+    "title": "Negotiating a Project Deadline",
+    "titleJa": "納期の調整交渉",
+    "level": "N2",
+    "category": "Workplace",
+    "description": "Due to additional client requirements, negotiate a 3-day extension with the project director without harming the relationship.",
+    "keyPhrases": [
+      {
+        "id": "phrase-dead-1",
+        "front": "品質を担保するため、納期を3日延ばしていただけないでしょうか",
+        "reading": "ひんしつをたんぽするため、のうきをみっかのばしていただけないでしょうか",
+        "romaji": "hinshitsu o tanpo suru tame, nouki o mikka nobashite itadakenai deshou ka",
+        "answer": "To ensure quality, could we extend the deadline by 3 days?",
+        "notes": "Business deadline negotiation."
+      },
+      {
+        "id": "phrase-dead-2",
+        "front": "ご負担をおかけして誠に恐縮ですが",
+        "reading": "ごふたんをおかけしてまことにきょうしゅくですが",
+        "romaji": "gofutan o okake shite makoto ni kyoushuku desu ga",
+        "answer": "I am truly remorseful for causing you this burden...",
+        "notes": "Polite buffer phrase (クッション言葉)."
+      }
+    ],
+    "lines": [
+      {
+        "id": "dn0",
+        "speaker": "other",
+        "speakerName": "Director",
+        "speakerNameJa": "部長",
+        "ja": "例のプロジェクトの進捗はいかがですか？予定通り今週中に納品できそうですか？",
+        "reading": "れいのぷろじぇくとのしんちょくはいかがですか？よていどおりこんしゅうちゅうにのうひんできそうですか？",
+        "romaji": "Rei no purojekuto no shinchoku wa ikaga desu ka? Yoteidoori konshuuchuu ni nouhin dekisou desu ka?",
+        "en": "How is the progress on that project? Does it look like delivery can be made within this week as planned?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "dn1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "部長、昨日の仕様変更に伴い、品質を担保するために納期の猶予を3日ほどいただくことは可能でしょうか？",
+        "reading": "ぶちょう、きのうのしようへんこうにともない、ひんしつをたんぽするためにのうきのゆうよをみっかほどいただくことはかのうでしょうか？",
+        "romaji": "Buchou, kinou no shiyou henkou ni tomonai, hinshitsu o tanpo suru tame ni nouki no yuuyo o mikka hodo itadaku koto wa kanou deshou ka?",
+        "en": "Director, with yesterday's specification changes, would it be possible to obtain a grace period of about 3 days on the deadline to ensure quality?",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-dn1-1",
+            "ja": "部長、昨日の仕様変更に伴い、品質を担保するために納期の猶予を3日ほどいただくことは可能でしょうか？",
+            "reading": "ぶちょう、きのうのしようへんこうにともない、ひんしつをたんぽするためにのうきのゆうよをみっかほどいただくことはかのうでしょうか？",
+            "romaji": "Buchou, kinou no shiyou henkou ni tomonai, hinshitsu o tanpo suru tame ni nouki no yuuyo o mikka hodo itadaku koto wa kanou deshou ka?",
+            "en": "Director, given spec changes, would a 3-day extension be possible to guarantee quality?",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "Couples the cause (仕様変更に伴い) with the company value (品質を担保するため) and requests a grace period (猶予) deferentially.",
+            "reaction": {
+              "speaker": "Director",
+              "speakerJa": "部長",
+              "ja": "クライアントとの兼ね合いもあるが、手戻りが出るよりは確実に仕上げた方がいいな。金曜日の15時までなら調整しよう。",
+              "reading": "くらいあんととのかねあいもあるが、てもどりがでるよりはかくじつにしあげたほうがいいな。きんようびのじゅうごじまでならちょうせいしよう。",
+              "romaji": "Kuraianto to no kaneai mo aru ga, temodori ga deru yori wa kakujitsu ni shiageta hou ga ii na. Kinyoubi no juugoji made nara chousei shiyou.",
+              "en": "There is the client balance to consider, but a solid finish is better than rework. I will adjust it until 3:00 PM Friday."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n2-complaint-handling",
+    "title": "Handling a Customer Complaint",
+    "titleJa": "顧客からのクレーム対応",
+    "level": "N2",
+    "category": "Workplace",
+    "description": "An upset client calls because a shipment was delayed. De-escalate with formal keigo, validate their concern, and provide a solution.",
+    "keyPhrases": [
+      {
+        "id": "phrase-comp-1",
+        "front": "ご不快な思いをおかけし、心よりお詫び申し上げます",
+        "reading": "ごふかいなおもいをおかけし、こころよりおわびもうしあげます",
+        "romaji": "gofukai na omoi o okake shi, kokoro yori owabi moushiagemasu",
+        "answer": "I sincerely apologize for causing you such displeasure.",
+        "notes": "Highest-grade commercial apology."
+      },
+      {
+        "id": "phrase-comp-2",
+        "front": "再発防止に向けて原因を究明いたします",
+        "reading": "さいはつぼうしにむけてげんいんをきゅうめいいたします",
+        "romaji": "saihatsu boushi ni mukete gen'in o kyuumei itashimasu",
+        "answer": "We will investigate the cause to prevent recurrence.",
+        "notes": "Commitment to future prevention."
+      }
+    ],
+    "lines": [
+      {
+        "id": "cm1",
+        "speaker": "other",
+        "speakerName": "Client",
+        "speakerNameJa": "顧客",
+        "ja": "注文した商品が今日届くはずだったのにまだ来ていません！明日のイベントで使うのにどうしてくれるんですか？！",
+        "reading": "ちゅうもんしたしょうひんがきょうとどくはずだったのにまだきていません！あしたのいべんとでつかうのにどうしてくれるんですか？！",
+        "romaji": "Chuumon shita shouhin ga kyou todoku hazu datta no ni mada kite imasen! Ashita no ibento de tsukau no ni dou shite kureru n desu ka?!",
+        "en": "The items I ordered were supposed to arrive today but still haven't! What are you going to do about our event tomorrow?!",
+        "politeness": "casual"
+      },
+      {
+        "id": "cm2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "大変なご迷惑をおかけして誠に申し訳ございません。至急配送状況を確認し、本日中に代替品をお届けできるよう手配いたします。",
+        "reading": "たいへんなごめいわくをおかけしてまことにもうしわけございません。しきゅうはいそうじょうきょうをかくにんし、ほんじつちゅうにだいたいひんをおとどけできるようてはいいいたします。",
+        "romaji": "Taihen na gomeiwaku o okake shite makoto ni moushiwake gozaimasen. Shikyuu haisou joukyou o kakunin shi, honjitsuchuu ni daitaihin o otodoke dekiru you tehai itashimasu.",
+        "en": "We sincerely apologize for the immense inconvenience. I will check delivery status immediately and arrange for a replacement to be delivered today.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-cm2-1",
+            "ja": "大変なご迷惑をおかけして誠に申し訳ございません。至急配送状況を確認し、本日中に代替品をお届けできるよう手配いたします。",
+            "reading": "たいへんなごめいわくをおかけしてまことにもうしわけございません。しきゅうはいそうじょうきょうをかくにんし、ほんじつちゅうにだいたいひんをおとどけできるようてはいいいたします。",
+            "romaji": "Taihen na gomeiwaku o okake shite makoto ni moushiwake gozaimasen. Shikyuu haisou joukyou o kakunin shi, honjitsuchuu ni daitaihin o otodoke dekiru you tehai itashimasu.",
+            "en": "Deepest apologies. I will verify shipment immediately and arrange same-day alternative delivery.",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "Immediate unconditional apology + prompt solution (至急...手配いたします) turns anger into trust.",
+            "reaction": {
+              "speaker": "Client",
+              "speakerJa": "顧客",
+              "ja": "本日中に届くなら助かります。確実にお願いしますよ！",
+              "reading": "ほんじつちゅうにとどくならたすかります。かくじつにおねがいしますよ！",
+              "romaji": "Honjitsuchuu ni todoku nara tasukarimasu. Kakujitsu ni onegaishimasu yo!",
+              "en": "If it arrives today that saves us. Please ensure it happens without fail!"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n2-climate-discussion",
+    "title": "Discussing Climate and Energy Policy",
+    "titleJa": "環境問題と再生可能エネルギーの議論",
+    "level": "N2",
+    "category": "Social",
+    "description": "Exchange opinions in a seminar on carbon neutrality, renewable energy, and economic trade-offs.",
+    "keyPhrases": [
+      {
+        "id": "phrase-env-1",
+        "front": "脱炭素社会の実現に向けて",
+        "reading": "だつたんそしゃかいのじつげんにむけて",
+        "romaji": "datsutanso shakai no jitsugen ni mukete",
+        "answer": "Toward realizing a decarbonized society",
+        "notes": "Socio-economic discourse term."
+      },
+      {
+        "id": "phrase-env-2",
+        "front": "長期的な視点に立つ必要があります",
+        "reading": "ちょうきてきなしてんにたつひつようがあります",
+        "romaji": "choukiteki na shiten ni tatsu hitsuyou ga arimasu",
+        "answer": "It is necessary to adopt a long-term perspective.",
+        "notes": "Analytical reasoning phrase."
+      }
+    ],
+    "lines": [
+      {
+        "id": "env1",
+        "speaker": "other",
+        "speakerName": "Moderator",
+        "speakerNameJa": "司会",
+        "ja": "再生可能エネルギーの普及について、コスト面での課題をどのように捉えていますか？",
+        "reading": "さいせいかのうえねるぎーのふきゅうについて、こすとめんでのかだいをどのようにとらえていますか？",
+        "romaji": "Saisei kanou enerugii no fukyuu ni tsuite, kosuto-men de no kadai o dono you ni toraeteimasu ka?",
+        "en": "Regarding the spread of renewable energy, how do you perceive the cost challenges?",
+        "politeness": "polite"
+      },
+      {
+        "id": "env2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "初期投資は大きいものの、環境負荷の低減と将来的な持続可能性を考慮すれば、長期的な費用対効果は十分にあると考えます。",
+        "reading": "しょきとうしはおおきいものの、かんきょうふかのていげんとしょうらいてきなじぞくかのうせいをこうりょすれば、ちょうきてきなひようたいこうかはじゅうぶんにあるとかんがえます。",
+        "romaji": "Shoki toushi wa ookii mono no, kankyou fuka no teigen to shouraiteki na jizokukanousei o kouryo sureba, choukiteki na hiyoutaikouka wa juubun ni aru to kangaemasu.",
+        "en": "Although initial investment is substantial, considering environmental impact reduction and future sustainability, I believe there is ample long-term cost-effectiveness.",
+        "politeness": "polite",
+        "options": [
+          {
+            "id": "opt-env2-1",
+            "ja": "初期投資は大きいものの、環境負荷の低減と将来的な持続可能性を考慮すれば、長期的な費用対効果は十分にあると考えます。",
+            "reading": "しょきとうしはおおきいものの、かんきょうふかのていげんとしょうらいてきなじぞくかのうせいをこうりょすれば、ちょうきてきなひようたいこうかはじゅうぶんにあるとかんがえます。",
+            "romaji": "Shoki toushi wa ookii mono no, kankyou fuka no teigen to shouraiteki na jizokukanousei o kouryo sureba, choukiteki na hiyoutaikouka wa juubun ni aru to kangaemasu.",
+            "en": "While initial investment is large, long-term ROI is strong given sustainability and emission cuts.",
+            "politeness": "polite",
+            "isCorrect": true,
+            "explanation": "〜ものの (although) + 費用対効果 (cost-effectiveness) + と考えます fits N2 academic/opinion registers.",
+            "reaction": {
+              "speaker": "Moderator",
+              "speakerJa": "司会",
+              "ja": "まさに多面的な評価が不可欠ですね。貴重なご意見ありがとうございます。",
+              "reading": "まさにためんてきなひょうかがふかけつですね。きちょうなごいけんありがとうございます。",
+              "romaji": "Masa ni tamenteki na hyouka ga fukaketsu desu ne. Kichou na go-iken arigatou gozaimasu.",
+              "en": "Indeed, a multifaceted evaluation is indispensable. Thank you for your valuable insight."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n2-lease-renewal",
+    "title": "Lease Contract Renewal Negotiation",
+    "titleJa": "賃貸契約の更新手続きと相談",
+    "level": "N2",
+    "category": "Services",
+    "description": "Contact your apartment building management company to discuss contract renewal conditions and insurance updates.",
+    "keyPhrases": [
+      {
+        "id": "phrase-lease-1",
+        "front": "賃貸借契約の更新手続きについて伺いたいのですが",
+        "reading": "ちんたいしゃくけいやくのこうしんてつづきについてうかがいたいのですが",
+        "romaji": "chintaishaku keiyaku no koushin tetsuzuki ni tsuite ukagaitai no desu ga",
+        "answer": "I'd like to ask regarding the lease contract renewal process.",
+        "notes": "Official tenancy vocabulary."
+      },
+      {
+        "id": "phrase-lease-2",
+        "front": "火災保険の継続加入",
+        "reading": "かさいほけんのけいぞくかにゅう",
+        "romaji": "kasai hoken no keizoku kanyuu",
+        "answer": "Continued fire insurance enrollment",
+        "notes": "Mandatory rental requirement."
+      }
+    ],
+    "lines": [
+      {
+        "id": "ls0",
+        "speaker": "other",
+        "speakerName": "Property Manager",
+        "speakerNameJa": "管理会社",
+        "ja": "お電話ありがとうございます。グランドパレス管理事務局でございます。",
+        "reading": "おでんわありがとうございます。ぐらんどぱれすかんりじむきょくでございます。",
+        "romaji": "Odenwa arigatou gozaimasu. Gurando Paresu kanri jimukyoku de gozaimasu.",
+        "en": "Thank you for calling. This is the Grand Palace Property Management Office.",
+        "politeness": "keigo"
+      },
+      {
+        "id": "ls1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "お世話になっております。来月満期を迎える契約更新の書類が届いたのですが、更新料の支払い期日を確認させていただけますか？",
+        "reading": "おせわになっております。らいげつまんきをむかえるけいやくこうしんのしょるいがとどいたのですが、こうしんりょうのしはらいきじつをかくにんさせていただけますか？",
+        "romaji": "Osewa ni natte orimasu. Raigetsu manki o mukaeru keiyaku koushin no shorui ga todoita no desu ga, koushinryou no shiharai kijitsu o kakunin sasete itadakemasu ka?",
+        "en": "Hello, thank you for your ongoing support. I received the renewal documents expiring next month; could I confirm the payment deadline for the renewal fee?",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-ls1-1",
+            "ja": "お世話になっております。来月満期を迎える契約更新の書類が届いたのですが、更新料の支払い期日を確認させていただけますか？",
+            "reading": "おせわになっております。らいげつまんきをむかえるけいやくこうしんのしょるいがとどいたのですが、こうしんりょうのしはらいきじつをかくにんさせていただけますか？",
+            "romaji": "Osewa ni natte orimasu. Raigetsu manki o mukaeru keiyaku koushin no shorui ga todoita no desu ga, koushinryou no shiharai kijitsu o kakunin sasete itadakemasu ka?",
+            "en": "Greeting + received contract expiring next month; may I verify renewal fee deadline?",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "満期を迎える (reaching expiration) and 確認させていただけますか (allow me to confirm).",
+            "reaction": {
+              "speaker": "Property Manager",
+              "speakerJa": "管理会社",
+              "ja": "ご連絡ありがとうございます。更新料のお振込は、契約満了日の2週間前までにお願いしております。",
+              "reading": "ごれんらくありがとうございます。こうしんりょうのおふりこみは、けいやくまんりょうびのにしゅうかんまえまでにおねがいしております。",
+              "romaji": "Gorenraku arigatou gozaimasu. Koushinryou no ofurikomi wa, keiyaku manryoubi no nishuukan mae made ni onegai shite orimasu.",
+              "en": "Thank you for contacting us. The bank transfer for renewal fee is requested by 2 weeks prior to expiration date."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n2-wedding-speech",
+    "title": "Wedding Congratulatory Speech",
+    "titleJa": "結婚披露宴での友人代表スピーチ",
+    "level": "N2",
+    "category": "Social",
+    "description": "Deliver a warm, respectful speech at a friend's Japanese wedding reception without using taboo words (忌み言葉).",
+    "keyPhrases": [
+      {
+        "id": "phrase-wed-1",
+        "front": "ご結婚を心よりお祝い申し上げます",
+        "reading": "ごけっこんをこころよりおいわいもうしあげます",
+        "romaji": "gokekkon o kokoro yori oiwai moushiagemasu",
+        "answer": "I offer my heartiest congratulations on your marriage.",
+        "notes": "Standard formal wedding opening."
+      },
+      {
+        "id": "phrase-wed-2",
+        "front": "末永いお幸せをお祈りしております",
+        "reading": "すえながいおしあわせをおいのりしております",
+        "romaji": "suenagai oshiawase o oinori shite orimasu",
+        "answer": "I pray for your everlasting happiness.",
+        "notes": "Formal wedding blessing."
+      }
+    ],
+    "lines": [
+      {
+        "id": "ws0",
+        "speaker": "other",
+        "speakerName": "MC",
+        "speakerNameJa": "司会",
+        "ja": "続きまして、新郎のご友人よりご祝辞を頂戴いたします。よろしくお願いいたします。",
+        "reading": "つづきまして、しんろうのごゆうじんよりごしゅくじをちょうだいいたします。よろしくおねがいいたします。",
+        "romaji": "Tsuzukimashite, shinrou no goyuujin yori goshukuji o choudai itashimasu. Yoroshiku onegai itashimasu.",
+        "en": "Next, we will receive congratulatory remarks from a friend of the groom. Please go ahead.",
+        "politeness": "keigo"
+      },
+      {
+        "id": "ws1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "新郎新婦ならびにご両家の皆様、本日は誠におめでとうございます。二人の末永いお幸せを心よりお祈り申し上げます。",
+        "reading": "しんろうしんぷならびにごりょうけのみなさま、ほんじつまことにごおめでとうございます。ふたりのすえながいおしあわせをこころよりおいわいもうしあげます。",
+        "romaji": "Shinrou shinpu narabi ni goryouke no minasama, honjitsu wa makoto ni omedetou gozaimasu. Futari no suenagai oshiawase o kokoro yori oinori moushiagemasu.",
+        "en": "To the bride and groom, and both families, heartiest congratulations today. I pray from the bottom of my heart for your everlasting happiness.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-ws1-1",
+            "ja": "新郎新婦ならびにご両家の皆様、本日は誠におめでとうございます。二人の末永いお幸せを心よりお祈り申し上げます。",
+            "reading": "しんろうしんぷならびにごりょうけのみなさま、ほんじつまことにごおめでとうございます。ふたりのすえながいおしあわせをこころよりおいわいもうしあげます。",
+            "romaji": "Shinrou shinpu narabi ni goryouke no minasama, honjitsu wa makoto ni omedetou gozaimasu. Futari no suenagai oshiawase o kokoro yori oinori moushiagemasu.",
+            "en": "To the bride and groom and families, warmest congratulations. I pray for your eternal happiness.",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "Addresses 新郎新婦 (bride & groom) and ご両家 (both families) with flawless ceremonial keigo.",
+            "reaction": {
+              "speaker": "Guests",
+              "speakerJa": "列席者",
+              "ja": "拍手（パチパチパチパチ！）",
+              "reading": "はくしゅ（ぱちぱちぱちぱち！）",
+              "romaji": "Hakushu (pachi pachi pachi pachi!)",
+              "en": "Warm applause from all guests!"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n2-condolences",
+    "title": "Expressing Formal Condolences",
+    "titleJa": "弔問とお悔やみの言葉",
+    "level": "N2",
+    "category": "Social",
+    "description": "Express respectful condolences to a colleague or acquaintance who has suffered a bereavement.",
+    "keyPhrases": [
+      {
+        "id": "phrase-cond-1",
+        "front": "この度は誠にご愁傷様でございます",
+        "reading": "このたびはまことにごしゅうしょうさまでございます",
+        "romaji": "konotabi wa makoto ni goshuushousama de gozaimasu",
+        "answer": "Please accept my most heartfelt condolences at this time.",
+        "notes": "Quintessential formal Japanese condolence."
+      },
+      {
+        "id": "phrase-cond-2",
+        "front": "心よりご冥福をお祈りいたします",
+        "reading": "こころよりごめいふくをおいのりいたします",
+        "romaji": "kokoro yori gomeifuku o oinori itashimasu",
+        "answer": "I pray from the bottom of my heart for their peaceful rest.",
+        "notes": "Formal prayer for the deceased."
+      }
+    ],
+    "lines": [
+      {
+        "id": "cd0",
+        "speaker": "other",
+        "speakerName": "Bereaved Colleague",
+        "speakerNameJa": "同僚",
+        "ja": "本日はご多忙の折、遠方よりお運びいただき恐縮でございます。",
+        "reading": "ほんじつはごたぼうのおり、えんぽうよりおはこびいただききょうしゅくでございます。",
+        "romaji": "Honjitsu wa gotabou no ori, empou yori o-hakobi itadaki kyoushuku de gozaimasu.",
+        "en": "Thank you so much for traveling from afar to attend today despite your busy schedule.",
+        "politeness": "keigo"
+      },
+      {
+        "id": "cd1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "この度は思いがけないご不幸で、誠にご愁傷様でございます。心よりご冥福をお祈り申し上げます。",
+        "reading": "このたびはおもいがけないごふこうで、まことにごしゅうしょうさまでございます。こころよりごめいふくをおいのりもうしあげます。",
+        "romaji": "Kono tabi wa omoigakenai gofukou de, makoto ni goshuushousama de gozaimasu. Kokoro yori gomeifuku o oinori moushiagemasu.",
+        "en": "Please accept my deepest condolences on this unexpected bereavement. I pray from my heart for their peaceful soul.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-cd1-1",
+            "ja": "この度は思いがけないご不幸で、誠にご愁傷様でございます。心よりご冥福をお祈り申し上げます。",
+            "reading": "このたびはおもいがけないごふこうで、まことにごしゅうしょうさまでございます。こころよりごめいふくをおいのりもうしあげます。",
+            "romaji": "Kono tabi wa omoigakenai gofukou de, makoto ni goshuushousama de gozaimasu. Kokoro yori gomeifuku o oinori moushiagemasu.",
+            "en": "Deepest condolences on this unexpected bereavement. Praying for their soul's rest.",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "ご愁傷様 (goshuushousama) and ご冥福 (gomeifuku) are the strict ceremonial Japanese phrases required for condolences.",
+            "reaction": {
+              "speaker": "Bereaved",
+              "speakerJa": "遺族",
+              "ja": "温かいお心遣いをいただき、痛み入ります。",
+              "reading": "あたたかいおこころづかいをいただき、いたみいります。",
+              "romaji": "Atatakai okokorodzukai o itadaki, itami-irimasu.",
+              "en": "I am deeply humbled and grateful for your warm thoughts."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1-business-negotiation",
+    "title": "High-Stakes Business Alliance Negotiation",
+    "titleJa": "業務提携に向けたトップ交渉",
+    "level": "N1",
+    "category": "Workplace",
+    "description": "Represent your corporation in a strategic partnership meeting using consummate sonkeigo and kenjougo.",
+    "keyPhrases": [
+      {
+        "id": "phrase-neg-1",
+        "front": "双方の強みを融合させ、相乗効果を創出する所存です",
+        "reading": "そうほうのつよみをゆうごうさせ、そうじょうこうかをそうしゅつするしょぞんです",
+        "romaji": "souhou no tsuyomi o yuugou sase, soujou kouka o soushutsu suru shozon desu",
+        "answer": "We intend to merge both our strengths and create synergy.",
+        "notes": "Executive N1 terminology (所存 = intend)."
+      },
+      {
+        "id": "phrase-neg-2",
+        "front": "前向きにご検討いただけますと幸甚に存じます",
+        "reading": "まえむきにごけんとういただけますとこうじんにぞんじます",
+        "romaji": "maemuki ni gokentou itadakemasu to koujin ni zonjimasu",
+        "answer": "We would be extremely delighted if you could consider this favorably.",
+        "notes": "Supreme formal business grace (幸甚に存じます)."
+      }
+    ],
+    "lines": [
+      {
+        "id": "bn1",
+        "speaker": "other",
+        "speakerName": "Managing Director",
+        "speakerNameJa": "専務",
+        "ja": "本日のご提案、拝見いたしました。技術共有におけるリスク管理について、御社のお考えをお聞かせ願えますか？",
+        "reading": "ほんじつのごていあん、はいけんいたしました。ぎじゅつきょうゆうにおけるりすくかんりについて、おんしゃのおかんがえをおきかせねがえますか？",
+        "romaji": "Honjitsu no goteian, haiken itashimashita. Gijutsu kyouyuu ni okeru risuku kanri ni tsuite, onsha no okangae o okikase negaemasu ka?",
+        "en": "I have reviewed today's proposal. Could we hear your thoughts regarding risk management in technical sharing?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "bn2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "知財保護と情報ガバナンスを最優先事項と位置づけ、厳格な権限管理体制を敷く所存でございます。ご懸念の点につきましては、逐次ご報告申し上げます。",
+        "reading": "ちざいほごとじょうほうがばなんすをさいゆうせんじこうといちづけ、げんかくなけんげんかんりたいせいをしくしょぞんでございます。ごけねんのてんにつきましては、ちくじごほうこくもうしあげます。",
+        "romaji": "Chizai hogo to jouhou gabanansu o saiyuusen jikou to ichidzuke, genkaku na kengen kanri taisei o shiku shozon de gozaimasu. Gokenen no ten ni tsukimashite wa, chikuji gohoukoku moushiagemasu.",
+        "en": "Positioning intellectual property protection and information governance as top priorities, we intend to establish a strict authority management regime, and will report sequentially on any points of concern.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-bn2-1",
+            "ja": "知財保護と情報ガバナンスを最優先事項と位置づけ、厳格な権限管理体制を敷く所存でございます。ご懸念の点につきましては、逐次ご報告申し上げます。",
+            "reading": "ちざいほごとじょうほうがばなんすをさいゆうせんじこうといちづけ、げんかくなけんげんかんりたいせいをしくしょぞんでございます。ごけねんのてんにつきましては、ちくじごほうこくもうしあげます。",
+            "romaji": "Chizai hogo to jouhou gabanansu o saiyuusen jikou to ichidzuke, genkaku na kengen kanri taisei o shiku shozon de gozaimasu. Gokenen no ten ni tsukimashite wa, chikuji gohoukoku moushiagemasu.",
+            "en": "We will establish strict governance and report sequentially on all concerns.",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "Exemplary N1 corporate lexicon: 〜所存でございます, 逐次 (step-by-step/sequentially), 権限管理体制を敷く.",
+            "reaction": {
+              "speaker": "Managing Director",
+              "speakerJa": "専務",
+              "ja": "誠に心強いご説明です。では前向きに社内審議へと進めさせていただきます。",
+              "reading": "まことにこころづよいごせつめいです。ではまえむきにしゃないしんぎへとすすめさせていただきます。",
+              "romaji": "Makoto ni kokorodzuyoi gosetsumei desu. Dewa maemuki ni shanai shingi e to susumesasete itadakimasu.",
+              "en": "That is truly reassuring. We shall proceed favorably to internal committee review."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1-press-conference",
+    "title": "Press Conference Q&A",
+    "titleJa": "記者会見での鋭い質疑応答",
+    "level": "N1",
+    "category": "Workplace",
+    "description": "Address incisive questions from journalists regarding financial results and corporate restructuring.",
+    "keyPhrases": [
+      {
+        "id": "phrase-press-1",
+        "front": "透明性をもって速やかに開示いたします",
+        "reading": "とうめいせいをもってすみやかにかいじいたします",
+        "romaji": "toumeisei o motte sumiyaka ni kaiji itashimasu",
+        "answer": "We will disclose information promptly with full transparency.",
+        "notes": "Corporate governance standard response."
+      },
+      {
+        "id": "phrase-press-2",
+        "front": "市場の動向を注視しつつ、適切に対処してまいります",
+        "reading": "しじょうのどうこうをちゅうししつつ、てきせつにたいしょしてまいります",
+        "romaji": "shijou no doukou o chuushi shi-tsutsu, tekisetsu ni taisho shite mairimasu",
+        "answer": "While closely monitoring market trends, we will respond appropriately.",
+        "notes": "Prudent executive commentary."
+      }
+    ],
+    "lines": [
+      {
+        "id": "pc1",
+        "speaker": "other",
+        "speakerName": "Journalist",
+        "speakerNameJa": "記者",
+        "ja": "今期の営業利益の下振れについて、為替の影響のみならず事業戦略の遅れが指摘されていますが、代表としての見解をお聞かせください。",
+        "reading": "こんきのえいぎょうりえきのしたぶれについて、かわせのえいきょうのみならずじぎょうせんりゃくのおくれがしてきされていますが、だいひょうとしてのかんかいをおきかせください。",
+        "romaji": "Konki no eigyou rieki no shitabure ni tsuite, kawase no eikyou nomi narazu jigyou senryaku no okure ga shiteki sareteimasu ga, daihyou to shite no kenkai o okikase kudasai.",
+        "en": "Regarding the downward revision in operating profit this term, delays in business strategy have been pointed out in addition to currency effects. What is your perspective as CEO?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "pc2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "厳しいご指摘を真摯に受け止めております。不採算事業の抜本的な構造改革に着手し、次期における収益性の改善に全力を期す覚悟です。",
+        "reading": "きびしいごしてきをしんしにうけとめております。ふさいさんじぎょうのばっぽんてきなこうぞうかいかくにちゃくしゅし、じきにおけるしゅうえきせいのかいぜんにぜんりょくをきすかくごです。",
+        "romaji": "Kibishii goshiteki o shinshi ni uketomete orimasu. Fusaisan jigyou no bapponteki na kouzou kaikaku ni chakushu shi, jiki ni okeru shuuekisei no kaizen ni zenryoku o kisu kakugo desu.",
+        "en": "We accept these rigorous critiques with utmost sincerity. We have initiated fundamental structural reforms on unprofitable operations and are determined to devote our all to restoring profitability next term.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-pc2-1",
+            "ja": "厳しいご指摘を真摯に受け止めております。不採算事業の抜本的な構造改革に着手し、次期における収益性の改善に全力を期す覚悟です。",
+            "reading": "きびしいごしてきをしんしにうけとめております。ふさいさんじぎょうのばっぽんてきなこうぞうかいかくにちゃくしゅし、じきにおけるしゅうえきせいのかいぜんにぜんりょくをきすかくごです。",
+            "romaji": "Kibishii goshiteki o shinshi ni uketomete orimasu. Fusaisan jigyou no bapponteki na kouzou kaikaku ni chakushu shi, jiki ni okeru shuuekisei no kaizen ni zenryoku o kisu kakugo desu.",
+            "en": "We sincerely accept critiques; launching fundamental reforms to restore next-term profits.",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "Sophisticated executive accountability vocabulary: 真摯に受け止める, 抜本的な構造改革 (fundamental restructuring), 全力を期す覚悟 (firm resolve).",
+            "reaction": {
+              "speaker": "Journalist",
+              "speakerJa": "記者",
+              "ja": "具体的なタイムラインについては改めて開示を期待します。",
+              "reading": "ぐたいてきなたいむらいんについてはあらためてかいじをきたいします。",
+              "romaji": "Gutaiteki na taimurain ni tsuite wa aratamete kaiji o kitai shimasu.",
+              "en": "We look forward to subsequent disclosure regarding concrete timelines."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1-academic-symposium",
+    "title": "Academic Symposium on AI and Ethics",
+    "titleJa": "学術シンポジウム：AIと倫理の対話",
+    "level": "N1",
+    "category": "Social",
+    "description": "Participate in an intellectual debate regarding the philosophical implications of artificial consciousness and human autonomy.",
+    "keyPhrases": [
+      {
+        "id": "phrase-ai-1",
+        "front": "技術の進展と倫理的規範の調和を図る",
+        "reading": "ぎじゅつのしんてんとりんりてききはんのちょうわをはかる",
+        "romaji": "gijutsu no shinten to rinriteki kihan no chouwa o hakaru",
+        "answer": "Seek harmony between technological progress and ethical norms.",
+        "notes": "Philosophical scholarly debate."
+      },
+      {
+        "id": "phrase-ai-2",
+        "front": "人間の主体性を損なう懸念を払拭できない",
+        "reading": "にんげんのしゅたいせいをそこなうけねんをふっしょくできない",
+        "romaji": "ningen no shutaisei o sokonau kenen o fusshoku dekinai",
+        "answer": "Cannot dispel concerns of impairing human agency.",
+        "notes": "Advanced abstract formulation."
+      }
+    ],
+    "lines": [
+      {
+        "id": "as1",
+        "speaker": "other",
+        "speakerName": "Professor",
+        "speakerNameJa": "教授",
+        "ja": "自律的意思決定アルゴリズムの台頭は、近代的人間像における自由意志の概念にいかなる揺さぶりをかけるとお考えですか？",
+        "reading": "じりつてきいしけっていあるごりずむのたいとうは、きんだいてきにんげんぞうにおけるじゆういしのがいねんにいかなるゆさぶりをかけるとおかんがえですか？",
+        "romaji": "Jiritsuteki ishi kettei arugorizumu no taitou wa, kindaiteki ningen-zou ni okeru jiyuu ishi no gainen ni ikanaru yusaburi o kakeru to okangae desu ka?",
+        "en": "What manner of upheaval do you believe the rise of autonomous decision-making algorithms exerts upon the concept of free will in the modern conception of humanity?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "as2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "道具としての利便性を享受する一方で、自己決定の根幹が暗黙裡に外部委託される危機感を孕んでいると認識しております。",
+        "reading": "どうぐとしてのりべんせいをきょうじゅするいっぽうで、じこけっていのかんかんがあんもくりにがいぶいたくされるききかんをはらんでいるとにんしきしております。",
+        "romaji": "Dougu to shite no ribensei o kyouju suru ippou de, jiko kettei no konkan ga anmokuri ni gaibu itaku sareru kikikan o harande iru to ninshiki shite orimasu.",
+        "en": "While enjoying utility as tools, I recognize that it harbors the alarming hazard that the very foundation of self-determination is tacitly outsourced to the exterior.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-as2-1",
+            "ja": "道具としての利便性を享受する一方で、自己決定の根幹が暗黙裡に外部委託される危機感を孕んでいると認識しております。",
+            "reading": "どうぐとしてのりべんせいをきょうじゅするいっぽうで、じこけっていのかんかんがあんもくりにがいぶいたくされるききかんをはらんでいるとにんしきしております。",
+            "romaji": "Dougu to shite no ribensei o kyouju suru ippou de, jiko kettei no konkan ga anmokuri ni gaibu itaku sareru kikikan o harande iru to ninshiki shite orimasu.",
+            "en": "While enjoying utility, it bears the risk that self-determination is tacitly outsourced.",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "Elite N1 academic prose: 享受する (enjoy benefits), 根幹 (core foundation), 暗黙裡に (tacitly/silently), 危機感を孕む (harbor crisis).",
+            "reaction": {
+              "speaker": "Professor",
+              "speakerJa": "教授",
+              "ja": "極めて示唆に富むご指摘です。まさに人間性の再定義が問われていますね。",
+              "reading": "きわめてしさにとむごしてきです。まさににんげんせいのさいていぎがとわれていますね。",
+              "romaji": "Kiwamete shisa ni tomu goshiteki desu. Masa ni ningensei no saiteigi ga towareteimasu ne.",
+              "en": "An exceedingly thought-provoking point. The very redefinition of humanity is being questioned."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1-outage-apology",
+    "title": "Executive Apology for System Outage",
+    "titleJa": "基幹システム障害の緊急謝罪会見",
+    "level": "N1",
+    "category": "Workplace",
+    "description": "Issue a formal corporate apology and disclose technical remedial measures following a nationwide cloud infrastructure failure.",
+    "keyPhrases": [
+      {
+        "id": "phrase-out-1",
+        "front": "多大なるご迷惑とご不便をおかけしましたことを痛惜の念をもって陳謝いたします",
+        "reading": "ただいなるごめいわくとごふべんをおかけしましたことをつうせきのねんをもってちんしゃいたします",
+        "romaji": "tadai naru gomeiwaku to gofuben o okake shimashita koto o tsuuseki no nen o motte chinsha itashimasu",
+        "answer": "We express profound apology with deep remorse for the immense trouble caused.",
+        "notes": "Apex level formal apology (痛惜の念をもって陳謝)."
+      },
+      {
+        "id": "phrase-out-2",
+        "front": "二度とこのような事態を招かぬよう、信頼回復に努めます",
+        "reading": "にどとこのようなじたいをまねかぬよう、しんらいかいふくにつとめます",
+        "romaji": "nidoto kono you na jitai o manekanu you, shinrai kaifuku ni tsutomemasu",
+        "answer": "We will strive to restore trust so as never to invite such an incident again.",
+        "notes": "Solemn institutional commitment."
+      }
+    ],
+    "lines": [
+      {
+        "id": "oa0",
+        "speaker": "other",
+        "speakerName": "Moderator",
+        "speakerNameJa": "司会",
+        "ja": "定刻となりましたので、本日未明に発生いたしましたシステム障害に関する緊急記者会見を開始いたします。",
+        "reading": "ていこくとなりましたので、ほんじつみめいにはっせいいたしましたしすてむしょうがいにかんするきんきゅうきしゃかいけんをかいしいたします。",
+        "romaji": "Teikoku to narimashita no de, honjitsu mimei ni hassei itashimashita shisutemu shougai ni kansuru kinkyuu kisha kaiken o kaishi itashimasu.",
+        "en": "As the scheduled time has arrived, we will now commence the emergency press conference regarding the system outage that occurred early this morning.",
+        "politeness": "keigo"
+      },
+      {
+        "id": "oa1",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "この度の基幹システム障害により、皆様に多大なるご迷惑とご心痛をおかけいたしましたことを、痛惜の念をもって深く陳謝申し上げます。",
+        "reading": "このたびのきかんしすてむしょうがいにより、みなさまにただいなるごめいわくとごしんつうをおかけいたしましたことを、つうせきのねんをもってふかくちんしゃもうしあげます。",
+        "romaji": "Konotabi no kikan shisutemu shougai ni yori, minasama ni tadai naru gomeiwaku to goshintsuu o okake itashimashita koto o, tsuuseki no nen o motte fukaku chinsha moushiagemasu.",
+        "en": "We offer our deepest apologies with profound grief and remorse for causing everyone enormous trouble and heartache due to this core infrastructure outage.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-oa1-1",
+            "ja": "この度の基幹システム障害により、皆様に多大なるご迷惑とご心痛をおかけいたしましたことを、痛惜の念をもって深く陳謝申し上げます。",
+            "reading": "このたびのきかんしすてむしょうがいにより、みなさまにただいなるごめいわくとごしんつうをおかけいたしましたことを、つうせきのねんをもってふかくちんしゃもうしあげます。",
+            "romaji": "Konotabi no kikan shisutemu shougai ni yori, minasama ni tadai naru gomeiwaku to goshintsuu o okake itashimashita koto o, tsuuseki no nen o motte fukaku chinsha moushiagemasu.",
+            "en": "Profound apologies with deep grief for the immense trouble caused by the system outage.",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "Gold standard N1 formal executive apology: 多大なるご心痛, 痛惜の念 (sorrowful grief), 陳謝申し上げます (beg forgiveness).",
+            "reaction": {
+              "speaker": "Media",
+              "speakerJa": "報道陣",
+              "ja": "（厳粛な沈黙ののち、役員一同の深々としたお辞儀）",
+              "reading": "（げんしゅくなちんもくののち、やくいんいちどうのふかぶかとしたおじぎ）",
+              "romaji": "(Genshuku na chinmoku no nochi, yakuin ichidou no fukabuka to shita ojigi)",
+              "en": "(Solemn silence followed by a deep, synchronized bow from the executive board)"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1-cultural-discourse",
+    "title": "Discourse on Japanese Aesthetic Philosophy",
+    "titleJa": "「侘び寂び」と無常観の美学対談",
+    "level": "N1",
+    "category": "Social",
+    "description": "Discuss the classical concepts of 'wabi-sabi' and 'mono no aware' and their relevance to contemporary human transience.",
+    "keyPhrases": [
+      {
+        "id": "phrase-wabi-1",
+        "front": "不完全さや移ろいにこそ宿る美意識",
+        "reading": "ふかんぜんさやうつろいにこそやどるびいしき",
+        "romaji": "fukanzen-sa ya utsuroi ni koso yadoru biishiki",
+        "answer": "An aesthetic consciousness residing precisely within imperfection and transience.",
+        "notes": "Classical Japanese aesthetics."
+      },
+      {
+        "id": "phrase-wabi-2",
+        "front": "万物流転の無常観を肯定的に昇華させる",
+        "reading": "ばんぶつるてんのむじょうかんをこうていてきにしょうかさせる",
+        "romaji": "banbutsu ruten no mujoukan o kouteiteki ni shouka saseru",
+        "answer": "Positively sublimating the impermanent view that all creation is in flux.",
+        "notes": "Philosophical contemplation."
+      }
+    ],
+    "lines": [
+      {
+        "id": "cdsc1",
+        "speaker": "other",
+        "speakerName": "Scholar",
+        "speakerNameJa": "文芸評論家",
+        "ja": "近代西洋の対称美や永続性の希求に対し、日本の伝統的美意識が「朽ちゆくもの」に美を見出した背景には、何があるとお考えですか？",
+        "reading": "きんだいせいようのたいしょうびやえいぞくせいのききゅうにたいし、にほんのでんとうてきびいしきが「くちゆくもの」にびをみいだしたはいけいには、なにがあるとおかんがえですか？",
+        "romaji": "Kindai seiyou no taishoubi ya eizokusei no kikyuu ni taishi, Nihon no dentouteki biishiki ga 'kuchiyuku mono' ni bi o miidashita haikei ni wa, nani ga aru to okangae desu ka?",
+        "en": "In contrast to modern Western symmetry and yearning for permanence, what lies behind traditional Japanese aesthetics finding beauty in things that decay?",
+        "politeness": "keigo"
+      },
+      {
+        "id": "cdsc2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "四季の移ろいや天災と対峙する中で培われた「諸行無常」の観念が、有限な瞬間に現れる生の尊さを照らし出しているからではないでしょうか。",
+        "reading": "しきのうつろいやてんさいとたいじするなかでつちかわれた「しょぎょうむじょう」のかんねんが、ゆうげんなしゅんかんにあらわれるせいのとうとさをてらしだしているからではないでしょうか。",
+        "romaji": "Shiki no utsuroi ya tensai to taiji suru naka de tsuchikawareta 'shogyou mujou' no kannen ga, yuugen na shunkan ni arawareru sei no toutosa o terashidashite iru kara dewa nai deshou ka.",
+        "en": "Perhaps it is because the notion of universal impermanence—cultivated while confronting seasonal shifts and natural perils—illuminates the sacredness of life manifest in finite moments.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-cdsc2-1",
+            "ja": "四季の移ろいや天災と対峙する中で培われた「諸行無常」の観念が、有限な瞬間に現れる生の尊さを照らし出しているからではないでしょうか。",
+            "reading": "しきのうつろいやてんさいとたいじするなかでつちかわれた「しょぎょうむじょう」のかんねんが、ゆうげんなしゅんかんにあらわれるせいのとうとさをてらしだしているからではないでしょうか。",
+            "romaji": "Shiki no utsuroi ya tensai to taiji suru naka de tsuchikawareta 'shogyou mujou' no kannen ga, yuugen na shunkan ni arawareru sei no toutosa o terashidashite iru kara dewa nai deshou ka.",
+            "en": "The concept of impermanence forged amid nature illuminates life's sacredness in finite moments.",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "Poetic N1 philosophical discourse: 諸行無常 (shogyou mujou = universal impermanence), 有限な瞬間 (finite moments), 生の尊さ (sanctity of life).",
+            "reaction": {
+              "speaker": "Scholar",
+              "speakerJa": "文芸評論家",
+              "ja": "卓見ですね。まさに寂びの本質を見事に言い当てておられます。",
+              "reading": "たっけんですね。まさにさびのほんしつをみごとにいいあてておられます。",
+              "romaji": "Takken desu ne. Masa ni sabi no honshitsu o migoto ni iiatete oraremasu.",
+              "en": "A profound discernment. You have struck right at the essence of 'sabi'."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1-board-meeting",
+    "title": "Board of Directors Presentation on M&A Strategy",
+    "titleJa": "取締役会での企業買収（M&A）戦略答弁",
+    "level": "N1",
+    "category": "Workplace",
+    "description": "Present the strategic rationale for a cross-border acquisition to the board of directors and answer questions on valuation.",
+    "keyPhrases": [
+      {
+        "id": "phrase-board-1",
+        "front": "企業価値の最大化と市場占有率の拡大を企図しております",
+        "reading": "きぎょうかちのさいだいかとしじょうせんゆうりつのかくだいをきとしております",
+        "romaji": "kigyou kachi no saidaika to shijou sen'yuuritsu no kakudai o kito shite orimasu",
+        "answer": "We aim for corporate value maximization and market share expansion.",
+        "notes": "High finance corporate strategic intent."
+      },
+      {
+        "id": "phrase-board-2",
+        "front": "デューデリジェンスの精査を経て、買収価格の妥当性を検証いたしました",
+        "reading": "でゅーでりじぇんすのせいさをへて、ばいしゅうかかくのだとうせいをけんしょういたしました",
+        "romaji": "dyuuderijensu no seisa o hete, baishuu kakaku no datousei o kenshou itashimashita",
+        "answer": "Through careful due diligence scrutiny, we validated the acquisition valuation.",
+        "notes": "M&A governance vocabulary."
+      }
+    ],
+    "lines": [
+      {
+        "id": "bm1",
+        "speaker": "other",
+        "speakerName": "External Director",
+        "speakerNameJa": "社外取締役",
+        "ja": "買収対価におけるのれん代の償却リスクと、PMI（買収後統合）の実行確度について、取締役会としての担保を問いたい。",
+        "reading": "ばいしゅうたいかにおけるのれんだいのしょうきゃくりすくと、ぴーえむあい（ばいしゅうごとうごう）のじっこうかくどについて、とりしまりやくかいとしてのたんぽをといたい。",
+        "romaji": "Baishuu taika ni okeru norendai no shoukyaku risuku to, Pii-Emu-Ai (baishuugo tougou) no jikkou kakudo ni tsuite, torishimariyakukai to shite no tanpo o toitai.",
+        "en": "I wish to question the safeguards of the board regarding goodwill amortization impairment risk in the purchase price, and the execution certainty of post-merger integration (PMI).",
+        "politeness": "keigo"
+      },
+      {
+        "id": "bm2",
+        "speaker": "learner",
+        "speakerName": "You",
+        "speakerNameJa": "あなた",
+        "ja": "のれんの減損リスクに関しましては保守的な割引率を用いた感度分析を実施済みであり、PMI専任タスクフォースを即時稼働させ、シナジー創出を盤石なものとする所存です。",
+        "reading": "のれんのげんそんりすくにかんしましてはほしゅてきなわりびきりつをもちいたかんどぶんせきをじっしずみであり、ぴーえむあいせんにんたすくふぉーすをそくじかどうさせ、しなじーそうしゅつをばんじゃくなものとするしょぞんです。",
+        "romaji": "Noren no genson risuku ni kanshimashite wa hoshuteki na waribikiritsu o mochiita kando bunseki o jisshizumi de ari, Pii-Emu-Ai sennin tasukufoosu o sokuji kadou sase, shinajii soushutsu o banjaku na mono to suru shozon desu.",
+        "en": "Regarding goodwill impairment risk, sensitivity analysis applying conservative discount rates has already been executed; by immediately mobilizing a dedicated PMI taskforce, we intend to make synergy creation rock-solid.",
+        "politeness": "keigo",
+        "options": [
+          {
+            "id": "opt-bm2-1",
+            "ja": "のれんの減損リスクに関しましては保守的な割引率を用いた感度分析を実施済みであり、PMI専任タスクフォースを即時稼働させ、シナジー創出を盤石なものとする所存です。",
+            "reading": "のれんのげんそんりすくにかんしましてはほしゅてきなわりびきりつをもちいたかんどぶんせきをじっしずみであり、ぴーえむあいせんにんたすくふぉーすをそくじかどうさせ、しなじーそうしゅつをばんじゃくなものとするしょぞんです。",
+            "romaji": "Noren no genson risuku ni kanshimashite wa hoshuteki na waribikiritsu o mochiita kando bunseki o jisshizumi de ari, Pii-Emu-Ai sennin tasukufoosu o sokuji kadou sase, shinajii soushutsu o banjaku na mono to suru shozon desu.",
+            "en": "Impairment sensitivity analysis is complete; dedicated PMI taskforce guarantees synergies.",
+            "politeness": "keigo",
+            "isCorrect": true,
+            "explanation": "Inarguable N1 corporate governance eloquence: 減損リスク (impairment risk), 感度分析 (sensitivity analysis), 盤石なものとする (make rock-solid).",
+            "reaction": {
+              "speaker": "External Director",
+              "speakerJa": "社外取締役",
+              "ja": "極めて周到な計画と評価します。議案の採決に賛成いたします。",
+              "reading": "きわめてしゅうとうなけいかくとひょうかします。ぎあんのさいけつにさんせいいいたします。",
+              "romaji": "Kiwamete shuutou na keikaku to hyouka shimasu. Gian no saiketsu ni sansei itashimasu.",
+              "en": "I evaluate this as an exceedingly meticulous plan. I vote in favor of adopting the measure."
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -34,6 +34,21 @@ export interface SrsCard {
   updatedAt: number;
 }
 
+export function createInitialCard(id: string, now = Date.now()): SrsCard {
+  return {
+    id,
+    ease: START_EASE,
+    interval: 0,
+    reps: 0,
+    lapses: 0,
+    due: now,
+    phase: "learning",
+    updatedAt: now,
+  };
+}
+
+export const createCard = createInitialCard;
+
 export function review(prev: SrsCard | undefined, id: string, grade: Grade, now: number): SrsCard {
   const q = QUALITY[grade];
   const base: SrsCard = prev ?? {
