@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Mic, Moon, Sun, Settings, Lock } from "lucide-react";
+import { Mic, Moon, Sun, Settings, Lock, Sparkles } from "lucide-react";
 import { useTheme } from "@/lib/theme";
 import { lockSessionNow } from "@/lib/auth";
 
@@ -13,6 +13,15 @@ export default function HeaderControls() {
 
   return (
     <div className="flex items-center gap-1">
+      <Link
+        href="/design-preview"
+        aria-label="Design Preview"
+        title="Kawaii & Game Redesign Preview"
+        className="flex size-9 items-center justify-center rounded-full text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-950/40 transition"
+      >
+        <Sparkles className="size-4 fill-amber-400" />
+      </Link>
+
       <button
         type="button"
         onClick={lockSessionNow}
