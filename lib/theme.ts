@@ -57,3 +57,4 @@ export function useTheme(): [ThemeMode, (mode: ThemeMode) => void] {
 
   return [theme, setTheme];
 }
+

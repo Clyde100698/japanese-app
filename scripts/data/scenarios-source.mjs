@@ -9,3 +9,4 @@ export const SCENARIOS = [
   ...SCENARIOS_N3,
   ...SCENARIOS_N2_N1,
 ];
+
