@@ -150,14 +150,14 @@ export default function DesignPreviewPage() {
           Cute, Alive &amp; Game-Like
         </h1>
         <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-lg mx-auto">
-          Explore the new kawaii mascot **Kuri**, chunky 3D pressed buttons, Web Audio chimes, and three interactive
-          sample screens.
+          Explore the new original blue mascot **Aoi (あおい)** with a head leaf &amp; adventurer satchel, chunky 3D
+          pressed buttons, Web Audio chimes, and three interactive sample screens.
         </p>
 
         {/* Quick Nav Anchors */}
         <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
           {[
-            { id: "mascot", label: "🐶 Mascot States" },
+            { id: "mascot", label: "💙 Mascot States (12)" },
             { id: "palette", label: "🎨 Color Palette" },
             { id: "buttons", label: "🕹️ 3D Buttons" },
             { id: "screen-path", label: "🗺️ Lesson Path" },
@@ -183,17 +183,17 @@ export default function DesignPreviewPage() {
         <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
           <div>
             <h2 className="text-xl font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-              <Smile className="h-5 w-5 text-amber-500" />
-              Meet &quot;Kuri&quot; (くり) the Shiba Mascot
+              <Smile className="h-5 w-5 text-blue-600" />
+              Meet &quot;Aoi&quot; (あおい) the Blue Spirit Mascot
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Original kawaii character with layered vector SVGs, expressive animated states, and sound effects.
+              100% original, round, chubby blue creature with a head leaf, crossbody messenger satchel, and 12 animated expressions.
             </p>
           </div>
         </div>
 
         {/* Live Interactive Stage */}
-        <div className="rounded-3xl bg-gradient-to-b from-blue-50/70 via-white to-amber-50/40 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 p-8 shadow-sm ring-1 ring-slate-200 dark:ring-slate-700 flex flex-col items-center justify-center relative min-h-[300px]">
+        <div className="rounded-3xl bg-gradient-to-b from-blue-50/70 via-white to-indigo-50/40 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 p-8 shadow-sm ring-1 ring-slate-200 dark:ring-slate-700 flex flex-col items-center justify-center relative min-h-[300px]">
           <Mascot
             state={activeMascotState}
             size={mascotSize}
@@ -202,26 +202,45 @@ export default function DesignPreviewPage() {
             interactive={true}
           />
           <p className="text-[11px] font-semibold text-slate-400 mt-6 animate-pulse">
-            👆 Tap Kuri to hear a cute squeak &amp; watch a bounce!
+            👆 Tap Aoi to hear a cute squeak &amp; watch a springy bounce!
           </p>
         </div>
 
-        {/* State Selector Buttons */}
+        {/* State Selector Buttons (All 12 States) */}
         <div className="space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-            Select State to Animate
-          </span>
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              Select Expression to Animate (12 States)
+            </span>
+            <button
+              onClick={() => {
+                setActiveMascotState("gadget");
+                setCustomSpeechJa("今日の道具はこれ！");
+                setCustomSpeechEn("Here's today's lesson gadget!");
+                playCelebrateSound();
+              }}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 ring-1 ring-amber-300 dark:ring-amber-800 hover:scale-105 transition"
+            >
+              <Sparkles className="h-3.5 w-3.5" />
+              ✨ Play Gadget Reveal
+            </button>
+          </div>
+
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {(
               [
-                { state: "idle", label: "Idle (Breathe/Blink)", ja: "通常", en: "Let's study!" },
-                { state: "happy", label: "Happy (Bouncy)", ja: "うれしい！", en: "Great work!" },
-                { state: "cheering", label: "Cheering (Stars)", ja: "やったー！", en: "Incredible!" },
+                { state: "idle", label: "Idle (Blink/Breathe)", ja: "いっしょに学ぼう！", en: "Let's learn together!" },
+                { state: "happy", label: "Happy (Bouncy)", ja: "いいね！", en: "Great work!" },
+                { state: "cheering", label: "Cheering (Stars)", ja: "やったー！", en: "You did it!" },
                 { state: "sad", label: "Encouraging (Sad)", ja: "がんばって！", en: "Don't give up!" },
-                { state: "thinking", label: "Thinking (Bubble)", ja: "うーん…", en: "Hmm, let's see..." },
-                { state: "listening", label: "Listening (Waves)", ja: "聞いてるよ", en: "I'm listening!" },
-                { state: "speaking", label: "Speaking (Mouth)", ja: "こんにちは", en: "Kon'nichiwa!" },
-                { state: "sleeping", label: "Sleeping (Zzz)", ja: "おやすみ…", en: "Zzz... Study today?" },
+                { state: "thinking", label: "Thinking (Bubble)", ja: "うーん、どれかな？", en: "Hmm, let's see..." },
+                { state: "listening", label: "Listening (Waves)", ja: "聞いてるよ！", en: "I'm listening!" },
+                { state: "speaking", label: "Speaking (Mouth)", ja: "よく聞いてね", en: "Listen closely!" },
+                { state: "sleepy", label: "Sleepy (Zzz)", ja: "今日もお勉強する？", en: "Study a bit today?" },
+                { state: "shocked", label: "Shocked (Anime)", ja: "びっくり！", en: "Whoa, that was tricky!" },
+                { state: "proud", label: "Proud (Smug Smirk)", ja: "さすが！", en: "Nailed it! So smart!" },
+                { state: "laughing", label: "Laughing (Tears)", ja: "あはは、楽しい！", en: "Haha, having so much fun!" },
+                { state: "gadget", label: "Gadget Reveal (Beams)", ja: "今日の道具はこれ！", en: "Here's today's lesson gadget!" },
               ] as const
             ).map((item) => {
               const active = activeMascotState === item.state;
@@ -232,7 +251,8 @@ export default function DesignPreviewPage() {
                     setActiveMascotState(item.state);
                     setCustomSpeechJa(item.ja);
                     setCustomSpeechEn(item.en);
-                    playTapSound();
+                    if (item.state === "gadget") playCelebrateSound();
+                    else playTapSound();
                   }}
                   className={`min-h-12 rounded-2xl p-2.5 text-left transition ring-1 ${
                     active
@@ -250,33 +270,37 @@ export default function DesignPreviewPage() {
           </div>
         </div>
 
-        {/* Simultaneous 8-State Grid */}
+        {/* Simultaneous 12-State Showcase Grid */}
         <div className="rounded-3xl bg-white dark:bg-slate-800 p-6 ring-1 ring-slate-200 dark:ring-slate-700 shadow-sm space-y-4">
           <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">
-            All 8 Expressive States at a Glance
+            All 12 Expressive Expressions at a Glance
           </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
             {(
               [
-                { s: "idle", name: "1. Idle", desc: "Periodic blink & breathing squash" },
-                { s: "happy", name: "2. Happy", desc: "Cheery grin & ear wiggle" },
-                { s: "cheering", name: "3. Cheering", desc: "Paws raised & star sparkles" },
-                { s: "sad", name: "4. Encouraging", desc: "Droopy ears & tear shine" },
-                { s: "thinking", name: "5. Thinking", desc: "Eyes up & thought bubble" },
-                { s: "listening", name: "6. Listening", desc: "Alert ears & sound ripples" },
-                { s: "speaking", name: "7. Speaking", desc: "Mouth opening with audio" },
-                { s: "sleeping", name: "8. Sleeping", desc: "Closed eyes & floating Zzz" },
+                { s: "idle", name: "1. Idle", desc: "Blink & breathe" },
+                { s: "happy", name: "2. Happy", desc: "Crescents ^^" },
+                { s: "cheering", name: "3. Cheering", desc: "Star pupils" },
+                { s: "sad", name: "4. Encourage", desc: "Tear shine" },
+                { s: "thinking", name: "5. Thinking", desc: "Eyes up & bubble" },
+                { s: "listening", name: "6. Listening", desc: "Sound ripples" },
+                { s: "speaking", name: "7. Speaking", desc: "TTS mouth sync" },
+                { s: "sleepy", name: "8. Sleepy", desc: "Floating Zzz" },
+                { s: "shocked", name: "9. Shocked", desc: "Manga shock" },
+                { s: "proud", name: "10. Proud", desc: "Smug smirk ^v^" },
+                { s: "laughing", name: "11. Laughing", desc: "Tear squirts ><" },
+                { s: "gadget", name: "12. Gadget", desc: "Scroll & beams" },
               ] as const
             ).map((card) => (
               <div
                 key={card.s}
-                className="flex flex-col items-center text-center p-3 rounded-2xl bg-slate-50 dark:bg-slate-900/50 ring-1 ring-slate-200/60 dark:ring-slate-800"
+                className="flex flex-col items-center text-center p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-900/50 ring-1 ring-slate-200/60 dark:ring-slate-800"
               >
-                <Mascot state={card.s} size={64} interactive={false} />
-                <span className="text-xs font-bold text-slate-800 dark:text-slate-200 mt-2">
+                <Mascot state={card.s} size={56} interactive={false} />
+                <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 mt-1.5">
                   {card.name}
                 </span>
-                <span className="text-[10px] text-slate-500 leading-tight mt-0.5">{card.desc}</span>
+                <span className="text-[9px] text-slate-400 leading-tight">{card.desc}</span>
               </div>
             ))}
           </div>
@@ -448,7 +472,7 @@ export default function DesignPreviewPage() {
             Winding Lesson Path (World Map)
           </h2>
           <p className="text-xs text-slate-500">
-            Nodes with stars, themed unit banners, and Kuri walking along the path!
+            Nodes with stars, themed unit banners, and Aoi walking along the path!
           </p>
         </div>
 

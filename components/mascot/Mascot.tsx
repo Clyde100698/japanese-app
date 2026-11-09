@@ -10,7 +10,11 @@ export type MascotState =
   | "thinking"
   | "listening"
   | "speaking"
-  | "sleeping";
+  | "sleepy"
+  | "shocked"
+  | "proud"
+  | "laughing"
+  | "gadget";
 
 export interface MascotSpeech {
   ja?: string;
@@ -19,7 +23,7 @@ export interface MascotSpeech {
 }
 
 export interface MascotProps {
-  /** The expressive state of Kuri the Shiba */
+  /** The expressive state of Aoi the Blue Spirit */
   state?: MascotState;
   /** Size preset or pixel number */
   size?: "sm" | "md" | "lg" | "xl" | "2xl" | number;
@@ -70,7 +74,13 @@ export default function Mascot({
   const animClass =
     state === "cheering" || state === "happy" || isTapped
       ? "animate-mascot-bounce"
-      : state === "sleeping"
+      : state === "laughing"
+      ? "animate-mascot-laugh"
+      : state === "shocked"
+      ? "animate-mascot-shock"
+      : state === "proud"
+      ? "animate-mascot-proud"
+      : state === "sleepy"
       ? ""
       : "animate-mascot-breathe";
 
@@ -92,7 +102,7 @@ export default function Mascot({
               : "left-[95%] top-1/2 -translate-y-1/2 ml-2"
           }`}
         >
-          <div className="relative rounded-2xl bg-white dark:bg-slate-800 px-3.5 py-2 shadow-lg ring-1 ring-slate-200/80 dark:ring-slate-700 min-w-[120px] max-w-[220px] text-center">
+          <div className="relative rounded-2xl bg-white dark:bg-slate-800 px-3.5 py-2 shadow-lg ring-1 ring-slate-200/80 dark:ring-slate-700 min-w-[130px] max-w-[240px] text-center">
             {typeof speech === "string" ? (
               <p className="text-xs font-bold text-slate-800 dark:text-slate-100">{speech}</p>
             ) : (
@@ -128,7 +138,7 @@ export default function Mascot({
         </div>
       )}
 
-      {/* SVG Character */}
+      {/* SVG Character: Aoi the Blue Creature */}
       <svg
         viewBox="0 0 120 120"
         width={px}
@@ -136,321 +146,452 @@ export default function Mascot({
         className={`w-full h-full cursor-pointer transition-transform duration-200 ${animClass}`}
         onClick={handleMascotTap}
         role="img"
-        aria-label={`Kuri the Shiba Inu mascot - ${state} state`}
+        aria-label={`Aoi the blue mascot - ${state} state`}
       >
         <defs>
-          {/* Gradients */}
-          <linearGradient id={`kuri-fur-${uid}`} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#F59E0B" />
+          {/* Main Blue Body Gradients */}
+          <radialGradient id={`aoi-body-${uid}`} cx="45%" cy="40%" r="65%">
+            <stop offset="0%" stopColor="#60A5FA" />
+            <stop offset="50%" stopColor="#2563EB" />
+            <stop offset="100%" stopColor="#1D4ED8" />
+          </radialGradient>
+
+          {/* Soft Muzzle/Cheek Cream-Blue */}
+          <linearGradient id={`aoi-face-${uid}`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="100%" stopColor="#EFF6FF" />
+          </linearGradient>
+
+          {/* Inner Ear Periwinkle / Cyan */}
+          <linearGradient id={`aoi-ear-${uid}`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#BAE6FD" />
+            <stop offset="100%" stopColor="#93C5FD" />
+          </linearGradient>
+
+          {/* Head Leaf Green */}
+          <linearGradient id={`aoi-leaf-${uid}`} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#34D399" />
+            <stop offset="100%" stopColor="#059669" />
+          </linearGradient>
+
+          {/* Leather Satchel Brown */}
+          <linearGradient id={`aoi-satchel-${uid}`} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#B45309" />
+            <stop offset="100%" stopColor="#78350F" />
+          </linearGradient>
+
+          {/* Satchel Brass Buckle */}
+          <linearGradient id={`aoi-buckle-${uid}`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#FDE047" />
             <stop offset="100%" stopColor="#D97706" />
           </linearGradient>
 
-          <linearGradient id={`kuri-cream-${uid}`} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="100%" stopColor="#FEF3C7" />
-          </linearGradient>
-
-          <radialGradient id={`kuri-blush-${uid}`} cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#F472B6" stopOpacity="0.7" />
+          {/* Cheek Blush */}
+          <radialGradient id={`aoi-blush-${uid}`} cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#F472B6" stopOpacity="0.75" />
             <stop offset="100%" stopColor="#F472B6" stopOpacity="0" />
           </radialGradient>
 
-          <linearGradient id={`kuri-ear-inner-${uid}`} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#FBCFE8" />
-            <stop offset="100%" stopColor="#F472B6" />
-          </linearGradient>
-
-          <linearGradient id={`kuri-bandana-${uid}`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#EF4444" />
-            <stop offset="100%" stopColor="#DC2626" />
-          </linearGradient>
-
-          <radialGradient id={`kuri-bell-${uid}`} cx="35%" cy="35%" r="65%">
-            <stop offset="0%" stopColor="#FDE047" />
-            <stop offset="50%" stopColor="#EAB308" />
-            <stop offset="100%" stopColor="#CA8A04" />
+          {/* Gadget Radiance Gradient */}
+          <radialGradient id={`aoi-beam-${uid}`} cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#FDE047" stopOpacity="0.8" />
+            <stop offset="60%" stopColor="#F59E0B" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#F59E0B" stopOpacity="0" />
           </radialGradient>
 
-          {/* Soft Shadow Filter */}
-          <filter id={`kuri-shadow-${uid}`} x="-10%" y="-10%" width="120%" height="130%">
-            <feDropShadow dx="0" dy="3" stdDeviation="3" floodOpacity="0.15" />
+          {/* Soft Drop Shadow */}
+          <filter id={`aoi-shadow-${uid}`} x="-10%" y="-10%" width="120%" height="130%">
+            <feDropShadow dx="0" dy="3.5" stdDeviation="3.5" floodColor="#0F172A" floodOpacity="0.18" />
           </filter>
         </defs>
 
-        {/* Ground Ambient Shadow */}
-        <ellipse cx="60" cy="112" rx="34" ry="5.5" fill="#000000" fillOpacity="0.12" />
+        {/* Ambient Ground Shadow */}
+        <ellipse cx="60" cy="112" rx="35" ry="6" fill="#0F172A" fillOpacity="0.12" />
 
-        {/* Curled Tail (Behind Body) */}
-        <path
-          d="M84 75 C96 68, 102 54, 96 46 C90 38, 80 44, 82 50 C84 56, 88 58, 86 64"
-          fill="none"
-          stroke={`url(#kuri-fur-${uid})`}
-          strokeWidth="11"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M93 47 C91 43, 85 45, 84 48"
-          fill="none"
-          stroke="#FFFFFF"
-          strokeWidth="7"
-          strokeLinecap="round"
-        />
+        {/* GADGET REVEAL: Radiating Sunburst in Background */}
+        {state === "gadget" && (
+          <g className="animate-beam-spin" style={{ transformOrigin: "60px 50px" }}>
+            <circle cx="60" cy="50" r="48" fill={`url(#aoi-beam-${uid})`} />
+            {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg) => (
+              <line
+                key={deg}
+                x1="60"
+                y1="50"
+                x2={60 + 44 * Math.cos((deg * Math.PI) / 180)}
+                y2={50 + 44 * Math.sin((deg * Math.PI) / 180)}
+                stroke="#FDE047"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                opacity="0.8"
+              />
+            ))}
+          </g>
+        )}
 
-        {/* Left Ear */}
+        {/* Plump Round Tail Behind Body */}
+        <path
+          d="M86 78 C98 74, 104 62, 98 54 C92 46, 82 52, 84 60"
+          fill={`url(#aoi-body-${uid})`}
+          stroke="#1E40AF"
+          strokeWidth="1.5"
+        />
+        <circle cx="94" cy="56" r="4.5" fill="#BFDBFE" />
+
+        {/* Left Pillowy Ear */}
         <g
           className={
-            state === "happy" || state === "cheering"
+            state === "happy" || state === "cheering" || state === "laughing"
               ? "animate-mascot-ear-left"
               : state === "listening"
-              ? "origin-[35px_45px] -rotate-6"
-              : state === "sad" || state === "sleeping"
-              ? "origin-[35px_45px] rotate-12"
+              ? "origin-[34px_42px] -rotate-8"
+              : state === "sad" || state === "sleepy"
+              ? "origin-[34px_42px] rotate-14"
               : ""
           }
         >
           {/* Ear Outer */}
-          <path
-            d="M24 50 C22 28, 38 18, 44 38 Z"
-            fill={`url(#kuri-fur-${uid})`}
-            stroke="#B45309"
+          <ellipse
+            cx="32"
+            cy="40"
+            rx="12"
+            ry="16"
+            transform="rotate(-25 32 40)"
+            fill={`url(#aoi-body-${uid})`}
+            stroke="#1D4ED8"
             strokeWidth="1.5"
-            strokeLinejoin="round"
           />
-          {/* Ear Inner Pink */}
-          <path
-            d="M28 47 C27 34, 37 28, 41 40 Z"
-            fill={`url(#kuri-ear-inner-${uid})`}
+          {/* Ear Inner Soft Powder Blue */}
+          <ellipse
+            cx="33"
+            cy="40"
+            rx="6.5"
+            ry="10"
+            transform="rotate(-25 33 40)"
+            fill={`url(#aoi-ear-${uid})`}
           />
         </g>
 
-        {/* Right Ear */}
+        {/* Right Pillowy Ear */}
         <g
           className={
-            state === "happy" || state === "cheering"
+            state === "happy" || state === "cheering" || state === "laughing"
               ? "animate-mascot-ear-right"
               : state === "listening"
-              ? "origin-[85px_45px] rotate-6"
-              : state === "sad" || state === "sleeping"
-              ? "origin-[85px_45px] -rotate-12"
+              ? "origin-[86px_42px] rotate-8"
+              : state === "sad" || state === "sleepy"
+              ? "origin-[86px_42px] -rotate-14"
               : ""
           }
         >
           {/* Ear Outer */}
-          <path
-            d="M96 50 C98 28, 82 18, 76 38 Z"
-            fill={`url(#kuri-fur-${uid})`}
-            stroke="#B45309"
+          <ellipse
+            cx="88"
+            cy="40"
+            rx="12"
+            ry="16"
+            transform="rotate(25 88 40)"
+            fill={`url(#aoi-body-${uid})`}
+            stroke="#1D4ED8"
             strokeWidth="1.5"
-            strokeLinejoin="round"
           />
-          {/* Ear Inner Pink */}
-          <path
-            d="M92 47 C93 34, 83 28, 79 40 Z"
-            fill={`url(#kuri-ear-inner-${uid})`}
+          {/* Ear Inner Soft Powder Blue */}
+          <ellipse
+            cx="87"
+            cy="40"
+            rx="6.5"
+            ry="10"
+            transform="rotate(25 87 40)"
+            fill={`url(#aoi-ear-${uid})`}
           />
         </g>
 
-        {/* Main Chubby Body & Head (Egg shape) */}
-        <g filter={`url(#kuri-shadow-${uid})`}>
+        {/* Main Chubby Body (Plump Pear/Dumpling Silhouette) */}
+        <g filter={`url(#aoi-shadow-${uid})`}>
           <ellipse
             cx="60"
             cy="68"
-            rx="40"
-            ry="38"
-            fill={`url(#kuri-fur-${uid})`}
-            stroke="#B45309"
-            strokeWidth="1.5"
+            rx="42"
+            ry="40"
+            fill={`url(#aoi-body-${uid})`}
+            stroke="#1D4ED8"
+            strokeWidth="1.8"
           />
 
-          {/* White / Cream Muzzle & Chest Patch */}
+          {/* Lower Cheeks / Muzzle Patch (Clean rounded cream-blue highlight) */}
           <path
-            d="M32 74 C30 96, 90 96, 88 74 C86 58, 70 54, 60 54 C50 54, 34 58, 32 74 Z"
-            fill={`url(#kuri-cream-${uid})`}
+            d="M36 72 C34 94, 86 94, 84 72 C82 60, 68 58, 60 58 C52 58, 38 60, 36 72 Z"
+            fill={`url(#aoi-face-${uid})`}
           />
         </g>
 
-        {/* White Forehead Markings (Classic Shiba Urajiro eyebrows) */}
-        <ellipse cx="44" cy="50" rx="3.5" ry="4.5" fill="#FFFFFF" fillOpacity="0.9" />
-        <ellipse cx="76" cy="50" rx="3.5" ry="4.5" fill="#FFFFFF" fillOpacity="0.9" />
+        {/* Distinctive Accessory 1: Sprouting Green Leaf on Head */}
+        <g className="animate-leaf-sway">
+          {/* Leaf stem */}
+          <path d="M60 28 Q60 22 63 18" stroke="#047857" strokeWidth="2" fill="none" strokeLinecap="round" />
+          {/* Leaf body */}
+          <path
+            d="M63 18 C58 10, 74 6, 76 16 C76 22, 68 22, 63 18 Z"
+            fill={`url(#aoi-leaf-${uid})`}
+            stroke="#047857"
+            strokeWidth="1"
+          />
+          {/* Leaf vein */}
+          <path d="M64 18 Q69 14 74 12" stroke="#A7F3D0" strokeWidth="1" fill="none" opacity="0.8" />
+        </g>
 
-        {/* Rosy Cheeks */}
-        <circle cx="34" cy="74" r="7.5" fill={`url(#kuri-blush-${uid})`} />
-        <circle cx="86" cy="74" r="7.5" fill={`url(#kuri-blush-${uid})`} />
+        {/* Distinctive Accessory 2: Crossbody Adventurer's Leather Satchel */}
+        <g>
+          {/* Diagonal Leather Strap across chest */}
+          <path
+            d="M34 52 Q60 76 86 92"
+            stroke="#78350F"
+            strokeWidth="4"
+            fill="none"
+            strokeLinecap="round"
+          />
+          <path
+            d="M35 53 Q60 77 85 91"
+            stroke="#B45309"
+            strokeWidth="1.5"
+            fill="none"
+            strokeLinecap="round"
+          />
 
-        {/* Little Nose */}
-        <path
-          d="M56.5 67 C56.5 65.5, 63.5 65.5, 63.5 67 C63.5 70, 56.5 70, 56.5 67 Z"
-          fill="#1E293B"
-        />
-        <ellipse cx="58.5" cy="66.5" rx="1.2" ry="0.6" fill="#FFFFFF" fillOpacity="0.6" />
-
-        {/* --- EYES PER STATE --- */}
-        {state === "sleeping" ? (
-          // Sleeping curved eyes
-          <g stroke="#1E293B" strokeWidth="2.5" strokeLinecap="round" fill="none">
-            <path d="M40 65 Q45 69 50 65" />
-            <path d="M70 65 Q75 69 80 65" />
+          {/* Leather Messenger Bag on hip */}
+          <g transform="translate(74, 80) rotate(12)">
+            <rect
+              x="0"
+              y="0"
+              width="20"
+              height="16"
+              rx="4"
+              fill={`url(#aoi-satchel-${uid})`}
+              stroke="#451A03"
+              strokeWidth="1.2"
+            />
+            {/* Flap */}
+            <path
+              d="M0 6 Q10 11 20 6"
+              stroke="#451A03"
+              strokeWidth="1.2"
+              fill="none"
+            />
+            {/* Golden Brass Clasp */}
+            <rect x="8.5" y="5" width="3" height="4" rx="1" fill={`url(#aoi-buckle-${uid})`} />
           </g>
-        ) : state === "happy" || state === "cheering" ? (
+        </g>
+
+        {/* Soft Pink Airbrush Cheeks */}
+        <circle cx="35" cy="74" r="7.5" fill={`url(#aoi-blush-${uid})`} />
+        <circle cx="85" cy="74" r="7.5" fill={`url(#aoi-blush-${uid})`} />
+
+        {/* Tiny Delicate Nose */}
+        <ellipse cx="60" cy="67.5" rx="2" ry="1.4" fill="#0F172A" />
+
+        {/* ========================================================================= */}
+        {/* EYES PER STATE */}
+        {/* ========================================================================= */}
+        {state === "sleepy" ? (
+          // Sleepy peaceful downward curve
+          <g stroke="#0F172A" strokeWidth="2.5" strokeLinecap="round" fill="none">
+            <path d="M41 64 Q46 68 51 64" />
+            <path d="M69 64 Q74 68 79 64" />
+          </g>
+        ) : state === "happy" ? (
           // Cheerful smiling crescent eyes ^^
-          <g stroke="#1E293B" strokeWidth="2.8" strokeLinecap="round" fill="none">
-            <path d="M40 66 Q45 59 50 66" />
-            <path d="M70 66 Q75 59 80 66" />
+          <g stroke="#0F172A" strokeWidth="2.8" strokeLinecap="round" fill="none">
+            <path d="M40 66 Q46 58 52 66" />
+            <path d="M68 66 Q74 58 80 66" />
+          </g>
+        ) : state === "cheering" ? (
+          // Star pupils for victory!
+          <g>
+            <circle cx="46" cy="63" r="7" fill="#0F172A" />
+            <circle cx="74" cy="63" r="7" fill="#0F172A" />
+            {/* Left Star pupil */}
+            <path d="M46 59 Q46 63 49 63 Q46 63 46 67 Q46 63 43 63 Q46 63 46 59 Z" fill="#FDE047" />
+            {/* Right Star pupil */}
+            <path d="M74 59 Q74 63 77 63 Q74 63 74 67 Q74 63 71 63 Q74 63 74 59 Z" fill="#FDE047" />
           </g>
         ) : state === "sad" ? (
-          // Sad / encouraging droopy eyes with glistening shine
+          // Big sad puppy waterdrop eyes
           <g>
-            <circle cx="45" cy="64" r="6.5" fill="#1E293B" />
-            <circle cx="75" cy="64" r="6.5" fill="#1E293B" />
+            <circle cx="45" cy="64" r="6.8" fill="#0F172A" />
+            <circle cx="75" cy="64" r="6.8" fill="#0F172A" />
             <circle cx="43" cy="62" r="2.8" fill="#FFFFFF" />
             <circle cx="73" cy="62" r="2.8" fill="#FFFFFF" />
-            <circle cx="47" cy="66" r="1.5" fill="#60A5FA" fillOpacity="0.8" />
-            <circle cx="77" cy="66" r="1.5" fill="#60A5FA" fillOpacity="0.8" />
+            <circle cx="47" cy="66" r="1.5" fill="#93C5FD" />
+            <circle cx="77" cy="66" r="1.5" fill="#93C5FD" />
             {/* Tear drop on right cheek */}
             <path
-              d="M87 75 C87 78, 84 80, 84 82 C84 80, 81 78, 81 75 C81 73, 87 73, 87 75 Z"
+              d="M86 76 C86 79, 83 81, 83 83 C83 81, 80 79, 80 76 C80 74, 86 74, 86 76 Z"
               fill="#60A5FA"
-              fillOpacity="0.85"
             />
           </g>
         ) : state === "thinking" ? (
           // Looking up and to the right
           <g>
-            <circle cx="46" cy="61" r="6.5" fill="#1E293B" />
-            <circle cx="76" cy="61" r="6.5" fill="#1E293B" />
+            <circle cx="46" cy="61" r="6.8" fill="#0F172A" />
+            <circle cx="76" cy="61" r="6.8" fill="#0F172A" />
             <circle cx="48" cy="59" r="2.6" fill="#FFFFFF" />
             <circle cx="78" cy="59" r="2.6" fill="#FFFFFF" />
-            <circle cx="45" cy="63" r="1.2" fill="#FFFFFF" />
-            <circle cx="75" cy="63" r="1.2" fill="#FFFFFF" />
+            <circle cx="45" cy="63" r="1.3" fill="#FFFFFF" />
+            <circle cx="75" cy="63" r="1.3" fill="#FFFFFF" />
+          </g>
+        ) : state === "shocked" ? (
+          // Anime shock: wide white eyes with small dot pupils
+          <g>
+            <circle cx="45" cy="62" r="8" fill="#FFFFFF" stroke="#0F172A" strokeWidth="2" />
+            <circle cx="75" cy="62" r="8" fill="#FFFFFF" stroke="#0F172A" strokeWidth="2" />
+            <circle cx="45" cy="62" r="2.5" fill="#0F172A" />
+            <circle cx="75" cy="62" r="2.5" fill="#0F172A" />
+          </g>
+        ) : state === "proud" ? (
+          // Smug / Proud closed eyes ^v^
+          <g stroke="#0F172A" strokeWidth="2.6" strokeLinecap="round" fill="none">
+            <path d="M40 64 L46 60 L52 64" />
+            <path d="M68 64 L74 60 L80 64" />
+          </g>
+        ) : state === "laughing" ? (
+          // Laughing with tears: squeezed shut eyes ><
+          <g stroke="#0F172A" strokeWidth="2.8" strokeLinecap="round" fill="none">
+            <path d="M40 60 L48 64 L40 68" />
+            <path d="M80 60 L72 64 L80 68" />
           </g>
         ) : (
-          // Standard big anime glossy eyes with natural blink
+          // Standard / Idle / Listening / Gadget: big anime glossy eyes with natural blink
           <g className="animate-mascot-blink">
-            {/* Left Eye */}
-            <circle cx="45" cy="63" r="6.8" fill="#0F172A" />
+            <circle cx="45" cy="63" r="7" fill="#0F172A" />
             <circle cx="43" cy="61" r="2.8" fill="#FFFFFF" />
-            <circle cx="47" cy="65" r="1.3" fill="#FFFFFF" />
-            {/* Right Eye */}
-            <circle cx="75" cy="63" r="6.8" fill="#0F172A" />
+            <circle cx="47" cy="65" r="1.4" fill="#FFFFFF" />
+            <circle cx="75" cy="63" r="7" fill="#0F172A" />
             <circle cx="73" cy="61" r="2.8" fill="#FFFFFF" />
-            <circle cx="77" cy="65" r="1.3" fill="#FFFFFF" />
+            <circle cx="77" cy="65" r="1.4" fill="#FFFFFF" />
           </g>
         )}
 
-        {/* --- MOUTH PER STATE --- */}
+        {/* ========================================================================= */}
+        {/* MOUTH PER STATE */}
+        {/* ========================================================================= */}
         {state === "speaking" ? (
-          // Animated speaking mouth
+          // Animated speaking mouth synchronized with TTS
           <g className="animate-mascot-talk" style={{ transformOrigin: "60px 73px" }}>
             <ellipse cx="60" cy="74" rx="4.5" ry="5.5" fill="#7F1D1D" />
             <path d="M57 75 Q60 77 63 75 Q60 79 57 75" fill="#F472B6" />
           </g>
-        ) : state === "happy" || state === "cheering" ? (
-          // Open cheerful mouth with pink tongue
+        ) : state === "happy" || state === "cheering" || state === "gadget" ? (
+          // Open cheerful smile showing tongue
           <g>
             <path
-              d="M54 71 Q60 71 66 71 C66 76 54 76 54 71 Z"
+              d="M55 71 Q60 71 65 71 C65 76 55 76 55 71 Z"
               fill="#7F1D1D"
-              stroke="#1E293B"
+              stroke="#0F172A"
               strokeWidth="1.2"
             />
             <path d="M57 73 Q60 76 63 73" fill="#F472B6" />
           </g>
+        ) : state === "laughing" ? (
+          // Wide open laughing mouth
+          <g>
+            <path
+              d="M52 70 Q60 69 68 70 C68 78 52 78 52 70 Z"
+              fill="#7F1D1D"
+              stroke="#0F172A"
+              strokeWidth="1.5"
+            />
+            <ellipse cx="60" cy="75" rx="5" ry="2.5" fill="#F472B6" />
+          </g>
+        ) : state === "shocked" ? (
+          // Small vertical oval mouth
+          <ellipse cx="60" cy="75" rx="3.5" ry="6" fill="#7F1D1D" stroke="#0F172A" strokeWidth="1.5" />
+        ) : state === "proud" ? (
+          // Small confident upward smirk
+          <path d="M57 71 Q63 74 65 70" fill="none" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" />
         ) : state === "sad" ? (
-          // Small pout
-          <path
-            d="M56 74 Q60 71 64 74"
-            fill="none"
-            stroke="#1E293B"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
+          // Soft little wavy pout
+          <path d="M56 74 Q60 71 64 74" fill="none" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" />
         ) : state === "thinking" ? (
-          // Curious small 'o'
+          // Small inquisitive 'o'
           <circle cx="60" cy="73" r="2.2" fill="#7F1D1D" />
-        ) : state === "sleeping" ? (
-          // Tiny peaceful smile
-          <path
-            d="M57 71 Q60 73 63 71"
-            fill="none"
-            stroke="#1E293B"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-          />
+        ) : state === "sleepy" ? (
+          // Peaceful tiny smile
+          <path d="M57 71 Q60 73 63 71" fill="none" stroke="#0F172A" strokeWidth="1.8" strokeLinecap="round" />
         ) : (
-          // Default cute 'w' cat-puppy smile
+          // Default tiny cute 'w' cat-spirit mouth
           <path
-            d="M54 71 Q57 74 60 71 Q63 74 66 71"
+            d="M55 71 Q57.5 73.5 60 71 Q62.5 73.5 65 71"
             fill="none"
-            stroke="#1E293B"
+            stroke="#0F172A"
             strokeWidth="1.8"
             strokeLinecap="round"
           />
         )}
-
-        {/* Red Bandana Scarf */}
-        <path
-          d="M40 88 C40 88, 50 94, 60 94 C70 94, 80 88, 80 88 C80 93, 70 102, 60 102 C50 102, 40 93, 40 88 Z"
-          fill={`url(#kuri-bandana-${uid})`}
-        />
-        {/* Scarf fold lines */}
-        <path
-          d="M42 89 Q60 95 78 89"
-          fill="none"
-          stroke="#B91C1C"
-          strokeWidth="1.5"
-        />
-
-        {/* Golden Jingle Bell */}
-        <circle cx="60" cy="98" r="4.8" fill={`url(#kuri-bell-${uid})`} stroke="#A16207" strokeWidth="0.8" />
-        <circle cx="60" cy="99" r="1.1" fill="#78350F" />
-        <line x1="57" y1="97" x2="63" y2="97" stroke="#78350F" strokeWidth="0.8" />
 
         {/* Paws */}
         {state === "cheering" ? (
           // Paws raised high in victory!
           <g>
-            <ellipse cx="32" cy="50" rx="6.5" ry="6" fill="#FFFFFF" stroke="#B45309" strokeWidth="1.2" />
-            <ellipse cx="88" cy="50" rx="6.5" ry="6" fill="#FFFFFF" stroke="#B45309" strokeWidth="1.2" />
+            <ellipse cx="30" cy="48" rx="6" ry="6" fill="#60A5FA" stroke="#1D4ED8" strokeWidth="1.2" />
+            <ellipse cx="90" cy="48" rx="6" ry="6" fill="#60A5FA" stroke="#1D4ED8" strokeWidth="1.2" />
+          </g>
+        ) : state === "gadget" ? (
+          // Right paw holding the magical golden study item!
+          <g className="animate-gadget-reveal">
+            <ellipse cx="44" cy="94" rx="6" ry="5.5" fill="#60A5FA" stroke="#1D4ED8" strokeWidth="1.2" />
+            {/* Raised paw holding item */}
+            <ellipse cx="78" cy="62" rx="6" ry="6" fill="#60A5FA" stroke="#1D4ED8" strokeWidth="1.2" />
+            {/* Golden Study Scroll Gadget */}
+            <g transform="translate(76, 44) rotate(-15)">
+              <rect x="0" y="0" width="8" height="24" rx="3" fill="#FDE047" stroke="#D97706" strokeWidth="1.2" />
+              <line x1="2" y1="5" x2="6" y2="5" stroke="#D97706" strokeWidth="1" />
+              <line x1="2" y1="10" x2="6" y2="10" stroke="#D97706" strokeWidth="1" />
+              <circle cx="4" cy="18" r="1.5" fill="#EF4444" />
+            </g>
           </g>
         ) : state === "thinking" ? (
-          // Right paw touching chin
+          // Right paw on chin
           <g>
-            <ellipse cx="44" cy="96" rx="6.5" ry="5.5" fill="#FFFFFF" stroke="#B45309" strokeWidth="1.2" />
-            <ellipse cx="68" cy="78" rx="6" ry="6" fill="#FFFFFF" stroke="#B45309" strokeWidth="1.2" />
+            <ellipse cx="44" cy="94" rx="6.5" ry="5.5" fill="#60A5FA" stroke="#1D4ED8" strokeWidth="1.2" />
+            <ellipse cx="68" cy="76" rx="5.5" ry="5.5" fill="#60A5FA" stroke="#1D4ED8" strokeWidth="1.2" />
+          </g>
+        ) : state === "proud" ? (
+          // Paws placed proudly on hips
+          <g>
+            <ellipse cx="30" cy="72" rx="6" ry="5.5" fill="#60A5FA" stroke="#1D4ED8" strokeWidth="1.2" />
+            <ellipse cx="88" cy="72" rx="6" ry="5.5" fill="#60A5FA" stroke="#1D4ED8" strokeWidth="1.2" />
           </g>
         ) : (
-          // Resting cute front paws
+          // Resting front paws
           <g>
-            <ellipse cx="44" cy="98" rx="7" ry="5.5" fill="#FFFFFF" stroke="#B45309" strokeWidth="1.2" />
-            <ellipse cx="76" cy="98" rx="7" ry="5.5" fill="#FFFFFF" stroke="#B45309" strokeWidth="1.2" />
+            <ellipse cx="44" cy="96" rx="6.5" ry="5.5" fill="#60A5FA" stroke="#1D4ED8" strokeWidth="1.2" />
+            <ellipse cx="76" cy="96" rx="6.5" ry="5.5" fill="#60A5FA" stroke="#1D4ED8" strokeWidth="1.2" />
           </g>
         )}
 
-        {/* --- ATMOSPHERE PARTICLES PER STATE --- */}
-        {state === "cheering" && (
-          // Star sparkles radiating
+        {/* ========================================================================= */}
+        {/* ATMOSPHERE PARTICLES & ACCESSORIES PER STATE */}
+        {/* ========================================================================= */}
+
+        {/* 1. Cheering / Gadget Stars */}
+        {(state === "cheering" || state === "gadget") && (
           <g>
-            {/* Top Left Star */}
             <path
               d="M18 30 Q22 30 22 26 Q22 30 26 30 Q22 30 22 34 Q22 30 18 30 Z"
               fill="#F59E0B"
               className="animate-mascot-sparkle-1"
             />
-            {/* Top Right Star */}
             <path
               d="M96 24 Q101 24 101 19 Q101 24 106 24 Q101 24 101 29 Q101 24 96 24 Z"
               fill="#F59E0B"
               className="animate-mascot-sparkle-2"
             />
-            {/* Tiny Pink Sparkle */}
-            <circle cx="104" cy="46" r="2.2" fill="#EC4899" className="animate-pulse" />
-            <circle cx="14" cy="48" r="2" fill="#EC4899" className="animate-pulse" />
+            <circle cx="104" cy="46" r="2.5" fill="#EC4899" className="animate-pulse" />
+            <circle cx="14" cy="48" r="2.2" fill="#EC4899" className="animate-pulse" />
           </g>
         )}
 
-        {state === "sleeping" && (
-          // Floating animated Zzz
+        {/* 2. Sleepy Zzz */}
+        {state === "sleepy" && (
           <g fill="#A855F7" fontWeight="bold" fontFamily="sans-serif">
             <text x="82" y="44" fontSize="11" className="animate-mascot-zzz-1">
               z
@@ -464,8 +605,8 @@ export default function Mascot({
           </g>
         )}
 
+        {/* 3. Thinking Bubble */}
         {state === "thinking" && (
-          // Floating thought bubble with question mark
           <g>
             <circle cx="86" cy="38" r="2.5" fill="#93C5FD" opacity="0.8" />
             <circle cx="93" cy="31" r="4" fill="#93C5FD" opacity="0.9" />
@@ -484,8 +625,8 @@ export default function Mascot({
           </g>
         )}
 
+        {/* 4. Listening Waves */}
         {state === "listening" && (
-          // Sound wave ripples around ears
           <g stroke="#3B82F6" strokeWidth="1.8" strokeLinecap="round" fill="none" opacity="0.8">
             <path d="M16 38 C14 44 14 52 16 58" />
             <path d="M10 34 C7 43 7 57 10 66" />
@@ -493,8 +634,47 @@ export default function Mascot({
             <path d="M110 34 C113 43 113 57 110 66" />
           </g>
         )}
+
+        {/* 5. Shocked Manga Lines */}
+        {state === "shocked" && (
+          <g stroke="#3B82F6" strokeWidth="2" strokeLinecap="round">
+            <line x1="48" y1="26" x2="48" y2="34" />
+            <line x1="56" y1="24" x2="56" y2="34" />
+            <line x1="64" y1="24" x2="64" y2="34" />
+            <line x1="72" y1="26" x2="72" y2="34" />
+          </g>
+        )}
+
+        {/* 6. Proud Sparkle Glint */}
+        {state === "proud" && (
+          <g>
+            <path
+              d="M94 56 Q98 56 98 52 Q98 56 102 56 Q98 56 98 60 Q98 56 94 56 Z"
+              fill="#F59E0B"
+              className="animate-mascot-sparkle-1"
+            />
+            <path
+              d="M20 54 Q24 54 24 50 Q24 54 28 54 Q24 54 24 58 Q24 54 20 54 Z"
+              fill="#F59E0B"
+              className="animate-mascot-sparkle-2"
+            />
+          </g>
+        )}
+
+        {/* 7. Laughing-with-Tears Squirts */}
+        {state === "laughing" && (
+          <g fill="#60A5FA">
+            <path
+              d="M36 62 Q26 56 20 62 Q26 66 36 64 Z"
+              className="animate-tear-left"
+            />
+            <path
+              d="M84 62 Q94 56 100 62 Q94 66 84 64 Z"
+              className="animate-tear-right"
+            />
+          </g>
+        )}
       </svg>
     </div>
   );
 }
-

@@ -145,6 +145,50 @@ button {
   50% { transform: scale(1) rotate(180deg); opacity: 1; }
 }
 
+@keyframes mascotShock {
+  0%, 100% { transform: translateY(0); }
+  20%, 60% { transform: translateY(-4px) scale(0.97, 1.03); }
+  40%, 80% { transform: translateY(2px) scale(1.03, 0.97); }
+}
+
+@keyframes mascotLaugh {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(-3deg); }
+  75% { transform: translateY(-6px) rotate(3deg); }
+}
+
+@keyframes mascotProud {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  50% { transform: translateY(-5px) scale(1.04, 1.02); }
+}
+
+@keyframes gadgetReveal {
+  0% { transform: scale(0.4) rotate(-30deg); opacity: 0; }
+  60% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes beamRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes tearSquirtLeft {
+  0%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+  50% { opacity: 1; transform: translate(-10px, -6px) scale(1.2); }
+}
+
+@keyframes tearSquirtRight {
+  0%, 100% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+  50% { opacity: 1; transform: translate(10px, -6px) scale(1.2); }
+}
+
+@keyframes leafBreeze {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-10deg); }
+  70% { transform: rotate(12deg); }
+}
+
 @keyframes pulseGlow {
   0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.4)); }
   50% { transform: scale(1.04); filter: drop-shadow(0 0 16px rgba(59, 130, 246, 0.7)); }
@@ -198,6 +242,40 @@ button {
 
 .animate-mascot-sparkle-2 {
   animation: starSparkle 1.8s ease-in-out 0.6s infinite;
+}
+
+.animate-mascot-shock {
+  animation: mascotShock 0.5s ease-in-out infinite;
+}
+
+.animate-mascot-laugh {
+  animation: mascotLaugh 0.35s ease-in-out infinite;
+}
+
+.animate-mascot-proud {
+  animation: mascotProud 2.4s ease-in-out infinite;
+}
+
+.animate-gadget-reveal {
+  animation: gadgetReveal 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-beam-spin {
+  animation: beamRotate 8s linear infinite;
+  transform-origin: center;
+}
+
+.animate-tear-left {
+  animation: tearSquirtLeft 0.8s ease-out infinite;
+}
+
+.animate-tear-right {
+  animation: tearSquirtRight 0.8s ease-out infinite;
+}
+
+.animate-leaf-sway {
+  animation: leafBreeze 3.5s ease-in-out infinite;
+  transform-origin: 60px 22px;
 }
 
 .animate-pulse-glow {
