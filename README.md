@@ -8,7 +8,26 @@ Built specifically for learners who cannot type or write Japanese on mobile devi
 
 ## 🌟 Key Features
 
-1. **Scenario Conversation Mode (41 Branching Scenarios N5–N1)**:
+1. **Original Kawaii Mascot "Aoi" (あおい) & Alive Game UI**:
+   - Original, round, chubby blue creature (`#2563EB`) with big glossy anime eyes, tiny mouth, and distinctive original accessories: a sprouting green head leaf and an adventurer's crossbody leather satchel with a brass buckle (strictly zero copying or resemblance to any existing franchise characters).
+   - **12 Layered Animated SVG Expressions**: `idle` (blink/breathe), `happy`, `cheering`, `sad` (encouraging), `thinking`, `listening` (sound waves active during speech recognition), `speaking` (mouth sync to TTS), `sleepy` (when you haven't studied today), `shocked`, `proud` (smug smirk on 5+ streak), `laughing` (squinted eyes with tears), and `gadget` (pulling glowing study scroll from satchel with sunburst beam reveal at lesson start).
+   - English + Japanese + Romaji speech bubbles customized for every state. Respects `prefers-reduced-motion`.
+
+2. **Winding Lesson Path (World Map) & Game Engine**:
+   - Themed adventure units: **Unit 1: Greetings Town (あいさつの街)**, **Unit 2: Food Street (食べ物ストリート)**, **Unit 3: Train Station (駅と移動)**, **Unit 4: Daily Life & Kanji (日常生活と漢字)**.
+   - Nodes connected by winding dotted path with 1-3 golden stars on completed nodes, pulsing glow on current active node with Aoi standing beside it, and locked nodes.
+   - Top Game HUD: Hearts (5/5 with 30-min auto-regen or gem refill), daily streak flame, gems count, XP ring, and audio mute toggle.
+   - **Bite-Sized Interactive Lessons**: Opening gadget reveal animation, 3D pressed tactile buttons (`btn-3d`), live mascot cheering/encouragement, friendly non-punishing empty-heart recovery, and victory screen with confetti and star rating.
+
+3. **Kana as Characters (Illustrated Mnemonics)**:
+   - Kana character cards with illustrated visual SVG art morphing glyphs into cute mnemonic objects (e.g., Apple for あ, Two Eels for い, Heavy Weight for う, Runner for え, Golf Green for お).
+   - Interactive: tap to bounce, hear native pronunciation, and watch stroke-by-stroke drawing animations.
+
+4. **Tactile Juice & Instant Web Audio Synthesizer**:
+   - 3D pressed buttons with offset bottom borders (`btn-3d`, `btn-3d-blue`, `btn-3d-emerald`, `btn-3d-neutral`) and mobile haptic vibration.
+   - Zero-external-file audio synthesis using the HTML5 Web Audio API (`lib/sound.ts`): tap pop (440Hz), major-scale correct chime (C5-C6), gentle boing for wrong answers, victory fanfare, and mascot squeak. Instant offline playback with 0kb asset weight.
+
+5. **Scenario Conversation Mode (41 Branching Scenarios N5–N1)**:
    - Scripted real-world dialogues spanning N5, N4, N3, N2, and N1 (Ramen shop, konbini checkout, train directions, hotel check-in, medical clinic, job interview, business alliances, boardroom presentations, and philosophical discussions).
    - **Watch Mode**: Auto-playing conversational dialogue with native Japanese text-to-speech (`ja-JP`), speed controls (0.75x–1x), and furigana/romaji/translation toggles.
    - **Role-play Mode**: The other character speaks their line; you choose or speak your reply with SpeechRecognition. Includes politeness/nuance explanations and character reactions.

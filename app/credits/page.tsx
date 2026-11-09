@@ -75,6 +75,8 @@ const SOFTWARE = [
   "idb (IndexedDB wrapper, ISC)",
   "Supabase Client (MIT)",
   "Lucide React (ISC)",
+  "Motion (MIT)",
+  "canvas-confetti (ISC)",
   "Vitest (MIT)",
   "fflate & unbzip2-stream (MIT)",
 ];

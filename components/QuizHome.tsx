@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
+import confetti from "canvas-confetti";
 import {
   ListOrdered,
   Puzzle,
@@ -20,6 +21,9 @@ import { loadSentences, useAvailableDecks, type SentenceItem } from "@/lib/useDe
 import BuildQuiz from "./quiz/BuildQuiz";
 import ChoiceQuiz, { type QuizResult } from "./quiz/ChoiceQuiz";
 import MatchQuiz from "./quiz/MatchQuiz";
+import Mascot from "@/components/mascot/Mascot";
+import Button3D from "@/components/game/Button3D";
+import { playTapSound, playCelebrateSound } from "@/lib/sound";
 
 type Mode = "choice" | "match" | "build" | "listen" | "speed";
 const MODES: { id: Mode; icon: React.ElementType; label: string; hint: string }[] = [
@@ -66,44 +70,77 @@ export default function QuizHome() {
     }
     setSrs(await getAllCards());
     setResult({ ...r, xp });
+
+    playCelebrateSound();
+    confetti({
+      particleCount: 75,
+      spread: 65,
+      origin: { y: 0.6 },
+      colors: ["#2563EB", "#10B981", "#F59E0B", "#EC4899"],
+    });
   };
 
   if (!decks) return <p className="text-slate-500 dark:text-slate-400">Loading quiz decks…</p>;
 
   if (result) {
     return (
-      <div className="pt-8 text-center">
-        <div className="flex size-16 items-center justify-center mx-auto rounded-full bg-blue-100 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
-          <Sparkles className="size-8" />
+      <div className="pt-8 text-center space-y-5">
+        <div className="flex justify-center">
+          <Mascot
+            state="cheering"
+            size={120}
+            speech={{ ja: "よくできました！", en: "Quiz cleared!" }}
+            bubblePlacement="top"
+            interactive={true}
+          />
         </div>
-        <h1 className="mt-4 font-heading text-2xl font-bold text-slate-900 dark:text-white">
+
+        <h1 className="font-heading text-2xl font-black text-slate-900 dark:text-white">
           {result.correct} / {result.total} Correct
         </h1>
+
         {result.score !== undefined && (
-          <p className="mt-1 font-heading text-lg font-bold text-blue-600 dark:text-blue-400">
+          <p className="font-heading text-lg font-black text-blue-600 dark:text-blue-400">
             {result.score} points
           </p>
         )}
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">+{result.xp} XP earned</p>
+
+        <div className="flex justify-center items-center gap-2">
+          <span className="inline-flex items-center gap-1 text-xs font-black text-amber-500 bg-amber-50 dark:bg-amber-950/40 px-3 py-1 rounded-full ring-1 ring-amber-300/40">
+            <Sparkles className="h-3.5 w-3.5" />
+            +{result.xp} XP earned
+          </span>
+        </div>
+
         {result.missed.length > 0 && (
-          <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">Missed cards will appear sooner in your Review queue.</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
+            Missed cards will appear sooner in your Review queue for reinforcement.
+          </p>
         )}
-        <div className="mt-6 flex justify-center gap-3">
-          <button
-            type="button"
-            onClick={() => { setResult(null); setRun((n) => n + 1); }}
-            className="flex min-h-12 items-center gap-1.5 rounded-full bg-blue-600 px-6 font-semibold text-white shadow-sm active:bg-blue-700 dark:bg-blue-500"
+
+        <div className="pt-2 flex justify-center gap-3">
+          <Button3D
+            variant="primary"
+            size="md"
+            iconLeft={<RotateCcw className="size-4" />}
+            onClick={() => {
+              setResult(null);
+              setRun((n) => n + 1);
+            }}
           >
-            <RotateCcw className="size-4" />
-            <span>Play Again</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => { setResult(null); setMode(null); }}
-            className="flex min-h-12 items-center gap-1.5 rounded-full bg-slate-100 px-6 font-semibold text-slate-700 active:bg-slate-200 dark:bg-slate-800 dark:text-slate-200"
+            Play Again
+          </Button3D>
+
+          <Button3D
+            variant="neutral"
+            size="md"
+            onClick={() => {
+              setResult(null);
+              setMode(null);
+            }}
           >
-            <span>Done</span>
-          </button>
+            Done
+          </Button3D>
         </div>
       </div>
     );
@@ -115,8 +152,11 @@ export default function QuizHome() {
       <div>
         <button
           type="button"
-          onClick={() => setMode(null)}
-          className="mb-3 flex min-h-12 items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"
+          onClick={() => {
+            playTapSound();
+            setMode(null);
+          }}
+          className="mb-3 flex min-h-12 items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200"
         >
           <ArrowLeft className="size-4" />
           <span>Back to Quizzes</span>
@@ -144,27 +184,55 @@ export default function QuizHome() {
   }
 
   return (
-    <div>
-      <h1 className="font-heading text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-        Tap Quizzes
-      </h1>
-      <p className="mb-4 text-sm text-slate-600 dark:text-slate-400">All input is tap-based. No typing needed.</p>
+    <div className="space-y-4 pb-12">
+      {/* Kawaii Mascot Intro Banner */}
+      <div className="rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 p-5 text-white shadow-md">
+        <div className="flex items-center justify-between gap-3">
+          <div className="space-y-1">
+            <span className="inline-flex items-center gap-1 text-[11px] font-extrabold uppercase tracking-wider text-blue-200 bg-white/10 px-2.5 py-0.5 rounded-full">
+              <Sparkles className="h-3 w-3 text-amber-300" />
+              Tap Arcade
+            </span>
+            <h1 className="text-xl font-black tracking-tight">
+              Tap-Only Quizzes
+            </h1>
+            <p className="text-xs text-blue-100 max-w-[240px] leading-relaxed">
+              Fast, zero-typing games to test your recognition, matching, and listening skills!
+            </p>
+          </div>
 
-      <label htmlFor="src" className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-        Practice Set
-      </label>
-      <select
-        id="src"
-        value={source}
-        onChange={(e) => setSource(e.target.value)}
-        className="mb-4 mt-1 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3.5 text-sm font-medium text-slate-800 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
-      >
-        {sources.map((s) => (
-          <option key={s.id} value={s.id}>
-            {s.label} ({s.cards.length} cards)
-          </option>
-        ))}
-      </select>
+          <div className="shrink-0">
+            <Mascot
+              state="happy"
+              size={85}
+              speech={{ ja: "クイズしよう！", en: "Pick a game!" }}
+              bubblePlacement="left"
+              interactive={true}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-1 px-1">
+        <label
+          htmlFor="src"
+          className="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400"
+        >
+          Practice Set
+        </label>
+        <select
+          id="src"
+          value={source}
+          onChange={(e) => setSource(e.target.value)}
+          className="min-h-12 w-full rounded-2xl border border-slate-300 bg-white px-3.5 text-sm font-bold text-slate-800 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+        >
+          {sources.map((s) => (
+            <option key={s.id} value={s.id}>
+              {s.label} ({s.cards.length} cards)
+            </option>
+          ))}
+        </select>
+      </div>
 
       <ul className="space-y-2.5">
         {MODES.map((m) => {
@@ -173,14 +241,19 @@ export default function QuizHome() {
             <li key={m.id}>
               <button
                 type="button"
-                onClick={() => setMode(m.id)}
+                onClick={() => {
+                  playTapSound();
+                  setMode(m.id);
+                }}
                 className="flex min-h-16 w-full items-center gap-3.5 rounded-2xl bg-white p-3.5 text-left shadow-sm ring-1 ring-slate-200 transition-all active:scale-[0.99] hover:bg-slate-50 dark:bg-slate-900 dark:ring-slate-800 dark:hover:bg-slate-800/60"
               >
                 <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
                   <Icon className="size-6" />
                 </div>
                 <div>
-                  <span className="font-heading block font-bold text-slate-900 dark:text-white">{m.label}</span>
+                  <span className="font-heading block font-black text-slate-900 dark:text-white">
+                    {m.label}
+                  </span>
                   <span className="block text-xs text-slate-500 dark:text-slate-400">{m.hint}</span>
                 </div>
               </button>
